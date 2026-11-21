@@ -1,5 +1,6 @@
 import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
+import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Logo } from "./HelloWorld/Logo";
@@ -10,6 +11,14 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="DeNadaATodo"
+        component={DeNadaATodo}
+        durationInFrames={1380}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="MiPrimerVideo"
         component={MiPrimerVideo}
