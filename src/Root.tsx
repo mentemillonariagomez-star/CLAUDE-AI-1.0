@@ -1,5 +1,7 @@
 import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
+import { Escena } from "./MiPrimerVideo/Escena";
+import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 
@@ -8,6 +10,35 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="MiPrimerVideo"
+        component={MiPrimerVideo}
+        durationInFrames={230}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Folder name="Escenas">
+        <Composition
+          id="Escena"
+          component={Escena}
+          durationInFrames={90}
+          fps={30}
+          width={1920}
+          height={1080}
+          defaultProps={{
+            titulo: "Hola, Remotion",
+            subtitulo: "Mi primer video hecho con código",
+            acento: "#38bdf8",
+            style: {
+              backgroundColor: "#0f172a",
+              flexDirection: "column",
+            justifyContent: "center",
+              alignItems: "center",
+            },
+          }}
+        />
+      </Folder>
       <Folder name="Elements">
         <Composition
           id="Logo"
