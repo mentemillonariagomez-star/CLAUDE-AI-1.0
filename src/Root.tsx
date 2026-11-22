@@ -2,6 +2,7 @@ import { Composition, Folder, Still } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
+import { ClaudeCanal } from "./Pantalla/Pantalla";
 import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
@@ -54,6 +55,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="ClaudeCanal"
+        component={ClaudeCanal}
+        durationInFrames={878}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="ViralDeNadaATodo"
         component={ViralDeNadaATodo}
