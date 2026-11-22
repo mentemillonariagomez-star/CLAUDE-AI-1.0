@@ -6,6 +6,8 @@ import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Pasos } from "./Pasos/Pasos";
+import { Sketch } from "./Sketch/Sketch";
+import { DURACION_TOTAL as DURACION_SKETCH } from "./Sketch/datos";
 import { calcularDuracion, Comparacion } from "./Comparacion/Comparacion";
 import { CONFIG as CONFIG_COMPARACION } from "./Comparacion/config";
 import { DURACION_TOTAL as DURACION_PASOS } from "./Pasos/datos";
@@ -59,6 +61,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Sketch3D"
+        component={Sketch}
+        durationInFrames={DURACION_SKETCH}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Comparacion"
         component={Comparacion}
