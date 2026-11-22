@@ -59,6 +59,180 @@ export const ESCENAS = {
   },
 } as const;
 
+// Texto de cada frase con el fotograma (relativo a la escena) de cada palabra.
+export const ESCENAS_TEXTO = {
+  Gancho: {
+    from: 0,
+    dur: 94,
+    frases: [
+      {
+        texto: "Tenía cero pesos en la cuenta.",
+        palabras: [2, 12, 22, 33, 39, 45],
+      },
+      {
+        texto: "Cero.",
+        palabras: [69],
+      },
+    ],
+  },
+  SinNada: {
+    from: 94,
+    dur: 138,
+    frases: [
+      {
+        texto: "Sin dinero.",
+        palabras: [4, 13],
+      },
+      {
+        texto: "Sin contactos.",
+        palabras: [39, 48],
+      },
+      {
+        texto: "Sin nadie que creyera en él.",
+        palabras: [79, 87, 97, 104, 117, 123],
+      },
+    ],
+  },
+  Idea: {
+    from: 232,
+    dur: 144,
+    frases: [
+      {
+        texto: "Pero tenía una idea.",
+        palabras: [5, 15, 26, 35],
+      },
+      {
+        texto: "Y una sola regla:",
+        palabras: [56, 61, 70, 80],
+      },
+      {
+        texto: "nunca rendirse.",
+        palabras: [102, 115],
+      },
+    ],
+  },
+  Noches: {
+    from: 376,
+    dur: 146,
+    frases: [
+      {
+        texto: "Trabajó de noche,",
+        palabras: [5, 20, 27],
+      },
+      {
+        texto: "mientras todos dormían.",
+        palabras: [46, 63, 75],
+      },
+      {
+        texto: "Mil días seguidos.",
+        palabras: [101, 110, 120],
+      },
+    ],
+  },
+  Fracasos: {
+    from: 522,
+    dur: 142,
+    frases: [
+      {
+        texto: "Falló.",
+        palabras: [4],
+      },
+      {
+        texto: "Una vez.",
+        palabras: [31, 41],
+      },
+      {
+        texto: "Diez veces.",
+        palabras: [62, 73],
+      },
+      {
+        texto: "Cincuenta veces.",
+        palabras: [98, 119],
+      },
+    ],
+  },
+  Levantarse: {
+    from: 664,
+    dur: 127,
+    frases: [
+      {
+        texto: "Y cada vez que caía,",
+        palabras: [4, 9, 19, 28, 36],
+      },
+      {
+        texto: "se levantaba sabiendo un poco más.",
+        palabras: [51, 58, 76, 93, 100, 110],
+      },
+    ],
+  },
+  HastaQue: {
+    from: 791,
+    dur: 63,
+    frases: [
+      {
+        texto: "Hasta que un día.",
+        palabras: [4, 14, 21, 27],
+      },
+    ],
+  },
+  TodoCambio: {
+    from: 854,
+    dur: 87,
+    frases: [
+      {
+        texto: "Todo cambió.",
+        palabras: [11, 20],
+      },
+      {
+        texto: "Hoy lo tiene todo.",
+        palabras: [44, 52, 58, 69],
+      },
+    ],
+  },
+  Mensaje: {
+    from: 941,
+    dur: 197,
+    frases: [
+      {
+        texto: "Y quiere que sepas algo:",
+        palabras: [4, 9, 21, 29, 40],
+      },
+      {
+        texto: "no necesitas tenerlo todo para empezar.",
+        palabras: [60, 66, 83, 97, 107, 116],
+      },
+      {
+        texto: "Solo necesitas empezar.",
+        palabras: [142, 152, 172],
+      },
+    ],
+  },
+  Guardar: {
+    from: 1138,
+    dur: 96,
+    frases: [
+      {
+        texto: "Guarda este video para el día que quieras rendirte.",
+        palabras: [4, 15, 24, 33, 42, 47, 54, 61, 73],
+      },
+    ],
+  },
+  Loop: {
+    from: 1234,
+    dur: 99,
+    frases: [
+      {
+        texto: "Porque él también empezó,",
+        palabras: [4, 17, 23, 37],
+      },
+      {
+        texto: "sin nada.",
+        palabras: [56, 65],
+      },
+    ],
+  },
+} as const;
+
 export type Palabra = { text: string; startMs: number; endMs: number };
 
 export const SUBTITULOS: Palabra[][] = [

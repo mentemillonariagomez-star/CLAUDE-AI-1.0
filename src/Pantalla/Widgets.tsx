@@ -9,7 +9,7 @@ import { AMARILLO, GROTESK, MONO, ROJO } from "./Escritorio";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-const Tarjeta = ({
+export const Tarjeta = ({
   children,
   titulo,
   extra,
@@ -46,7 +46,7 @@ const Tarjeta = ({
   </div>
 );
 
-const Cruz = ({
+export const Cruz = ({
   en,
   size = 220,
 }: {
@@ -139,17 +139,17 @@ export const WidgetRec = ({ tachar }: { readonly tachar: number }) => {
 
 export const WidgetTareas = ({
   marcas,
+  titulo = "LO QUE NO QUIERO HACER",
+  items = ["Editar el video", "Hablar a cámara", "Grabarme"],
 }: {
   readonly marcas: readonly number[];
+  readonly titulo?: string;
+  readonly items?: readonly string[];
 }) => {
   const frame = useCurrentFrame();
-  const filas = [
-    { t: "Editar el video", en: marcas[0] },
-    { t: "Hablar a cámara", en: marcas[1] },
-    { t: "Grabarme", en: marcas[2] },
-  ];
+  const filas = items.map((t, i) => ({ t, en: marcas[i] }));
   return (
-    <Tarjeta titulo="LO QUE NO QUIERO HACER" extra={<span>3</span>}>
+    <Tarjeta titulo={titulo} extra={<span>{items.length}</span>}>
       {filas.map((f) => (
         <div
           key={f.t}

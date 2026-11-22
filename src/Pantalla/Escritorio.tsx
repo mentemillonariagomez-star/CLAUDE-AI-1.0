@@ -13,6 +13,7 @@ export const { fontFamily: MONO } = loadMono("normal", {
 
 export const AMARILLO = "#FFE11A";
 export const ROJO = "#ff4d4d";
+export const MARCA = "zerx.ai";
 
 // Habitación de noche: ventana con luces de ciudad desenfocadas.
 export const Fondo = () => {

@@ -13,13 +13,14 @@ escenas, paginas, clips = [], [], []
 for s in data:
     ini = t
     t += LEAD.get(s["id"], 0.15)
-    frases_rel = []
+    frases_rel, textos = [], []
     for f in s["frases"]:
         frases_rel.append(round((t - ini) * FPS))
         clips.append((t, f["file"]))
         palabras = f["text"].split()
         pesos = np.array([len(p) + 2 for p in palabras], dtype=float)
         bordes = np.concatenate([[0], np.cumsum(pesos)]) / pesos.sum() * f["dur"]
+        textos.append({"texto": f["text"], "palabras": [round((t - ini + bordes[i]) * FPS) for i in range(len(palabras))]})
         pag = []
         for i, p in enumerate(palabras):
             pag.append({"text": p, "startMs": round((t + bordes[i]) * 1000), "endMs": round((t + bordes[i + 1]) * 1000)})
@@ -30,7 +31,7 @@ for s in data:
     t -= GAP.get(s["frases"][-1]["text"][-1], 0.2)
     t += TAIL.get(s["id"], 0.25)
     fr0 = round(ini * FPS); fr1 = round(t * FPS)
-    escenas.append({"id": s["id"], "from": fr0, "dur": fr1 - fr0, "frases": frases_rel})
+    escenas.append({"id": s["id"], "from": fr0, "dur": fr1 - fr0, "frases": frases_rel, "textos": textos})
     t = fr1 / FPS
 TOTAL = escenas[-1]["from"] + escenas[-1]["dur"]
 print("total frames", TOTAL, TOTAL / FPS, "s")
@@ -134,6 +135,8 @@ with open(proj + "/src/Viral/datos.ts", "w") as f:
     f.write("// Generado a partir de la narración: tiempos en fotogramas (30 fps) y subtítulos en ms.\n")
     f.write("export const DURACION_TOTAL = %d;\n\n" % TOTAL)
     f.write("export const ESCENAS = %s as const;\n\n" % json.dumps({e["id"]: {"from": e["from"], "dur": e["dur"], "frases": e["frases"]} for e in escenas}, ensure_ascii=False, indent=2))
+    f.write("// Texto de cada frase con el fotograma (relativo a la escena) de cada palabra.\n")
+    f.write("export const ESCENAS_TEXTO = %s as const;\n\n" % json.dumps({e["id"]: {"from": e["from"], "dur": e["dur"], "frases": e["textos"]} for e in escenas}, ensure_ascii=False, indent=2))
     f.write("export type Palabra = { text: string; startMs: number; endMs: number };\n\n")
     f.write("export const SUBTITULOS: Palabra[][] = %s;\n" % json.dumps(paginas, ensure_ascii=False))
 for e in escenas: print(e)

@@ -3,6 +3,7 @@ import { HelloWorld } from "./HelloWorld";
 import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
 import { ClaudeCanal } from "./Pantalla/Pantalla";
+import { ZerxDeNadaATodo } from "./Pantalla/DeNadaZerx";
 import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
@@ -55,6 +56,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="ZerxDeNadaATodo"
+        component={ZerxDeNadaATodo}
+        durationInFrames={1333}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="ClaudeCanal"
         component={ClaudeCanal}

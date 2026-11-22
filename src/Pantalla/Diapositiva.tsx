@@ -1,5 +1,5 @@
 import { interpolate, useCurrentFrame } from "remotion";
-import { AMARILLO, GROTESK, MONO, ROJO } from "./Escritorio";
+import { AMARILLO, GROTESK, MARCA, MONO, ROJO } from "./Escritorio";
 
 type Frase = { readonly texto: string; readonly palabras: readonly number[] };
 
@@ -55,7 +55,7 @@ export const Diapositiva = ({
           color: "#d4d4d4",
         }}
       >
-        <span style={{ color: AMARILLO }}>●</span> DE CERO A TODO
+        <span style={{ color: AMARILLO }}>●</span> {MARCA}
       </div>
       <div
         style={{
