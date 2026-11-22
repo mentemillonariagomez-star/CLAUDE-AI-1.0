@@ -6,6 +6,8 @@ import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Pasos } from "./Pasos/Pasos";
+import { calcularDuracion, Comparacion } from "./Comparacion/Comparacion";
+import { CONFIG as CONFIG_COMPARACION } from "./Comparacion/config";
 import { DURACION_TOTAL as DURACION_PASOS } from "./Pasos/datos";
 import { DURACION_NADIE_VIENE, NadieViene } from "./NadieViene/NadieViene";
 import { Logo } from "./HelloWorld/Logo";
@@ -57,6 +59,16 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Comparacion"
+        component={Comparacion}
+        defaultProps={CONFIG_COMPARACION}
+        calculateMetadata={calcularDuracion}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Pasos"
         component={Pasos}
