@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 70px;
+      background-color: #0a0a0a;
+    }
+    #idea-luz {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        #fff7d6 0%,
+        #fde68a 18%,
+        rgba(253, 230, 138, 0.25) 45%,
+        rgba(253, 230, 138, 0) 70%
+      );
+    }
+    #idea-texto {
+      font-family: "Playfair Display";
+      font-weight: 400;
+      font-size: 130px;
+      color: #fef3c7;
+    }
+  </style>
+  <!-- 3. Solo tenía una idea. (150 fotogramas = 5 s) -->
+  <div
+    id="root"
+    data-composition-id="idea"
+    data-width="1920"
+    data-height="1080"
+    data-duration="5"
+    data-composition-variables='[{"id":"texto","type":"string","label":"Texto","default":"Solo tenía una idea."}]'
+  >
+    <div id="idea-luz"></div>
+    <div id="idea-texto" data-var-text="texto">Solo tenía una idea.</div>
+  </div>
+  <script>
+    const R = window.R2HF;
+    const tl = gsap.timeline({ paused: true });
+    // Luz: fotogramas 0→36, Easing.spring({ damping: 12 }) en escala perceptual, 0→1
+    tl.fromTo("#idea-luz", { scale: 0 }, { scale: 1, duration: 1.2, ease: R.perceptual(0, 1, R.spring12) }, 0);
+    // Texto: opacidad, fotogramas 30→60
+    tl.fromTo("#idea-texto", { opacity: 0 }, { opacity: 1, duration: 1, ease: "none" }, 1);
+    window.__timelines["idea"] = tl;
+  </script>
+</template>

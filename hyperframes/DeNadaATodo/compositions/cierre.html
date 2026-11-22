@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      background-color: #070604;
+    }
+    #cierre-frase {
+      font-family: "Playfair Display";
+      font-weight: 400;
+      font-size: 120px;
+      color: #e7e5e4;
+    }
+    #cierre-llamada {
+      font-family: "Inter";
+      font-weight: 300;
+      font-size: 56px;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      color: #fbbf24;
+    }
+  </style>
+  <!-- 10. Cierre (105 fotogramas = 3,5 s) -->
+  <div
+    id="root"
+    data-composition-id="cierre"
+    data-width="1920"
+    data-height="1080"
+    data-duration="3.5"
+    data-composition-variables='[{"id":"frase","type":"string","label":"Frase","default":"Todo empezó con nada."},{"id":"llamada","type":"string","label":"Llamada final","default":"Tu historia empieza hoy"}]'
+  >
+    <div id="cierre-frase" data-var-text="frase">Todo empezó con nada.</div>
+    <div id="cierre-llamada" data-var-text="llamada">Tu historia empieza hoy</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frase: opacidad, fotogramas 6→30. Llamada: opacidad, fotogramas 42→66.
+    tl.fromTo("#cierre-frase", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none" }, 0.2);
+    tl.fromTo("#cierre-llamada", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none" }, 1.4);
+    window.__timelines["cierre"] = tl;
+  </script>
+</template>

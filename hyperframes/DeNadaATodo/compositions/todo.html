@@ -1,0 +1,132 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 50% 50%, #5a3f06 0%, #1c1303 55%, #080501 100%);
+    }
+    #todo-particulas {
+      position: absolute;
+      inset: 0;
+    }
+    .todo-particula {
+      position: absolute;
+      border-radius: 50%;
+      background-color: #fde68a;
+      box-shadow: 0 0 12px #fbbf24;
+    }
+    #todo-texto {
+      font-family: "Playfair Display";
+      font-weight: 900;
+      font-size: 230px;
+      color: transparent;
+      background-image: linear-gradient(180deg, #fff7d6 0%, #fcd34d 45%, #b45309 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(251, 191, 36, 0.45));
+    }
+  </style>
+  <!-- 9. Lo tenía todo. (165 fotogramas = 5,5 s) -->
+  <div
+    id="root"
+    data-composition-id="todo"
+    data-width="1920"
+    data-height="1080"
+    data-duration="5.5"
+    data-composition-variables='[{"id":"texto","type":"string","label":"Texto","default":"Lo tenía todo."}]'
+  >
+    <!--
+      60 partículas doradas que suben. Posición, tamaño, opacidad, velocidad y desfase salen de
+      random() de Remotion con las mismas semillas (x0…x59, v0…, t0…, y0…, o0…).
+    -->
+    <div id="todo-particulas" data-layout-ignore>
+      <div class="todo-particula" data-velocidad="1.8447252579499036" data-desfase="205.5335783958435" style="left: 1853.4787859022617px; width: 5.250130003318191px; height: 5.250130003318191px; opacity: 0.4638546279165894"></div>
+      <div class="todo-particula" data-velocidad="3.651795197278261" data-desfase="478.50500414147973" style="left: 1457.8869371116161px; width: 4.7344407679047436px; height: 4.7344407679047436px; opacity: 0.6790993744973093"></div>
+      <div class="todo-particula" data-velocidad="4.369094293797389" data-desfase="328.82852596230805" style="left: 1900.3298476338387px; width: 8.775117934914306px; height: 8.775117934914306px; opacity: 0.5907018505502493"></div>
+      <div class="todo-particula" data-velocidad="3.209236152470112" data-desfase="61.422746954485774" style="left: 744.7251377999783px; width: 9.63249783986248px; height: 9.63249783986248px; opacity: 0.2592435711994767"></div>
+      <div class="todo-particula" data-velocidad="4.398293969454244" data-desfase="556.5199440903962" style="left: 1485.8605371415615px; width: 6.597639332525432px; height: 6.597639332525432px; opacity: 0.31211678027175366"></div>
+      <div class="todo-particula" data-velocidad="2.7153238230384886" data-desfase="810.3212075214833" style="left: 1182.3522073030472px; width: 3.111531787086278px; height: 3.111531787086278px; opacity: 0.6581410381942987"></div>
+      <div class="todo-particula" data-velocidad="3.107498937752098" data-desfase="1069.6956495847553" style="left: 648.2293273508549px; width: 7.074549148092046px; height: 7.074549148092046px; opacity: 0.8292818464338779"></div>
+      <div class="todo-particula" data-velocidad="2.9453234570100904" data-desfase="344.54680697992444" style="left: 1353.8966578245163px; width: 6.173070198157802px; height: 6.173070198157802px; opacity: 0.6701579239685088"></div>
+      <div class="todo-particula" data-velocidad="1.8087054567877203" data-desfase="530.8628827426583" style="left: 119.18648734688759px; width: 4.637268461287022px; height: 4.637268461287022px; opacity: 0.3730861034244299"></div>
+      <div class="todo-particula" data-velocidad="2.1200190712697804" data-desfase="667.0526484679431" style="left: 154.48216795921326px; width: 9.341903530759737px; height: 9.341903530759737px; opacity: 0.8233112673275172"></div>
+      <div class="todo-particula" data-velocidad="3.611416924512014" data-desfase="801.3958659209311" style="left: 731.1129301786423px; width: 4.544421344529837px; height: 4.544421344529837px; opacity: 0.8049581948667764"></div>
+      <div class="todo-particula" data-velocidad="3.2313953752163798" data-desfase="363.49147262983024" style="left: 658.6841270327568px; width: 8.541762622073293px; height: 8.541762622073293px; opacity: 0.8268589619081467"></div>
+      <div class="todo-particula" data-velocidad="4.221992933889851" data-desfase="79.38232088461518" style="left: 852.6404115557671px; width: 5.5002768016420305px; height: 5.5002768016420305px; opacity: 0.7789567294996231"></div>
+      <div class="todo-particula" data-velocidad="2.34438640717417" data-desfase="1023.6973457224667" style="left: 350.549081414938px; width: 3.626107446849346px; height: 3.626107446849346px; opacity: 0.6404056678526103"></div>
+      <div class="todo-particula" data-velocidad="3.111097295768559" data-desfase="412.8444512654096" style="left: 1655.7601980865002px; width: 9.511095548747107px; height: 9.511095548747107px; opacity: 0.8422074081841856"></div>
+      <div class="todo-particula" data-velocidad="2.820792611455545" data-desfase="437.4785876646638" style="left: 258.56745198369026px; width: 11.906267492333427px; height: 11.906267492333427px; opacity: 0.2610579959116876"></div>
+      <div class="todo-particula" data-velocidad="4.474836488021538" data-desfase="244.09195253625512" style="left: 256.9881981611252px; width: 5.7384673620108515px; height: 5.7384673620108515px; opacity: 0.3370654484257102"></div>
+      <div class="todo-particula" data-velocidad="3.99053846555762" data-desfase="199.9797197151929" style="left: 1496.757584810257px; width: 9.748180997092277px; height: 9.748180997092277px; opacity: 0.584626866877079"></div>
+      <div class="todo-particula" data-velocidad="4.134178879670799" data-desfase="833.7456429284066" style="left: 729.9201245605946px; width: 5.502486472483724px; height: 5.502486472483724px; opacity: 0.5872996917925775"></div>
+      <div class="todo-particula" data-velocidad="3.398657281883061" data-desfase="795.4323117155582" style="left: 531.5162739157677px; width: 7.052364167757332px; height: 7.052364167757332px; opacity: 0.372231316100806"></div>
+      <div class="todo-particula" data-velocidad="2.1896305521950126" data-desfase="474.4880037009716" style="left: 1685.2279691398144px; width: 3.3553826571442187px; height: 3.3553826571442187px; opacity: 0.7931365563068539"></div>
+      <div class="todo-particula" data-velocidad="2.7275281590409577" data-desfase="782.652735337615" style="left: 42.62644574046135px; width: 9.046973154181615px; height: 9.046973154181615px; opacity: 0.6624373157974333"></div>
+      <div class="todo-particula" data-velocidad="3.700571895344183" data-desfase="680.9633995592594" style="left: 1205.726175159216px; width: 5.613633102737367px; height: 5.613633102737367px; opacity: 0.6638565439730882"></div>
+      <div class="todo-particula" data-velocidad="3.54994858475402" data-desfase="41.55007411725819" style="left: 1815.4561132192612px; width: 9.020808077417314px; height: 9.020808077417314px; opacity: 0.5728226830717176"></div>
+      <div class="todo-particula" data-velocidad="4.401826397515833" data-desfase="115.43913748115301" style="left: 397.91721671819687px; width: 8.239801716757938px; height: 8.239801716757938px; opacity: 0.7122259789146483"></div>
+      <div class="todo-particula" data-velocidad="2.2986865625716746" data-desfase="723.6093214340508" style="left: 1625.8077791333199px; width: 8.028761106776074px; height: 8.028761106776074px; opacity: 0.5861885608639568"></div>
+      <div class="todo-particula" data-velocidad="2.5838144354056567" data-desfase="531.3794440124184" style="left: 1460.888952165842px; width: 9.778048106934875px; height: 9.778048106934875px; opacity: 0.738903823774308"></div>
+      <div class="todo-particula" data-velocidad="4.176482325419784" data-desfase="445.127144549042" style="left: 458.14077973365784px; width: 8.139417259488255px; height: 8.139417259488255px; opacity: 0.8086559804156422"></div>
+      <div class="todo-particula" data-velocidad="2.83189790812321" data-desfase="820.0962322019041" style="left: 1426.38536632061px; width: 3.5278037739917636px; height: 3.5278037739917636px; opacity: 0.44181721322238443"></div>
+      <div class="todo-particula" data-velocidad="3.2081822210457176" data-desfase="349.0905177500099" style="left: 894.9837800860405px; width: 11.443263088585809px; height: 11.443263088585809px; opacity: 0.8392494496423751"></div>
+      <div class="todo-particula" data-velocidad="1.5929770809598267" data-desfase="202.28304583579302" style="left: 1604.0714943408966px; width: 3.6900123318191618px; height: 3.6900123318191618px; opacity: 0.7919549983926117"></div>
+      <div class="todo-particula" data-velocidad="1.9408302430529147" data-desfase="63.56451214291155" style="left: 650.32202526927px; width: 9.321672820486128px; height: 9.321672820486128px; opacity: 0.41389214578084643"></div>
+      <div class="todo-particula" data-velocidad="3.0703808055259287" data-desfase="77.5230280123651" style="left: 1823.0760557949543px; width: 7.233599790371954px; height: 7.233599790371954px; opacity: 0.2836609753314406"></div>
+      <div class="todo-particula" data-velocidad="3.425999558530748" data-desfase="391.3908938225359" style="left: 847.4973705410957px; width: 9.916420981753618px; height: 9.916420981753618px; opacity: 0.5489526549354196"></div>
+      <div class="todo-particula" data-velocidad="3.9267353173345327" data-desfase="960.7066056132317" style="left: 1160.112089663744px; width: 11.741471210494637px; height: 11.741471210494637px; opacity: 0.3971800573170185"></div>
+      <div class="todo-particula" data-velocidad="3.4995032467413694" data-desfase="560.1673943828791" style="left: 1116.4690075814724px; width: 7.618655164260417px; height: 7.618655164260417px; opacity: 0.6702024193014949"></div>
+      <div class="todo-particula" data-velocidad="2.7284814077429473" data-desfase="914.1339702252299" style="left: 1769.9174912273884px; width: 5.2649404217954725px; height: 5.2649404217954725px; opacity: 0.2688017224892974"></div>
+      <div class="todo-particula" data-velocidad="4.1706907076295465" data-desfase="231.74915763549507" style="left: 1824.2329421639442px; width: 9.553422776749358px; height: 9.553422776749358px; opacity: 0.5780859002377838"></div>
+      <div class="todo-particula" data-velocidad="2.743666437221691" data-desfase="204.51686167158186" style="left: 1493.3853060007095px; width: 7.227819357533008px; height: 7.227819357533008px; opacity: 0.6461461075581609"></div>
+      <div class="todo-particula" data-velocidad="3.564016888383776" data-desfase="980.4172211419791" style="left: 448.85449200868607px; width: 5.445109702879563px; height: 5.445109702879563px; opacity: 0.5625227241311221"></div>
+      <div class="todo-particula" data-velocidad="2.149403943680227" data-desfase="689.5816230308264" style="left: 1918.4581983089447px; width: 8.275434473762289px; height: 8.275434473762289px; opacity: 0.5744569908827544"></div>
+      <div class="todo-particula" data-velocidad="3.800793017959222" data-desfase="79.75018752738833" style="left: 1481.5982383489609px; width: 10.738655185326934px; height: 10.738655185326934px; opacity: 0.7605927539989352"></div>
+      <div class="todo-particula" data-velocidad="3.602009928552434" data-desfase="981.1670996434987" style="left: 1698.7060064077377px; width: 4.228534975787625px; height: 4.228534975787625px; opacity: 0.5988952321466059"></div>
+      <div class="todo-particula" data-velocidad="2.9666982425842434" data-desfase="76.56806034967303" style="left: 496.95853158831596px; width: 8.259104259079322px; height: 8.259104259079322px; opacity: 0.7898038730490953"></div>
+      <div class="todo-particula" data-velocidad="2.206224601250142" data-desfase="733.9434310421348" style="left: 569.4642658531666px; width: 3.339906084816903px; height: 3.339906084816903px; opacity: 0.5576796018052845"></div>
+      <div class="todo-particula" data-velocidad="2.654412273550406" data-desfase="872.8839382342994" style="left: 1561.635105907917px; width: 7.257979326881468px; height: 7.257979326881468px; opacity: 0.6647046018857509"></div>
+      <div class="todo-particula" data-velocidad="3.6510386425070465" data-desfase="837.2429509554058" style="left: 942.4786618351936px; width: 7.788805646589026px; height: 7.788805646589026px; opacity: 0.36137649305164815"></div>
+      <div class="todo-particula" data-velocidad="2.2701774006709456" data-desfase="1024.789054747671" style="left: 849.6833463013172px; width: 8.908825995633379px; height: 8.908825995633379px; opacity: 0.30857288325205445"></div>
+      <div class="todo-particula" data-velocidad="3.9594917544163764" data-desfase="777.091042259708" style="left: 1079.1237178444862px; width: 10.273003382608294px; height: 10.273003382608294px; opacity: 0.38109215814620256"></div>
+      <div class="todo-particula" data-velocidad="2.9986738488078117" data-desfase="523.8390878587961" style="left: 1659.5246131718159px; width: 9.923510229913518px; height: 9.923510229913518px; opacity: 0.39346331804990764"></div>
+      <div class="todo-particula" data-velocidad="2.9940496624913067" data-desfase="992.5044327881187" style="left: 818.8530121743679px; width: 11.74912628531456px; height: 11.74912628531456px; opacity: 0.2761808555573225"></div>
+      <div class="todo-particula" data-velocidad="2.3694001680705696" data-desfase="27.0611859485507" style="left: 496.88186198472977px; width: 3.557952714851126px; height: 3.557952714851126px; opacity: 0.48246088763698936"></div>
+      <div class="todo-particula" data-velocidad="2.7043698204215616" data-desfase="907.1087221708149" style="left: 851.2354038655758px; width: 10.356451188214123px; height: 10.356451188214123px; opacity: 0.3993767281062901"></div>
+      <div class="todo-particula" data-velocidad="4.225070357322693" data-desfase="387.792281024158" style="left: 1105.6428681313992px; width: 8.841384358238429px; height: 8.841384358238429px; opacity: 0.7845599941909313"></div>
+      <div class="todo-particula" data-velocidad="2.0680899247527122" data-desfase="444.05065873637795" style="left: 1044.4406640529633px; width: 3.8829952671658248px; height: 3.8829952671658248px; opacity: 0.6215754276141524"></div>
+      <div class="todo-particula" data-velocidad="2.6565566794015467" data-desfase="871.1991643812507" style="left: 1097.448273897171px; width: 4.2642106167040765px; height: 4.2642106167040765px; opacity: 0.8076312768273055"></div>
+      <div class="todo-particula" data-velocidad="3.3970469457563013" data-desfase="53.55033944360912" style="left: 1915.4690073430538px; width: 9.95938368793577px; height: 9.95938368793577px; opacity: 0.4573669228237122"></div>
+      <div class="todo-particula" data-velocidad="2.6916666263714433" data-desfase="415.38377665914595" style="left: 379.9619507789612px; width: 5.1712055881507695px; height: 5.1712055881507695px; opacity: 0.7666316345799714"></div>
+      <div class="todo-particula" data-velocidad="1.99304956686683" data-desfase="79.44275507703424" style="left: 368.8016174733639px; width: 3.9184984588064253px; height: 3.9184984588064253px; opacity: 0.5931251788977534"></div>
+      <div class="todo-particula" data-velocidad="2.9838382587768137" data-desfase="657.7273854799569" style="left: 934.8886808753014px; width: 9.321743023116142px; height: 9.321743023116142px; opacity: 0.5335718809161335"></div>
+    </div>
+    <div id="todo-texto" data-var-text="texto">Lo tenía todo.</div>
+  </div>
+  <script>
+    const R = window.R2HF;
+    const tl = gsap.timeline({ paused: true });
+    // Partículas: y = 1080 + 50 − ((fotograma · velocidad + desfase) mod 1180)
+    const particulas = Array.from(document.querySelectorAll(".todo-particula")).map((el) => ({
+      el,
+      v: Number(el.dataset.velocidad),
+      y0: Number(el.dataset.desfase),
+    }));
+    const reloj = { f: 0 };
+    const colocar = () => {
+      for (const p of particulas) {
+        p.el.style.top = 1080 + 50 - ((reloj.f * p.v + p.y0) % (1080 + 100)) + "px";
+      }
+    };
+    colocar();
+    tl.fromTo(reloj, { f: 0 }, { f: 165, duration: 5.5, ease: "none", onUpdate: colocar }, 0);
+    // Texto: opacidad 6→36; escala 0→165 (0.9→1.05, perceptual)
+    tl.fromTo("#todo-texto", { opacity: 0 }, { opacity: 1, duration: 1, ease: "none" }, 0.2);
+    tl.fromTo("#todo-texto", { scale: 0.9 }, { scale: 1.05, duration: 5.5, ease: R.perceptual(0.9, 1.05) }, 0);
+    window.__timelines["todo"] = tl;
+  </script>
+</template>

@@ -1,0 +1,83 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      background-color: #110f0b;
+    }
+    #dias-texto {
+      font-family: "Playfair Display";
+      font-style: italic;
+      font-size: 84px;
+      color: #d6d3d1;
+    }
+    #dias-contador {
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 220px;
+      color: #fbbf24;
+      font-variant-numeric: tabular-nums;
+    }
+    #dias-pista {
+      width: 900px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #292524;
+      overflow: hidden;
+    }
+    #dias-barra {
+      width: 900px;
+      height: 10px;
+      background-color: #fbbf24;
+    }
+  </style>
+  <!-- 5. Trabajó cuando nadie miraba. Día 1 → Día 1.000 (180 fotogramas = 6 s) -->
+  <div
+    id="root"
+    data-composition-id="dias"
+    data-width="1920"
+    data-height="1080"
+    data-duration="6"
+    data-composition-variables='[{"id":"texto","type":"string","label":"Texto","default":"Trabajó cuando nadie miraba."}]'
+  >
+    <div id="dias-texto" data-var-text="texto">Trabajó cuando nadie miraba.</div>
+    <div id="dias-contador">Día 1</div>
+    <div id="dias-pista">
+      <div id="dias-barra"></div>
+    </div>
+  </div>
+  <script>
+    const R = window.R2HF;
+    const tl = gsap.timeline({ paused: true });
+    // Texto: opacidad, fotogramas 0→24
+    tl.fromTo("#dias-texto", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none" }, 0);
+    // Contador y barra: fotogramas 18→150 con Easing.in(Easing.quad) = power1.in
+    const contador = document.getElementById("dias-contador");
+    const dia = { v: 1 };
+    tl.fromTo(
+      dia,
+      { v: 1 },
+      {
+        v: 1000,
+        duration: 4.4,
+        ease: "power1.in",
+        onUpdate: () => {
+          contador.textContent = "Día " + R.formatDE(Math.round(dia.v));
+        },
+      },
+      0.6,
+    );
+    tl.fromTo(
+      "#dias-barra",
+      { scaleX: 0, transformOrigin: "left center" },
+      { scaleX: 1, duration: 4.4, ease: "power1.in" },
+      0.6,
+    );
+    window.__timelines["dias"] = tl;
+  </script>
+</template>

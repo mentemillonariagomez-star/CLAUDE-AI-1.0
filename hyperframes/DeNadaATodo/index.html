@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>De nada a todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/remotion-easings.js"></script>
+    <style>
+      /* La misma regla que pone la página de render de Remotion. */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #main {
+        position: absolute;
+        inset: 0;
+        background-color: black;
+      }
+      /* La escena que entra se pinta encima de la que sale, como en TransitionSeries. */
+      #nada { z-index: 1; }
+      #ni { z-index: 2; }
+      #idea { z-index: 3; }
+      #decision { z-index: 4; }
+      #dias { z-index: 5; }
+      #fallo { z-index: 6; }
+      #caida { z-index: 7; }
+      #subida { z-index: 8; }
+      #todo { z-index: 9; }
+      #cierre { z-index: 10; }
+      #vineta { z-index: 20; }
+    </style>
+  </head>
+  <body>
+    <!--
+      Traducido de src/DeNadaATodo (Remotion): 10 escenas en una TransitionSeries con fundidos de
+      15 fotogramas (0,5 s). Cada escena empieza 0,5 s antes de que acabe la anterior. 46 s a 30 fps.
+    -->
+    <div
+      id="main"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="46"
+      data-fps="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="nada" class="clip" data-composition-id="nada" data-composition-src="compositions/nada.html"
+        data-start="0" data-duration="5" data-track-index="0" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="ni" class="clip" data-composition-id="ni" data-composition-src="compositions/ni.html"
+        data-start="4.5" data-duration="5" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="idea" class="clip" data-composition-id="idea" data-composition-src="compositions/idea.html"
+        data-start="9" data-duration="5" data-track-index="0" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="decision" class="clip" data-composition-id="decision" data-composition-src="compositions/decision.html"
+        data-start="13.5" data-duration="4.5" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="dias" class="clip" data-composition-id="dias" data-composition-src="compositions/dias.html"
+        data-start="17.5" data-duration="6" data-track-index="0" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="fallo" class="clip" data-composition-id="fallo" data-composition-src="compositions/fallo.html"
+        data-start="23" data-duration="5" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="caida" class="clip" data-composition-id="caida" data-composition-src="compositions/caida.html"
+        data-start="27.5" data-duration="4.5" data-track-index="0" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="subida" class="clip" data-composition-id="subida" data-composition-src="compositions/subida.html"
+        data-start="31.5" data-duration="6.5" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="todo" class="clip" data-composition-id="todo" data-composition-src="compositions/todo.html"
+        data-start="37.5" data-duration="5.5" data-track-index="0" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="cierre" class="clip" data-composition-id="cierre" data-composition-src="compositions/cierre.html"
+        data-start="42.5" data-duration="3.5" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <!-- Viñeta cinematográfica sobre todo el video -->
+      <div id="vineta" class="clip" data-composition-id="vineta" data-composition-src="compositions/vineta.html"
+        data-start="0" data-duration="46" data-track-index="2" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+    </div>
+    <script>
+      // fade() de @remotion/transitions: la escena que entra pasa de opacidad 0 a 1 en 0,5 s
+      // (lineal) encima de la que sale, que se queda en 1.
+      const tl = gsap.timeline({ paused: true });
+      [
+        ["#ni", 4.5],
+        ["#idea", 9],
+        ["#decision", 13.5],
+        ["#dias", 17.5],
+        ["#fallo", 23],
+        ["#caida", 27.5],
+        ["#subida", 31.5],
+        ["#todo", 37.5],
+        ["#cierre", 42.5],
+      ].forEach(([escena, inicio]) => {
+        tl.fromTo(escena, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }, inicio);
+      });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

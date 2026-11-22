@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background-color: #110f0b;
+    }
+    #caida-arriba {
+      font-family: "Playfair Display";
+      font-weight: 400;
+      font-size: 130px;
+      color: #e7e5e4;
+    }
+    #caida-abajo {
+      font-family: "Playfair Display";
+      font-style: italic;
+      font-size: 130px;
+      color: #fbbf24;
+    }
+  </style>
+  <!-- 7. Pero cada caída le enseñó algo. (135 fotogramas = 4,5 s) -->
+  <div
+    id="root"
+    data-composition-id="caida"
+    data-width="1920"
+    data-height="1080"
+    data-duration="4.5"
+    data-composition-variables='[{"id":"arriba","type":"string","label":"Texto de arriba","default":"Pero cada caída"},{"id":"abajo","type":"string","label":"Texto de abajo","default":"le enseñó algo."}]'
+  >
+    <div id="caida-arriba" data-var-text="arriba">Pero cada caída</div>
+    <div id="caida-abajo" data-var-text="abajo">le enseñó algo.</div>
+  </div>
+  <script>
+    const R = window.R2HF;
+    const tl = gsap.timeline({ paused: true });
+    // "Pero cada caída": opacidad, fotogramas 3→27
+    tl.fromTo("#caida-arriba", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none" }, 0.1);
+    // "le enseñó algo.": opacidad 36→60 y subida de 50 px 36→63 (bezier)
+    tl.fromTo("#caida-abajo", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none" }, 1.2);
+    tl.fromTo("#caida-abajo", { y: 50 }, { y: 0, duration: 0.9, ease: R.bezier(0.16, 1, 0.3, 1) }, 1.2);
+    window.__timelines["caida"] = tl;
+  </script>
+</template>

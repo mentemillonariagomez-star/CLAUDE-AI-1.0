@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      background-color: #170b0b;
+    }
+    #fallo-texto {
+      font-family: "Playfair Display";
+      font-weight: 700;
+      font-size: 140px;
+      color: #f5f5f4;
+    }
+    #fallo-fila {
+      display: flex;
+      gap: 48px;
+    }
+    .fallo-x {
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 110px;
+      color: #ef4444;
+    }
+  </style>
+  <!-- 6. Falló. Una y otra vez. (150 fotogramas = 5 s) -->
+  <div
+    id="root"
+    data-composition-id="fallo"
+    data-width="1920"
+    data-height="1080"
+    data-duration="5"
+    data-composition-variables='[{"id":"texto","type":"string","label":"Texto","default":"Falló. Una y otra vez."}]'
+  >
+    <div id="fallo-texto" data-var-text="texto">Falló. Una y otra vez.</div>
+    <div id="fallo-fila">
+      <div id="fallo-x1" class="fallo-x">✕</div>
+      <div id="fallo-x2" class="fallo-x">✕</div>
+      <div id="fallo-x3" class="fallo-x">✕</div>
+      <div id="fallo-x4" class="fallo-x">✕</div>
+      <div id="fallo-x5" class="fallo-x">✕</div>
+      <div id="fallo-x6" class="fallo-x">✕</div>
+      <div id="fallo-x7" class="fallo-x">✕</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Texto: opacidad, fotogramas 0→18
+    tl.fromTo("#fallo-texto", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, 0);
+    // Cada ✕ empieza en el fotograma 24 + i·10,5: opacidad en 4 fotogramas y
+    // escala 1.8→1 en 8 fotogramas con Easing.out(Easing.back(2)) = back.out(2).
+    document.querySelectorAll(".fallo-x").forEach((x, i) => {
+      const inicio = 0.8 + i * 0.35;
+      tl.fromTo(x, { opacity: 0 }, { opacity: 1, duration: 4 / 30, ease: "none" }, inicio);
+      tl.fromTo(x, { scale: 1.8 }, { scale: 1, duration: 8 / 30, ease: "back.out(2)" }, inicio);
+    });
+    window.__timelines["fallo"] = tl;
+  </script>
+</template>
