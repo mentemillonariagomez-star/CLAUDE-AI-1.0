@@ -1,4 +1,5 @@
 import { Composition, Folder, Still } from "remotion";
+import { TrucoAncla, TrucoPrecio999, TrucoSenuelo } from "./Serie/Trucos";
 import { HelloWorld } from "./HelloWorld";
 import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
@@ -59,6 +60,32 @@ export const RemotionRoot: React.FC = () => {
             flecha: "#22d3ee",
             brillo: "#a855f7",
           }}
+        />
+      </Folder>
+      <Folder name="Trucos-tiendas">
+        <Composition
+          id="TrucoPrecio999"
+          component={TrucoPrecio999}
+          durationInFrames={1002}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="TrucoSenuelo"
+          component={TrucoSenuelo}
+          durationInFrames={1048}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="TrucoAncla"
+          component={TrucoAncla}
+          durationInFrames={823}
+          fps={30}
+          width={1080}
+          height={1920}
         />
       </Folder>
       <Folder name="Serie-zerx">

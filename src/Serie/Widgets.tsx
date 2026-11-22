@@ -517,15 +517,17 @@ export const WReloj = ({
   antes,
   despues,
   en,
+  titulo = "TIEMPO",
 }: {
   readonly antes: string;
   readonly despues: string;
   readonly en: number;
+  readonly titulo?: string;
 }) => {
   const frame = useCurrentFrame();
   return (
     <Tarjeta
-      titulo="TIEMPO"
+      titulo={titulo}
       extra={
         <span style={{ color: frame >= en ? VERDE : ROJO }}>
           {frame >= en ? "▼ ahorro" : "● perdido"}
@@ -713,5 +715,375 @@ export const WSello = ({
     >
       {texto}
     </div>
+  );
+};
+
+// Etiqueta de precio: un "ojo" la lee de izquierda a derecha y se queda en el primer dígito.
+export const WPrecio = ({
+  precio,
+  escaneo,
+  marca,
+  nota,
+}: {
+  readonly precio: string;
+  readonly escaneo: number;
+  readonly marca: number;
+  readonly nota?: string;
+}) => {
+  const frame = useCurrentFrame();
+  const [primero, ...resto] = precio.replace("$", "").split("");
+  const lectura = interpolate(frame, [escaneo, escaneo + 25], [0, 1], CLAMP);
+  return (
+    <Tarjeta
+      titulo="ETIQUETA"
+      extra={
+        <span style={{ color: AMARILLO }}>
+          {frame >= marca ? "👁 aquí decides" : "👁 leyendo…"}
+        </span>
+      }
+    >
+      <div
+        style={{
+          position: "relative",
+          fontFamily: GROTESK,
+          fontWeight: 700,
+          fontSize: 120,
+          color: "white",
+          display: "flex",
+        }}
+      >
+        <span style={{ color: "#888" }}>$</span>
+        <span
+          style={{
+            color: frame >= marca ? "#0a0a0a" : "white",
+            backgroundColor: frame >= marca ? AMARILLO : "transparent",
+            borderRadius: 12,
+            padding: "0 6px",
+            scale: golpeEscala(frame, marca),
+          }}
+        >
+          {primero}
+        </span>
+        <span style={{ opacity: frame >= marca ? 0.35 : 1 }}>
+          {resto.join("")}
+        </span>
+      </div>
+      <div
+        style={{
+          marginTop: 8,
+          height: 8,
+          borderRadius: 4,
+          backgroundColor: "#26262b",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            height: 8,
+            width: `${lectura * 100}%`,
+            backgroundColor: AMARILLO,
+          }}
+        />
+      </div>
+      {nota ? (
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: 18,
+            color: "#aaa",
+            marginTop: 12,
+            opacity: interpolate(frame, [marca, marca + 5], [0, 1], CLAMP),
+          }}
+        >
+          {nota}
+        </div>
+      ) : null}
+    </Tarjeta>
+  );
+};
+
+// Dos valores grandes enfrentados: lo que sientes vs. lo que es.
+export const WDoble = ({
+  izq,
+  der,
+  en,
+}: {
+  readonly izq: { t: string; v: string };
+  readonly der: { t: string; v: string };
+  readonly en: number;
+}) => {
+  const frame = useCurrentFrame();
+  return (
+    <Tarjeta titulo="PERCEPCIÓN VS. REALIDAD">
+      <div style={{ display: "flex", gap: 16 }}>
+        {[
+          { ...izq, c: AMARILLO, e: 4 },
+          { ...der, c: ROJO, e: en },
+        ].map((b) => (
+          <div
+            key={b.t}
+            style={{
+              flex: 1,
+              borderRadius: 14,
+              padding: "16px 10px",
+              textAlign: "center",
+              backgroundColor: "#18181b",
+              border: `2px solid ${frame >= b.e ? b.c : "#2a2a2e"}`,
+              opacity: interpolate(frame, [b.e, b.e + 4], [0.15, 1], CLAMP),
+            }}
+          >
+            <div style={{ fontFamily: MONO, fontSize: 16, color: "#aaa" }}>
+              {b.t}
+            </div>
+            <div
+              style={{
+                fontFamily: GROTESK,
+                fontWeight: 700,
+                fontSize: 76,
+                color: b.c,
+                scale: golpeEscala(frame, b.e),
+              }}
+            >
+              {b.v}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Tarjeta>
+  );
+};
+
+// Tres tamaños con precios; uno puede marcarse como señuelo y otro como ganga.
+export const WOpciones = ({
+  opciones,
+  precios = [0, 0, 0],
+  senuelo,
+  ganga,
+}: {
+  readonly opciones: readonly { t: string; p: string }[];
+  readonly precios?: readonly number[];
+  readonly senuelo?: number;
+  readonly ganga?: number;
+}) => {
+  const frame = useCurrentFrame();
+  return (
+    <Tarjeta titulo="PALOMITAS · CINE">
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          gap: 14,
+          height: 270,
+        }}
+      >
+        {opciones.map((o, i) => {
+          const esSenuelo =
+            i === 1 && senuelo !== undefined && frame >= senuelo;
+          const esGanga = i === 2 && ganga !== undefined && frame >= ganga;
+          const h = [110, 160, 200][i];
+          return (
+            <div
+              key={o.t}
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 8,
+              }}
+            >
+              <div
+                style={{
+                  height: 26,
+                  fontFamily: MONO,
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: esSenuelo ? ROJO : AMARILLO,
+                }}
+              >
+                {esSenuelo ? "SEÑUELO" : esGanga ? "¡GANGA!" : ""}
+              </div>
+              <div
+                style={{
+                  width: "88%",
+                  height: h,
+                  clipPath: "polygon(0 0, 100% 0, 86% 100%, 14% 100%)",
+                  background: esGanga
+                    ? `repeating-linear-gradient(90deg, ${AMARILLO} 0 14px, #fff4a3 14px 28px)`
+                    : "repeating-linear-gradient(90deg, #d94141 0 14px, #f3f3f3 14px 28px)",
+                  opacity: esSenuelo ? 0.35 : 1,
+                  scale: esGanga ? golpeEscala(frame, ganga ?? 0) : "1",
+                }}
+              />
+              <div style={{ fontFamily: GROTESK, fontSize: 20, color: "#bbb" }}>
+                {o.t}
+              </div>
+              <div
+                style={{
+                  fontFamily: GROTESK,
+                  fontWeight: 700,
+                  fontSize: 34,
+                  color: esGanga ? AMARILLO : "white",
+                  textDecoration: esSenuelo ? "line-through" : undefined,
+                  textDecorationColor: ROJO,
+                  opacity: interpolate(
+                    frame,
+                    [precios[i], precios[i] + 3],
+                    [0, 1],
+                    CLAMP,
+                  ),
+                }}
+              >
+                {o.p}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Tarjeta>
+  );
+};
+
+// Barras horizontales de porcentaje.
+export const WPorcentajes = ({
+  titulo,
+  items,
+}: {
+  readonly titulo: string;
+  readonly items: readonly {
+    t: string;
+    v: number;
+    en: number;
+    color: string;
+  }[];
+}) => {
+  const frame = useCurrentFrame();
+  return (
+    <Tarjeta titulo={titulo}>
+      {items.map((it) => {
+        const v = interpolate(frame, [it.en, it.en + 25], [0, it.v], {
+          ...CLAMP,
+          easing: Easing.out(Easing.cubic),
+        });
+        return (
+          <div key={it.t} style={{ marginBottom: 18 }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontFamily: GROTESK,
+                fontSize: 24,
+                color: "#ddd",
+              }}
+            >
+              <span>{it.t}</span>
+              <span style={{ fontWeight: 700, fontSize: 40, color: it.color }}>
+                {Math.round(v)}%
+              </span>
+            </div>
+            <div
+              style={{
+                marginTop: 6,
+                height: 22,
+                borderRadius: 11,
+                backgroundColor: "#26262b",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  height: 22,
+                  width: `${v}%`,
+                  backgroundColor: it.color,
+                }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </Tarjeta>
+  );
+};
+
+// Ancla: el primer precio queda "anclado" y todo se mide desde ahí.
+export const WAncla = ({
+  precio,
+  en,
+}: {
+  readonly precio: string;
+  readonly en: number;
+}) => {
+  const frame = useCurrentFrame();
+  const baja = interpolate(frame, [en, en + 12], [-80, 0], {
+    ...CLAMP,
+    easing: Easing.out(Easing.bounce),
+  });
+  return (
+    <Tarjeta
+      titulo="ANCLA DE PRECIO"
+      extra={<span style={{ color: AMARILLO }}>{precio}</span>}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 26,
+          height: 240,
+        }}
+      >
+        <svg
+          width={150}
+          height={190}
+          viewBox="0 0 100 130"
+          style={{ translate: `0px ${baja}px` }}
+        >
+          <circle
+            cx={50}
+            cy={14}
+            r={10}
+            fill="none"
+            stroke={AMARILLO}
+            strokeWidth={7}
+          />
+          <line
+            x1={50}
+            y1={24}
+            x2={50}
+            y2={118}
+            stroke={AMARILLO}
+            strokeWidth={8}
+            strokeLinecap="round"
+          />
+          <line
+            x1={28}
+            y1={44}
+            x2={72}
+            y2={44}
+            stroke={AMARILLO}
+            strokeWidth={8}
+            strokeLinecap="round"
+          />
+          <path
+            d="M 10 82 Q 14 118 50 120 Q 86 118 90 82"
+            fill="none"
+            stroke={AMARILLO}
+            strokeWidth={8}
+            strokeLinecap="round"
+          />
+        </svg>
+        <div
+          style={{
+            fontFamily: GROTESK,
+            fontWeight: 700,
+            fontSize: 64,
+            color: "white",
+            opacity: interpolate(frame, [en + 8, en + 14], [0, 1], CLAMP),
+          }}
+        >
+          {precio}
+        </div>
+      </div>
+    </Tarjeta>
   );
 };
