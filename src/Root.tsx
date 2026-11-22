@@ -5,6 +5,8 @@ import { Escena } from "./MiPrimerVideo/Escena";
 import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
+import { Pasos } from "./Pasos/Pasos";
+import { DURACION_TOTAL as DURACION_PASOS } from "./Pasos/datos";
 import { DURACION_NADIE_VIENE, NadieViene } from "./NadieViene/NadieViene";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
@@ -55,6 +57,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Composition
+        id="Pasos"
+        component={Pasos}
+        durationInFrames={DURACION_PASOS}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="NadieViene"
         component={NadieViene}
