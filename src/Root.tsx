@@ -4,6 +4,11 @@ import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
 import { ClaudeCanal } from "./Pantalla/Pantalla";
 import { ZerxDeNadaATodo } from "./Pantalla/DeNadaZerx";
+import {
+  IAAhorraTiempo,
+  InteresCompuesto,
+  Regla1Porciento,
+} from "./Serie/Videos";
 import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
@@ -54,6 +59,32 @@ export const RemotionRoot: React.FC = () => {
             flecha: "#22d3ee",
             brillo: "#a855f7",
           }}
+        />
+      </Folder>
+      <Folder name="Serie-zerx">
+        <Composition
+          id="Regla1Porciento"
+          component={Regla1Porciento}
+          durationInFrames={876}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="IAAhorraTiempo"
+          component={IAAhorraTiempo}
+          durationInFrames={1014}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="InteresCompuesto"
+          component={InteresCompuesto}
+          durationInFrames={860}
+          fps={30}
+          width={1080}
+          height={1920}
         />
       </Folder>
       <Composition
