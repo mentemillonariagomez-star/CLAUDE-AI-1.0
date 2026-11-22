@@ -1,7 +1,8 @@
-import { Composition, Folder } from "remotion";
+import { Composition, Folder, Still } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
 import { Escena } from "./MiPrimerVideo/Escena";
+import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Logo } from "./HelloWorld/Logo";
@@ -12,6 +13,47 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="Perfil-TikTok">
+        <Still
+          id="PerfilNegroOro"
+          component={Perfil}
+          width={1080}
+          height={1080}
+          defaultProps={{
+            fondo:
+              "radial-gradient(circle at 50% 45%, #2a1d03 0%, #050505 70%)",
+            anillo: "#fbbf24",
+            flecha: "#FFE11A",
+            brillo: "#f59e0b",
+          }}
+        />
+        <Still
+          id="PerfilAmarillo"
+          component={Perfil}
+          width={1080}
+          height={1080}
+          defaultProps={{
+            fondo:
+              "radial-gradient(circle at 50% 40%, #fff27a 0%, #FFE11A 45%, #f5b800 100%)",
+            anillo: "#0a0a0a",
+            flecha: "#0a0a0a",
+            brillo: "#ffffff",
+          }}
+        />
+        <Still
+          id="PerfilNeon"
+          component={Perfil}
+          width={1080}
+          height={1080}
+          defaultProps={{
+            fondo:
+              "linear-gradient(135deg, #4c1d95 0%, #1e1b4b 50%, #020617 100%)",
+            anillo: "#fbbf24",
+            flecha: "#22d3ee",
+            brillo: "#a855f7",
+          }}
+        />
+      </Folder>
       <Composition
         id="ViralDeNadaATodo"
         component={ViralDeNadaATodo}
@@ -51,7 +93,7 @@ export const RemotionRoot: React.FC = () => {
             style: {
               backgroundColor: "#0f172a",
               flexDirection: "column",
-            justifyContent: "center",
+              justifyContent: "center",
               alignItems: "center",
             },
           }}
@@ -99,7 +141,6 @@ export const RemotionRoot: React.FC = () => {
           titleColor: "#000000",
         }}
       />
-
     </>
   );
 };
