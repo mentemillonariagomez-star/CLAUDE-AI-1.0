@@ -1,0 +1,364 @@
+{
+ "slug": "portadas",
+ "musica": 1,
+ "bpm": 90,
+ "pasos": [
+  [
+   "Letra pequeña",
+   "no se lee"
+  ],
+  [
+   "Demasiado",
+   "todo a la vez"
+  ],
+  [
+   "No coincide",
+   "promete otra cosa"
+  ],
+  [
+   "Sin emoción",
+   "cara neutra"
+  ]
+ ],
+ "escenas": [
+  {
+   "id": "Intro",
+   "label": "01 · el gancho",
+   "texto": "Tu portada es lo primero que ven en tu perfil. Y si falla, *nadie entra*.",
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 60,
+     "y": 560,
+     "w": 300,
+     "h": 520,
+     "en": 0,
+     "texto": "PORTADA 1",
+     "giro": -3
+    },
+    {
+     "tipo": "telefono",
+     "x": 390,
+     "y": 580,
+     "w": 300,
+     "h": 520,
+     "en": [
+      0,
+      6
+     ],
+     "texto": "PORTADA 2"
+    },
+    {
+     "tipo": "telefono",
+     "x": 720,
+     "y": 560,
+     "w": 300,
+     "h": 520,
+     "en": [
+      0,
+      12
+     ],
+     "texto": "PORTADA 3",
+     "giro": 3
+    },
+    {
+     "tipo": "sello",
+     "x": 250,
+     "y": 1110,
+     "en": [
+      2,
+      5
+     ],
+     "texto": "NADIE ENTRA",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Ruta",
+   "label": "02 · la lista",
+   "texto": "Revisa estos *cuatro errores*.",
+   "titulo": {
+    "texto": "LOS 4",
+    "rojo": "ERRORES",
+    "en": 0
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 560,
+     "en": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "label": "error 1 · la letra",
+   "texto": "Uno, letra *muy pequeña*. En el perfil tu portada es diminuta. Si no se lee en un segundo, no sirve.",
+   "titulo": {
+    "etiqueta": "la letra",
+    "texto": "LETRA",
+    "rojo": "PEQUEÑA",
+    "n": 1,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "comparacion",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "izquierda": {
+      "titulo": "LETRA PEQUEÑA",
+      "texto": "7 tips…",
+      "emoji": "🔍"
+     },
+     "derecha": {
+      "titulo": "LETRA GRANDE",
+      "texto": "7 TIPS",
+      "emoji": "👀"
+     },
+     "ganador": "derecha",
+     "marcar": [
+      3,
+      10
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 560,
+     "y": 990,
+     "en": [
+      4,
+      5
+     ],
+     "texto": "NO SIRVE",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E2",
+   "label": "error 2 · el ruido",
+   "texto": "Dos, poner *todo a la vez*. Tres flechas, cinco emojis y diez palabras. Elige una idea.",
+   "titulo": {
+    "etiqueta": "el ruido",
+    "texto": "DEMASIADAS",
+    "rojo": "COSAS",
+    "n": 2,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 580,
+     "fila": true,
+     "items": [
+      {
+       "texto": "➡️➡️➡️",
+       "en": 2
+      },
+      {
+       "texto": "😱🔥💯🤯👀",
+       "en": 3
+      },
+      {
+       "texto": "MUCHAS PALABRAS",
+       "en": [
+        3,
+        10
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 280,
+     "y": 920,
+     "en": [
+      4,
+      5
+     ],
+     "texto": "UNA SOLA IDEA",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E3",
+   "label": "error 3 · la promesa",
+   "texto": "Tres, prometer *otra cosa*. Si la portada dice una cosa y el video otra, se van y no vuelven.",
+   "titulo": {
+    "etiqueta": "la promesa",
+    "texto": "NO",
+    "rojo": "COINCIDE",
+    "n": 3,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "comparacion",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "izquierda": {
+      "titulo": "LA PORTADA",
+      "texto": "gané 10.000",
+      "emoji": "💰"
+     },
+     "derecha": {
+      "titulo": "EL VIDEO",
+      "texto": "otra historia",
+      "emoji": "🤔"
+     },
+     "marcar": [
+      3,
+      0
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 380,
+     "y": 990,
+     "en": [
+      3,
+      20
+     ],
+     "texto": "NO VUELVEN",
+     "relleno": true,
+     "size": 72
+    }
+   ]
+  },
+  {
+   "id": "E4",
+   "label": "error 4 · la emoción",
+   "texto": "Y cuatro, *sin emoción*. Una cara sorprendida o una pregunta. Algo que dé ganas de saber más.",
+   "titulo": {
+    "etiqueta": "la emoción",
+    "texto": "SIN",
+    "rojo": "EMOCIÓN",
+    "n": 4,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 590,
+     "w": 540,
+     "items": [
+      {
+       "texto": "😐 NEUTRA",
+       "en": 1
+      },
+      {
+       "texto": "😮 SORPRESA",
+       "en": 2,
+       "rojo": true
+      },
+      {
+       "texto": "❓ PREGUNTA",
+       "en": [
+        2,
+        15
+       ],
+       "rojo": true
+      }
+     ]
+    },
+    {
+     "tipo": "telefono",
+     "x": 660,
+     "y": 560,
+     "w": 300,
+     "h": 520,
+     "en": 2,
+     "emoji": "😮",
+     "texto": "¿QUÉ PASÓ?"
+    },
+    {
+     "tipo": "sello",
+     "x": 100,
+     "y": 1010,
+     "en": [
+      3,
+      20
+     ],
+     "texto": "QUIERO SABER MÁS",
+     "relleno": true,
+     "size": 60
+    }
+   ]
+  },
+  {
+   "id": "Resumen",
+   "label": "el resumen",
+   "texto": "Letra grande, una idea, que coincida y con emoción. Guarda este video.",
+   "titulo": {
+    "texto": "4 ERRORES,",
+    "rojo": "1 PORTADA",
+    "en": 0,
+    "top": 400
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 580,
+     "en": [
+      0,
+      4
+     ],
+     "check": [
+      0,
+      10
+     ],
+     "ritmo": 3
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 880,
+     "w": 380,
+     "en": 3,
+     "items": [
+      {
+       "texto": "🔖 Guárdalo",
+       "en": 3,
+       "marca": "nada"
+      },
+      {
+       "texto": "➕ Sígueme",
+       "en": [
+        3,
+        6
+       ],
+       "marca": "nada"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 920,
+     "en": [
+      3,
+      25
+     ],
+     "texto": "GUÁRDALO",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  }
+ ]
+}

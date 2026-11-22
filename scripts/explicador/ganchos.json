@@ -1,0 +1,366 @@
+{
+ "slug": "ganchos",
+ "musica": 0,
+ "bpm": 100,
+ "pasos": [
+  [
+   "Contexto",
+   "antes del gancho"
+  ],
+  [
+   "Muy largo",
+   "tarda en llegar"
+  ],
+  [
+   "Promesa falsa",
+   "no la cumples"
+  ],
+  [
+   "Nada en pantalla",
+   "solo hablas"
+  ]
+ ],
+ "escenas": [
+  {
+   "id": "Intro",
+   "label": "01 · el gancho",
+   "texto": "Tienes un segundo para que no deslicen. Y casi todos *lo desperdician*.",
+   "elementos": [
+    {
+     "tipo": "barra",
+     "x": 60,
+     "y": 560,
+     "en": 0,
+     "hasta": [
+      0,
+      40
+     ],
+     "izquierda": "0:00",
+     "derecha": "0:01",
+     "pie": "tu oportunidad"
+    },
+    {
+     "tipo": "nota",
+     "x": 600,
+     "y": 790,
+     "en": [
+      0,
+      45
+     ],
+     "texto": "👆 desliza…",
+     "giro": 6
+    },
+    {
+     "tipo": "sello",
+     "x": 200,
+     "y": 900,
+     "en": [
+      1,
+      20
+     ],
+     "texto": "DESPERDICIADO",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Ruta",
+   "label": "02 · la lista",
+   "texto": "Estos son los *cuatro errores*.",
+   "titulo": {
+    "texto": "LOS 4",
+    "rojo": "ERRORES",
+    "en": 0
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 560,
+     "en": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "label": "error 1 · el arranque",
+   "texto": "Uno, empezar con *contexto*. Antes de nada, quiero contarles que... Ya se fueron.",
+   "titulo": {
+    "etiqueta": "el arranque",
+    "texto": "EMPEZAR CON",
+    "rojo": "CONTEXTO",
+    "n": 1,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 570,
+     "w": 760,
+     "en": 2,
+     "titulo": "TU PRIMER SEGUNDO",
+     "items": [
+      {
+       "texto": "“Antes de nada…”",
+       "en": 2,
+       "marca": "x",
+       "tachar": true
+      },
+      {
+       "texto": "“Quiero contarles…”",
+       "en": 3,
+       "marca": "x",
+       "tachar": true
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 420,
+     "y": 900,
+     "en": [
+      4,
+      5
+     ],
+     "texto": "SE FUERON ↑",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E2",
+   "label": "error 2 · la longitud",
+   "texto": "Dos, un gancho *muy largo*. Si tarda más de una frase en llegar, no es gancho.",
+   "titulo": {
+    "etiqueta": "la longitud",
+    "texto": "MUY",
+    "rojo": "LARGO",
+    "n": 2,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "barra",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "hasta": [
+      2,
+      50
+     ],
+     "izquierda": "frase 1",
+     "derecha": "frase 3…",
+     "pie": "y el gancho no llega"
+    },
+    {
+     "tipo": "comparacion",
+     "x": 60,
+     "y": 820,
+     "en": 3,
+     "izquierda": {
+      "titulo": "LARGO",
+      "texto": "3 frases",
+      "emoji": "🐌"
+     },
+     "derecha": {
+      "titulo": "CORTO",
+      "texto": "1 frase",
+      "emoji": "⚡"
+     },
+     "ganador": "derecha",
+     "marcar": [
+      3,
+      15
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 600,
+     "y": 1180,
+     "en": [
+      3,
+      35
+     ],
+     "texto": "CÓRTALO ✂",
+     "relleno": true,
+     "size": 56
+    }
+   ]
+  },
+  {
+   "id": "E3",
+   "label": "error 3 · la confianza",
+   "texto": "Tres, prometer *y no cumplir*. Si el gancho engaña, la gente lo nota y se va.",
+   "titulo": {
+    "etiqueta": "la confianza",
+    "texto": "PROMESA",
+    "rojo": "FALSA",
+    "n": 3,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "grande",
+     "x": 60,
+     "y": 560,
+     "w": 760,
+     "en": 2,
+     "texto": "“Gané 10.000 en un día”",
+     "size": 54,
+     "pie": "y el video no lo explica"
+    },
+    {
+     "tipo": "contador",
+     "x": 60,
+     "y": 830,
+     "w": 620,
+     "en": 3,
+     "hasta": [
+      3,
+      45
+     ],
+     "emoji": "📉",
+     "desde": 100,
+     "a": 12,
+     "etiqueta": "% que se queda (ejemplo)"
+    },
+    {
+     "tipo": "sello",
+     "x": 700,
+     "y": 880,
+     "en": [
+      3,
+      30
+     ],
+     "texto": "SE VAN",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E4",
+   "label": "error 4 · lo visual",
+   "texto": "Y cuatro, *no mostrar nada*. El gancho también se ve: un movimiento, un objeto, un texto grande.",
+   "titulo": {
+    "etiqueta": "lo visual",
+    "texto": "NADA EN",
+    "rojo": "PANTALLA",
+    "n": 4,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 590,
+     "w": 560,
+     "items": [
+      {
+       "texto": "🏃 MOVIMIENTO",
+       "en": 3
+      },
+      {
+       "texto": "📦 OBJETO",
+       "en": 4
+      },
+      {
+       "texto": "🔠 TEXTO",
+       "en": 5,
+       "rojo": true
+      }
+     ]
+    },
+    {
+     "tipo": "telefono",
+     "x": 680,
+     "y": 560,
+     "w": 300,
+     "h": 520,
+     "en": 2,
+     "emoji": "👀",
+     "texto": "SE VE"
+    },
+    {
+     "tipo": "sello",
+     "x": 110,
+     "y": 1010,
+     "en": [
+      5,
+      20
+     ],
+     "texto": "QUE SE VEA",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "Resumen",
+   "label": "el resumen",
+   "texto": "Sin contexto, corto, honesto y visual. Guarda este video y sígueme.",
+   "titulo": {
+    "texto": "EL GANCHO",
+    "rojo": "PERFECTO",
+    "en": 0,
+    "top": 400
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 580,
+     "en": [
+      0,
+      4
+     ],
+     "check": [
+      0,
+      10
+     ],
+     "ritmo": 3
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 880,
+     "w": 380,
+     "en": 3,
+     "items": [
+      {
+       "texto": "🔖 Guárdalo",
+       "en": 3,
+       "marca": "nada"
+      },
+      {
+       "texto": "➕ Sígueme",
+       "en": [
+        3,
+        6
+       ],
+       "marca": "nada"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 920,
+     "en": [
+      3,
+      25
+     ],
+     "texto": "GUÁRDALO",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,385 @@
+{
+ "slug": "subtitulos",
+ "musica": 2,
+ "bpm": 96,
+ "pasos": [
+  [
+   "Muy pequeños",
+   "no se leen"
+  ],
+  [
+   "Muy abajo",
+   "los tapa la app"
+  ],
+  [
+   "Muchas palabras",
+   "bloques de texto"
+  ],
+  [
+   "Sin resaltar",
+   "todo igual"
+  ]
+ ],
+ "escenas": [
+  {
+   "id": "Intro",
+   "label": "01 · el gancho",
+   "texto": "Muchos ven tus videos *sin sonido*. Si tus subtítulos fallan, tu mensaje también.",
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 370,
+     "y": 540,
+     "en": 0,
+     "emoji": "🔇",
+     "texto": "SIN SONIDO"
+    },
+    {
+     "tipo": "nota",
+     "x": 720,
+     "y": 780,
+     "en": 1,
+     "texto": "¿y el mensaje?",
+     "giro": 6
+    },
+    {
+     "tipo": "sello",
+     "x": 230,
+     "y": 1160,
+     "en": [
+      2,
+      10
+     ],
+     "texto": "SE PIERDE",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Ruta",
+   "label": "02 · la lista",
+   "texto": "Son *cuatro errores*.",
+   "titulo": {
+    "texto": "LOS 4",
+    "rojo": "ERRORES",
+    "en": 0
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 560,
+     "en": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "label": "error 1 · el tamaño",
+   "texto": "Uno, subtítulos *muy pequeños*. En un teléfono, si hay que acercarse, ya perdiste.",
+   "titulo": {
+    "etiqueta": "el tamaño",
+    "texto": "MUY",
+    "rojo": "PEQUEÑOS",
+    "n": 1,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 70,
+     "y": 560,
+     "w": 300,
+     "h": 540,
+     "en": 2,
+     "emoji": "🔍",
+     "texto": "texto diminuto"
+    },
+    {
+     "tipo": "lista",
+     "x": 420,
+     "y": 600,
+     "w": 600,
+     "en": 2,
+     "titulo": "TAMAÑO",
+     "items": [
+      {
+       "texto": "letra diminuta",
+       "en": 2,
+       "marca": "x",
+       "tachar": true
+      },
+      {
+       "texto": "LETRA GRANDE",
+       "en": 3,
+       "marca": "check"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 940,
+     "en": [
+      4,
+      5
+     ],
+     "texto": "YA PERDISTE",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E2",
+   "label": "error 2 · la posición",
+   "texto": "Dos, ponerlos *muy abajo*. Ahí los tapan el nombre, la descripción y los botones. Súbelos al centro.",
+   "titulo": {
+    "etiqueta": "la posición",
+    "texto": "MUY",
+    "rojo": "ABAJO",
+    "n": 2,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 70,
+     "y": 560,
+     "w": 300,
+     "h": 560,
+     "en": 1,
+     "emoji": "📱"
+    },
+    {
+     "tipo": "lista",
+     "x": 420,
+     "y": 600,
+     "w": 600,
+     "en": 2,
+     "titulo": "LOS TAPA",
+     "items": [
+      {
+       "texto": "👤 el nombre",
+       "en": 2,
+       "marca": "x"
+      },
+      {
+       "texto": "📝 la descripción",
+       "en": 3,
+       "marca": "x"
+      },
+      {
+       "texto": "❤️ los botones",
+       "en": [
+        3,
+        15
+       ],
+       "marca": "x"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 990,
+     "en": [
+      4,
+      5
+     ],
+     "texto": "AL CENTRO ↑",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "E3",
+   "label": "error 3 · el bloque",
+   "texto": "Tres, poner *muchas palabras*. Nadie lee un párrafo mientras mira. Usa de una a tres por pantalla.",
+   "titulo": {
+    "etiqueta": "el bloque",
+    "texto": "MUCHAS",
+    "rojo": "PALABRAS",
+    "n": 3,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "grande",
+     "x": 60,
+     "y": 560,
+     "w": 960,
+     "en": 1,
+     "texto": "Hoy te voy a contar algo que nadie te dice sobre cómo crecer en redes",
+     "size": 42,
+     "pie": "nadie lee esto"
+    },
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 850,
+     "fila": true,
+     "items": [
+      {
+       "texto": "HOY",
+       "en": 3
+      },
+      {
+       "texto": "TE",
+       "en": [
+        3,
+        6
+       ]
+      },
+      {
+       "texto": "CUENTO",
+       "en": [
+        3,
+        12
+       ],
+       "rojo": true
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 520,
+     "y": 1010,
+     "en": [
+      3,
+      30
+     ],
+     "texto": "1 A 3 PALABRAS",
+     "relleno": true,
+     "size": 56
+    }
+   ]
+  },
+  {
+   "id": "E4",
+   "label": "error 4 · el color",
+   "texto": "Y cuatro, *no resaltar* nada. Pinta la palabra clave de otro color, y el ojo va directo.",
+   "titulo": {
+    "etiqueta": "el color",
+    "texto": "SIN",
+    "rojo": "RESALTAR",
+    "n": 4,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 590,
+     "w": 540,
+     "items": [
+      {
+       "texto": "TODO",
+       "en": 1
+      },
+      {
+       "texto": "IGUAL",
+       "en": [
+        1,
+        6
+       ]
+      },
+      {
+       "texto": "CLAVE",
+       "en": 2,
+       "rojo": true
+      }
+     ]
+    },
+    {
+     "tipo": "telefono",
+     "x": 660,
+     "y": 560,
+     "w": 300,
+     "h": 520,
+     "en": 2,
+     "emoji": "👀",
+     "texto": "EL OJO VA AQUÍ"
+    },
+    {
+     "tipo": "sello",
+     "x": 110,
+     "y": 1010,
+     "en": [
+      3,
+      10
+     ],
+     "texto": "DIRECTO 🎯",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "Resumen",
+   "label": "el resumen",
+   "texto": "Grandes, al centro, pocas palabras y con color. Guarda este video.",
+   "titulo": {
+    "texto": "SUBTÍTULOS",
+    "rojo": "PERFECTOS",
+    "en": 0,
+    "top": 400
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 580,
+     "en": [
+      0,
+      4
+     ],
+     "check": [
+      0,
+      10
+     ],
+     "ritmo": 3
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 880,
+     "w": 380,
+     "en": 3,
+     "items": [
+      {
+       "texto": "🔖 Guárdalo",
+       "en": 3,
+       "marca": "nada"
+      },
+      {
+       "texto": "➕ Sígueme",
+       "en": [
+        3,
+        6
+       ],
+       "marca": "nada"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 920,
+     "en": [
+      3,
+      25
+     ],
+     "texto": "GUÁRDALO",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  }
+ ]
+}

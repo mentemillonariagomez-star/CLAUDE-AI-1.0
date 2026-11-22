@@ -1,0 +1,359 @@
+{
+ "slug": "publicar",
+ "musica": 1,
+ "bpm": 92,
+ "pasos": [
+  [
+   "Desaparecer",
+   "tras publicar"
+  ],
+  [
+   "Borrar",
+   "los que fallan"
+  ],
+  [
+   "Cambiar de tema",
+   "cada semana"
+  ],
+  [
+   "Compararte",
+   "con otros"
+  ]
+ ],
+ "escenas": [
+  {
+   "id": "Intro",
+   "label": "01 · el gancho",
+   "texto": "Publicar no es el final del trabajo. Estos errores *después de subir* frenan tu canal.",
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 370,
+     "y": 540,
+     "en": 0,
+     "emoji": "⬆️",
+     "texto": "PUBLICADO ✓"
+    },
+    {
+     "tipo": "sello",
+     "x": 250,
+     "y": 1160,
+     "en": [
+      1,
+      30
+     ],
+     "texto": "¿Y AHORA QUÉ?",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Ruta",
+   "label": "02 · la lista",
+   "texto": "Son *cuatro*. ¿Cuántos cometes?",
+   "titulo": {
+    "texto": "LOS 4",
+    "rojo": "ERRORES",
+    "en": 0
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 560,
+     "en": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "label": "error 1 · desaparecer",
+   "texto": "Uno, publicar y *desaparecer*. La primera hora responde comentarios. Así saben que hay alguien del otro lado.",
+   "titulo": {
+    "etiqueta": "la primera hora",
+    "texto": "PUBLICAR Y",
+    "rojo": "DESAPARECER",
+    "n": 1,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "contador",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "hasta": [
+      2,
+      40
+     ],
+     "emoji": "💬",
+     "desde": 0,
+     "a": 24,
+     "etiqueta": "comentarios por responder"
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 810,
+     "w": 620,
+     "en": 3,
+     "items": [
+      {
+       "texto": "↩️ respondido",
+       "en": 3,
+       "marca": "check"
+      },
+      {
+       "texto": "❤️ con like",
+       "en": [
+        3,
+        10
+       ],
+       "marca": "check"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 560,
+     "y": 1070,
+     "en": [
+      3,
+      30
+     ],
+     "texto": "ESTOY AQUÍ",
+     "relleno": true,
+     "size": 62
+    }
+   ]
+  },
+  {
+   "id": "E2",
+   "label": "error 2 · borrar",
+   "texto": "Dos, borrar los que *no funcionan*. Mejor míralos y aprende por qué fallaron.",
+   "titulo": {
+    "etiqueta": "los que fallan",
+    "texto": "BORRAR",
+    "rojo": "VIDEOS",
+    "n": 2,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 570,
+     "w": 640,
+     "en": 1,
+     "titulo": "UN VIDEO CON 40 VISTAS",
+     "items": [
+      {
+       "texto": "🗑️ borrarlo",
+       "en": [
+        1,
+        10
+       ],
+       "marca": "x",
+       "tachar": true
+      },
+      {
+       "texto": "🔍 ver la retención",
+       "en": 2,
+       "marca": "check"
+      },
+      {
+       "texto": "📝 anotar qué falló",
+       "en": [
+        2,
+        15
+       ],
+       "marca": "check"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 450,
+     "y": 940,
+     "en": [
+      2,
+      40
+     ],
+     "texto": "APRENDE",
+     "relleno": true,
+     "size": 72
+    }
+   ]
+  },
+  {
+   "id": "E3",
+   "label": "error 3 · el nicho",
+   "texto": "Tres, cambiar de tema *cada semana*. Tu público no sabe qué esperar, y deja de verte.",
+   "titulo": {
+    "etiqueta": "el nicho",
+    "texto": "CAMBIAR DE",
+    "rojo": "TEMA",
+    "n": 3,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "chips",
+     "x": 60,
+     "y": 580,
+     "w": 900,
+     "items": [
+      {
+       "texto": "LUNES: COCINA",
+       "en": [
+        1,
+        5
+       ]
+      },
+      {
+       "texto": "MARTES: JUEGOS",
+       "en": [
+        1,
+        12
+       ]
+      },
+      {
+       "texto": "MIÉRCOLES: VIAJES",
+       "en": [
+        1,
+        19
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "nota",
+     "x": 680,
+     "y": 700,
+     "en": 2,
+     "texto": "¿y hoy qué? 🤔",
+     "giro": 6
+    },
+    {
+     "tipo": "sello",
+     "x": 110,
+     "y": 1000,
+     "en": [
+      3,
+      5
+     ],
+     "texto": "UN SOLO TEMA",
+     "relleno": true,
+     "size": 66
+    }
+   ]
+  },
+  {
+   "id": "E4",
+   "label": "error 4 · tu camino",
+   "texto": "Y cuatro, compararte con *otros*. Ellos van en su video cien. Tú, en el diez.",
+   "titulo": {
+    "etiqueta": "tu camino",
+    "texto": "COMPARARTE",
+    "rojo": "CON OTROS",
+    "n": 4,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "comparacion",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "izquierda": {
+      "titulo": "ELLOS",
+      "texto": "video 100",
+      "emoji": "🏃"
+     },
+     "derecha": {
+      "titulo": "TÚ",
+      "texto": "video 10",
+      "emoji": "🚶"
+     }
+    },
+    {
+     "tipo": "sello",
+     "x": 380,
+     "y": 990,
+     "en": [
+      4,
+      15
+     ],
+     "texto": "TU RITMO",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Resumen",
+   "label": "el resumen",
+   "texto": "Responde, aprende, mantén tu tema y sigue tu ritmo. Guarda este video.",
+   "titulo": {
+    "texto": "DESPUÉS DE",
+    "rojo": "PUBLICAR",
+    "en": 0,
+    "top": 400
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 580,
+     "en": [
+      0,
+      4
+     ],
+     "check": [
+      0,
+      10
+     ],
+     "ritmo": 3
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 880,
+     "w": 380,
+     "en": 3,
+     "items": [
+      {
+       "texto": "🔖 Guárdalo",
+       "en": 3,
+       "marca": "nada"
+      },
+      {
+       "texto": "➕ Sígueme",
+       "en": [
+        3,
+        6
+       ],
+       "marca": "nada"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 920,
+     "en": [
+      3,
+      25
+     ],
+     "texto": "GUÁRDALO",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  }
+ ]
+}

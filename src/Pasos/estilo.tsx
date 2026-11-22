@@ -256,7 +256,7 @@ export const Titular = ({
               tachado !== undefined && frame >= tachado ? "#a39d94" : C.tinta,
             textTransform: "uppercase",
             whiteSpace: "nowrap",
-            clipPath: `inset(0 ${(1 - s) * 100}% 0 0)`,
+            clipPath: `inset(-40% ${(1 - s) * 100}% -10% 0)`,
             translate: `${(1 - s) * -40}px 0px`,
           }}
         >

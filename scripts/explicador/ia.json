@@ -1,0 +1,379 @@
+{
+ "slug": "ia",
+ "musica": 0,
+ "bpm": 94,
+ "pasos": [
+  [
+   "Copiar y pegar",
+   "sin revisar"
+  ],
+  [
+   "Prompt vago",
+   "de una línea"
+  ],
+  [
+   "Sin contexto",
+   "de tu público"
+  ],
+  [
+   "Voz sin editar",
+   "suena a robot"
+  ]
+ ],
+ "escenas": [
+  {
+   "id": "Intro",
+   "label": "01 · el gancho",
+   "texto": "Usas inteligencia artificial y tus videos siguen sin funcionar. El problema no es la herramienta, es *cómo la usas*.",
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 370,
+     "y": 540,
+     "en": 0,
+     "emoji": "🤖",
+     "texto": "HECHO CON IA",
+     "vistas": 52
+    },
+    {
+     "tipo": "nota",
+     "x": 710,
+     "y": 780,
+     "en": [
+      1,
+      5
+     ],
+     "texto": "¿la herramienta?",
+     "giro": 6
+    },
+    {
+     "tipo": "sello",
+     "x": 200,
+     "y": 1160,
+     "en": [
+      2,
+      10
+     ],
+     "texto": "CÓMO LA USAS",
+     "relleno": true,
+     "size": 76
+    }
+   ]
+  },
+  {
+   "id": "Ruta",
+   "label": "02 · la lista",
+   "texto": "Estos son los *cuatro errores*.",
+   "titulo": {
+    "texto": "LOS 4",
+    "rojo": "ERRORES",
+    "en": 0
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 560,
+     "en": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "label": "error 1 · copiar y pegar",
+   "texto": "Uno, copiar y pegar *sin revisar*. Si tú no lo lees, tu público tampoco.",
+   "titulo": {
+    "etiqueta": "el atajo",
+    "texto": "COPIAR Y",
+    "rojo": "PEGAR",
+    "n": 1,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 570,
+     "w": 640,
+     "en": 1,
+     "titulo": "TU PROCESO",
+     "items": [
+      {
+       "texto": "📋 copiar",
+       "en": [
+        1,
+        5
+       ],
+       "marca": "check"
+      },
+      {
+       "texto": "📥 pegar",
+       "en": [
+        1,
+        15
+       ],
+       "marca": "check"
+      },
+      {
+       "texto": "👀 revisar",
+       "en": 2,
+       "marca": "x",
+       "tachar": true
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 420,
+     "y": 940,
+     "en": [
+      3,
+      8
+     ],
+     "texto": "NADIE LO LEE",
+     "relleno": true,
+     "size": 66
+    }
+   ]
+  },
+  {
+   "id": "E2",
+   "label": "error 2 · el prompt",
+   "texto": "Dos, el prompt *de una línea*. Haz un video viral no le dice nada. Dile el tema, el tono y la duración.",
+   "titulo": {
+    "etiqueta": "lo que le pides",
+    "texto": "PROMPT",
+    "rojo": "VAGO",
+    "n": 2,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "grande",
+     "x": 60,
+     "y": 560,
+     "w": 700,
+     "en": 2,
+     "texto": "“haz un video viral”",
+     "size": 54,
+     "pie": "prompt de una línea"
+    },
+    {
+     "tipo": "sello",
+     "x": 640,
+     "y": 760,
+     "en": [
+      2,
+      30
+     ],
+     "texto": "NO SIRVE",
+     "size": 56,
+     "giro": 6
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 860,
+     "w": 560,
+     "en": 3,
+     "titulo": "DILE",
+     "items": [
+      {
+       "texto": "🎯 el tema",
+       "en": 3,
+       "marca": "check"
+      },
+      {
+       "texto": "🎭 el tono",
+       "en": 4,
+       "marca": "check"
+      },
+      {
+       "texto": "⏱️ la duración",
+       "en": [
+        4,
+        15
+       ],
+       "marca": "check"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E3",
+   "label": "error 3 · el contexto",
+   "texto": "Tres, no darle *contexto*. Cuéntale quién te ve y qué le gusta. Si no, escribe para nadie.",
+   "titulo": {
+    "etiqueta": "tu público",
+    "texto": "SIN",
+    "rojo": "CONTEXTO",
+    "n": 3,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "comparacion",
+     "x": 60,
+     "y": 560,
+     "en": 2,
+     "izquierda": {
+      "titulo": "SIN CONTEXTO",
+      "texto": "para nadie",
+      "emoji": "🤷"
+     },
+     "derecha": {
+      "titulo": "CON CONTEXTO",
+      "texto": "para tu público",
+      "emoji": "🎯"
+     },
+     "ganador": "derecha",
+     "marcar": [
+      4,
+      5
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 500,
+     "y": 990,
+     "en": [
+      4,
+      20
+     ],
+     "texto": "DALE CONTEXTO",
+     "relleno": true,
+     "size": 60
+    }
+   ]
+  },
+  {
+   "id": "E4",
+   "label": "error 4 · la voz",
+   "texto": "Y cuatro, dejar la voz *sin editar*. Ajusta el ritmo, corta las pausas y que suene *a ti*.",
+   "titulo": {
+    "etiqueta": "el audio",
+    "texto": "VOZ SIN",
+    "rojo": "EDITAR",
+    "n": 4,
+    "en": 1
+   },
+   "elementos": [
+    {
+     "tipo": "telefono",
+     "x": 70,
+     "y": 560,
+     "w": 300,
+     "h": 540,
+     "en": 1,
+     "emoji": "🎙️",
+     "texto": "SUENA A ROBOT"
+    },
+    {
+     "tipo": "lista",
+     "x": 420,
+     "y": 600,
+     "w": 600,
+     "en": 2,
+     "titulo": "ANTES DE PUBLICAR",
+     "items": [
+      {
+       "texto": "⏩ ajusta el ritmo",
+       "en": 2,
+       "marca": "check"
+      },
+      {
+       "texto": "✂️ corta pausas",
+       "en": 3,
+       "marca": "check"
+      },
+      {
+       "texto": "🗣️ que suene a ti",
+       "en": [
+        3,
+        25
+       ],
+       "marca": "check"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 980,
+     "en": [
+      3,
+      45
+     ],
+     "texto": "SUENA A TI",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  },
+  {
+   "id": "Resumen",
+   "label": "el resumen",
+   "texto": "Cuatro errores, una solución: la IA te ayuda, pero *tú decides*. Guarda este video.",
+   "titulo": {
+    "texto": "LA IA AYUDA,",
+    "rojo": "TÚ DECIDES",
+    "en": 0,
+    "top": 400
+   },
+   "elementos": [
+    {
+     "tipo": "pasos",
+     "x": 60,
+     "y": 580,
+     "en": [
+      0,
+      4
+     ],
+     "check": [
+      2,
+      0
+     ],
+     "ritmo": 3
+    },
+    {
+     "tipo": "lista",
+     "x": 60,
+     "y": 880,
+     "w": 380,
+     "en": 4,
+     "items": [
+      {
+       "texto": "🔖 Guárdalo",
+       "en": 4,
+       "marca": "nada"
+      },
+      {
+       "texto": "➕ Sígueme",
+       "en": [
+        4,
+        6
+       ],
+       "marca": "nada"
+      }
+     ]
+    },
+    {
+     "tipo": "sello",
+     "x": 470,
+     "y": 920,
+     "en": [
+      4,
+      25
+     ],
+     "texto": "GUÁRDALO",
+     "relleno": true,
+     "size": 70
+    }
+   ]
+  }
+ ]
+}

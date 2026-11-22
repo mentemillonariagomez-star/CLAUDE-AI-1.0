@@ -10,6 +10,11 @@ import { Explicador } from "./Explicador/Explicador";
 import { VIDEO as ERRORES } from "./Explicador/videos/errores";
 import { VIDEO as SEGUIDORES } from "./Explicador/videos/seguidores";
 import { VIDEO as GUION } from "./Explicador/videos/guion";
+import { VIDEO as V_IA } from "./Explicador/videos/ia";
+import { VIDEO as V_PORTADAS } from "./Explicador/videos/portadas";
+import { VIDEO as V_SUBTITULOS } from "./Explicador/videos/subtitulos";
+import { VIDEO as V_GANCHOS } from "./Explicador/videos/ganchos";
+import { VIDEO as V_PUBLICAR } from "./Explicador/videos/publicar";
 import { Sketch } from "./Sketch/Sketch";
 import { DURACION_TOTAL as DURACION_SKETCH } from "./Sketch/datos";
 import { calcularDuracion, Comparacion } from "./Comparacion/Comparacion";
@@ -66,7 +71,16 @@ export const RemotionRoot: React.FC = () => {
         />
       </Folder>
       <Folder name="Explicadores">
-        {[ERRORES, SEGUIDORES, GUION].map((v) => (
+        {[
+          ERRORES,
+          SEGUIDORES,
+          GUION,
+          V_IA,
+          V_PORTADAS,
+          V_SUBTITULOS,
+          V_GANCHOS,
+          V_PUBLICAR,
+        ].map((v) => (
           <Composition
             key={v.slug}
             id={`Explicador-${v.slug}`}
