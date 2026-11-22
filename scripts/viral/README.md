@@ -6,6 +6,7 @@ Genera `public/viral/*.wav` y `src/Viral/datos.ts` a partir de `guion.json`.
 2. Modelos (en `<base>/models/`): `kokoro-v1.0.onnx` y `voices-v1.0.bin` de
    https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0
 3. Copia `guion.json` a `<base>/` y ejecuta:
-   - `./venv/bin/python tts.py <base> em_alex 1.0 <base>/out`
+   - `./venv/bin/python tts.py <base> "$(cat voz.txt)" 1.08 <base>/out`
+     (`voz.txt` guarda la voz del canal: la voz 6, mezcla 50 % `em_alex` + 50 % `am_michael`)
    - `./venv/bin/python build.py <base> <ruta-del-proyecto>`
 4. Actualiza `durationInFrames` de `ViralDeNadaATodo` en `src/Root.tsx` con el total que imprime `build.py`.

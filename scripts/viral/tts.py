@@ -2,6 +2,9 @@ import json, re, sys, soundfile as sf, numpy as np
 from kokoro_onnx import Kokoro
 base, voice, speed, outdir = sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4]
 k = Kokoro(base + "/models/kokoro-v1.0.onnx", base + "/models/voices-v1.0.bin")
+# Voz: un nombre ("em_alex") o una mezcla ("em_alex:0.5,am_michael:0.5")
+if ":" in voice:
+    voice = sum(k.get_voice_style(n) * float(w) for n, w in (p.split(":") for p in voice.split(",")))
 segs = json.load(open(base + "/guion.json"))
 res = []
 for si, s in enumerate(segs):
