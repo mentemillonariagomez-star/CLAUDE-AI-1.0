@@ -3,9 +3,13 @@ import { BOCA } from "./datos";
 
 // Personaje propio: gorro naranja, sudadera verde azulado. Señala hacia arriba
 // y mueve la boca según el volumen de la narración.
-export const Personaje = () => {
+export const Personaje = ({
+  bocas = BOCA,
+}: {
+  readonly bocas?: readonly number[];
+}) => {
   const frame = useCurrentFrame();
-  const boca = BOCA[frame] ?? 0;
+  const boca = bocas[frame] ?? 0;
   const respira = Math.sin(frame / 14) * 6;
   const brazo = Math.sin(frame / 9) * 3 + (boca > 0.3 ? -2 : 0);
   const parpado = frame % 97 < 4 ? 0.12 : 1;

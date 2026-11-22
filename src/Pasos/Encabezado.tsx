@@ -1,21 +1,31 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { ESCENAS, FRASES } from "./datos";
+
+type FraseMin = {
+  startMs: number;
+  palabras: { text: string; key: boolean; startMs: number }[];
+};
+type EscenaMin = { label: string; from: number; dur: number };
 import { C, CLAMP, MONO, SANS, SERIF } from "./estilo";
 
 // Arriba a la izquierda: etiqueta "// paso 1 · ..." y la frase que se narra.
 // Las palabras ya dichas se ven negras; las que faltan, en gris claro.
-export const Encabezado = () => {
+export const Encabezado = ({
+  escenas = Object.values(ESCENAS),
+  frases = FRASES,
+}: {
+  readonly escenas?: readonly EscenaMin[];
+  readonly frases?: readonly FraseMin[];
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
-  const escena = Object.values(ESCENAS).find(
-    (e) => frame >= e.from && frame < e.from + e.dur,
-  );
+  const escena = escenas.find((e) => frame >= e.from && frame < e.from + e.dur);
   let idx = -1;
-  FRASES.forEach((f, i) => {
+  frases.forEach((f, i) => {
     if (f.startMs - 60 <= ms) idx = i;
   });
-  const frase = FRASES[idx];
+  const frase = frases[idx];
   const inicio = frase ? (frase.startMs / 1000) * fps : 0;
   return (
     <div style={{ position: "absolute", top: 90, left: 60, right: 60 }}>

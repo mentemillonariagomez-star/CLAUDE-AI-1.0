@@ -1,14 +1,43 @@
 [
- {"quien": "chico", "plano": "chico", "texto": "Robot... tengo que contarte algo."},
- {"quien": "robot", "plano": "robot", "texto": "¿Qué hiciste?"},
- {"quien": "chico", "plano": "chico_cerca", "texto": "Subí un video sin pedirte el guion."},
- {"quien": "robot", "plano": "robot_cerca", "texto": "¿Cuántas vistas tiene?"},
- {"quien": "chico", "plano": "telefono", "texto": "Doce."},
- {"quien": "robot", "plano": "robot", "texto": "¿Doce mil?", "pausa": 0.9},
- {"quien": "chico", "plano": "chico", "texto": "Doce. Y una es de mi mamá."},
- {"quien": "robot", "plano": "general", "texto": "Te dije que el gancho va en el primer segundo."},
- {"quien": "chico", "plano": "chico_cerca", "texto": "Ya sé. ¿Me ayudas con el próximo?"},
- {"quien": "robot", "plano": "robot", "texto": "Solo si esta vez me haces caso."},
- {"quien": "chico", "plano": "general", "texto": "Trato."},
- {"quien": "robot", "plano": "robot_camara", "texto": "Guarda este video. Por si él se olvida.", "pausa": 0.6}
+  {
+    "quien": "chico",
+    "plano": "chico",
+    "texto": "Robot... tengo que contarte algo."
+  },
+  { "quien": "robot", "plano": "robot", "texto": "¿Qué hiciste?" },
+  {
+    "quien": "chico",
+    "plano": "chico_cerca",
+    "texto": "Subí un video sin pedirte el guion."
+  },
+  {
+    "quien": "robot",
+    "plano": "robot_cerca",
+    "texto": "¿Cuántas vistas tiene?"
+  },
+  { "quien": "chico", "plano": "telefono", "texto": "Doce." },
+  { "quien": "robot", "plano": "robot", "texto": "¿Doce mil?", "pausa": 0.9 },
+  { "quien": "chico", "plano": "chico", "texto": "Doce. Y una es de mi mamá." },
+  {
+    "quien": "robot",
+    "plano": "general",
+    "texto": "Te dije que el gancho va en el primer segundo."
+  },
+  {
+    "quien": "chico",
+    "plano": "chico_cerca",
+    "texto": "Ya sé. ¿Me ayudas con el próximo?"
+  },
+  {
+    "quien": "robot",
+    "plano": "robot",
+    "texto": "Solo si esta vez me haces caso."
+  },
+  { "quien": "chico", "plano": "general", "texto": "Trato." },
+  {
+    "quien": "robot",
+    "plano": "robot_camara",
+    "texto": "Guarda este video. Por si él se olvida.",
+    "pausa": 0.6
+  }
 ]

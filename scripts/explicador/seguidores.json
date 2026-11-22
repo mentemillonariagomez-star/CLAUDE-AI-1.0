@@ -1,0 +1,305 @@
+{
+  "slug": "seguidores",
+  "musica": 0,
+  "bpm": 92,
+  "pasos": [
+    ["Un tema", "elige tu nicho"],
+    ["Una serie", "parte 1, 2, 3"],
+    ["Responde", "cada comentario"],
+    ["Los números", "qué retuvo más"],
+    ["Paciencia", "sigue publicando"]
+  ],
+  "escenas": [
+    {
+      "id": "Intro",
+      "label": "01 · el gancho",
+      "texto": "Llegar a tus primeros *mil seguidores* parece imposible. No lo es, si sigues un *plan*.",
+      "elementos": [
+        {
+          "tipo": "contador",
+          "x": 60,
+          "y": 580,
+          "en": 0,
+          "hasta": [2, 20],
+          "emoji": "👥",
+          "desde": 0,
+          "a": 1000,
+          "etiqueta": "seguidores"
+        },
+        {
+          "tipo": "nota",
+          "x": 560,
+          "y": 830,
+          "en": [0, 40],
+          "texto": "¿imposible?",
+          "giro": 6
+        },
+        {
+          "tipo": "sello",
+          "x": 180,
+          "y": 1010,
+          "en": [2, 20],
+          "texto": "CON UN PLAN",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "Ruta",
+      "label": "02 · la hoja de ruta",
+      "texto": "Son cinco pasos. Apúntalos.",
+      "titulo": { "texto": "LOS 5", "rojo": "PASOS", "en": 0 },
+      "elementos": [{ "tipo": "pasos", "x": 60, "y": 560, "en": [0, 10] }]
+    },
+    {
+      "id": "P1",
+      "label": "paso 1 · el nicho",
+      "texto": "Uno, elige *un tema*. Si hablas de todo, nadie sabe por qué seguirte.",
+      "titulo": {
+        "etiqueta": "tu nicho",
+        "texto": "ELIGE UN",
+        "rojo": "TEMA",
+        "n": 1,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "chips",
+          "x": 60,
+          "y": 580,
+          "fila": true,
+          "items": [
+            { "texto": "COCINA", "en": [2, 0] },
+            { "texto": "JUEGOS", "en": [2, 5] },
+            { "texto": "VIAJES", "en": [2, 10] },
+            { "texto": "FINANZAS", "en": [2, 15] },
+            { "texto": "IA", "en": [2, 20], "rojo": true },
+            { "texto": "MEMES", "en": [2, 25] }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 200,
+          "y": 930,
+          "en": [3, 10],
+          "texto": "¿Y POR QUÉ TE SIGO?",
+          "size": 60
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "paso 2 · la serie",
+      "texto": "Dos, crea una *serie*. Parte uno, parte dos, parte tres. La gente sigue para no perderse la siguiente.",
+      "titulo": {
+        "etiqueta": "el enganche",
+        "texto": "CREA UNA",
+        "rojo": "SERIE",
+        "n": 2,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "chips",
+          "x": 60,
+          "y": 590,
+          "w": 480,
+          "items": [
+            { "texto": "PARTE 1", "en": 2 },
+            { "texto": "PARTE 2", "en": 3 },
+            { "texto": "PARTE 3", "en": 4, "rojo": true }
+          ]
+        },
+        {
+          "tipo": "telefono",
+          "x": 620,
+          "y": 560,
+          "w": 300,
+          "h": 540,
+          "en": 1,
+          "texto": "PARTE 3 ⏳"
+        },
+        {
+          "tipo": "sello",
+          "x": 120,
+          "y": 1010,
+          "en": [5, 20],
+          "texto": "➕ SEGUIR",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "label": "paso 3 · la comunidad",
+      "texto": "Tres, responde *cada comentario*. Y mejor aún, contesta con un *video*.",
+      "titulo": {
+        "etiqueta": "la comunidad",
+        "texto": "RESPONDE",
+        "rojo": "TODO",
+        "n": 3,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "lista",
+          "x": 60,
+          "y": 570,
+          "w": 600,
+          "en": 1,
+          "titulo": "COMENTARIOS",
+          "items": [
+            { "texto": "💬 ¿cómo lo hiciste?", "en": [1, 10] },
+            { "texto": "💬 ¡parte 2!", "en": [1, 20] },
+            { "texto": "💬 ¿qué app usas?", "en": [1, 30] }
+          ]
+        },
+        {
+          "tipo": "telefono",
+          "x": 700,
+          "y": 620,
+          "w": 300,
+          "h": 520,
+          "en": 3,
+          "emoji": "💬",
+          "texto": "PARA @ana"
+        },
+        {
+          "tipo": "sello",
+          "x": 110,
+          "y": 1010,
+          "en": [3, 30],
+          "texto": "UN VIDEO MÁS",
+          "relleno": true,
+          "size": 66
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "paso 4 · las estadísticas",
+      "texto": "Cuatro, mira tus *números*. ¿Qué video retuvo más? Haz *más de ese*.",
+      "titulo": {
+        "etiqueta": "las estadísticas",
+        "texto": "MIRA TUS",
+        "rojo": "NÚMEROS",
+        "n": 4,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "grafica",
+          "x": 60,
+          "y": 560,
+          "en": 1,
+          "titulo": "RETENCIÓN POR VIDEO (EJEMPLO)",
+          "items": [
+            { "etiqueta": "V1", "valor": 32 },
+            { "etiqueta": "V2", "valor": 45 },
+            { "etiqueta": "V3", "valor": 81 },
+            { "etiqueta": "V4", "valor": 38 },
+            { "etiqueta": "V5", "valor": 50 }
+          ],
+          "destacar": 2,
+          "marcar": [2, 15]
+        },
+        {
+          "tipo": "sello",
+          "x": 400,
+          "y": 1070,
+          "en": [3, 10],
+          "texto": "MÁS DE ESE",
+          "relleno": true,
+          "size": 74
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "label": "paso 5 · la paciencia",
+      "texto": "Y cinco, no pares en el video *diez*. A veces el que despega es el video *cincuenta*.",
+      "titulo": {
+        "etiqueta": "la paciencia",
+        "texto": "NO TE",
+        "rojo": "RINDAS",
+        "n": 5,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "contador",
+          "x": 60,
+          "y": 560,
+          "en": 1,
+          "hasta": [2, 40],
+          "emoji": "🎬",
+          "desde": 1,
+          "a": 50,
+          "etiqueta": "videos publicados"
+        },
+        {
+          "tipo": "barra",
+          "x": 60,
+          "y": 810,
+          "en": 2,
+          "hasta": [2, 50],
+          "izquierda": "video 1",
+          "derecha": "video 50 🚀",
+          "pie": "a veces despega aquí"
+        },
+        {
+          "tipo": "sello",
+          "x": 640,
+          "y": 1110,
+          "en": [2, 55],
+          "texto": "SIGUE",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "Resumen",
+      "label": "el resumen",
+      "texto": "Cinco pasos, mil seguidores. Guárdalo y empieza *hoy*.",
+      "titulo": {
+        "texto": "5 PASOS,",
+        "rojo": "1.000 SEGUIDORES",
+        "en": 0,
+        "top": 400
+      },
+      "elementos": [
+        {
+          "tipo": "pasos",
+          "x": 60,
+          "y": 580,
+          "en": [0, 4],
+          "check": [1, 0],
+          "ritmo": 3
+        },
+        {
+          "tipo": "lista",
+          "x": 60,
+          "y": 1010,
+          "w": 380,
+          "en": 2,
+          "items": [
+            { "texto": "🔖 Guárdalo", "en": 2, "marca": "nada" },
+            { "texto": "➕ Sígueme", "en": [2, 6], "marca": "nada" }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 480,
+          "y": 1050,
+          "en": [2, 25],
+          "texto": "EMPIEZA HOY",
+          "relleno": true,
+          "size": 64
+        }
+      ]
+    }
+  ]
+}

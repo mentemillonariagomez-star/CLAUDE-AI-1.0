@@ -1,0 +1,280 @@
+{
+  "slug": "guion",
+  "musica": 2,
+  "bpm": 88,
+  "pasos": [
+    ["El gancho", "atrapa en 1 segundo"],
+    ["El problema", "el dolor común"],
+    ["El giro", "lo inesperado"],
+    ["El cierre", "loop + acción"]
+  ],
+  "escenas": [
+    {
+      "id": "Intro",
+      "label": "01 · el gancho",
+      "texto": "Todos los videos virales tienen el *mismo esqueleto*. Te lo enseño en cuatro partes.",
+      "elementos": [
+        {
+          "tipo": "telefono",
+          "x": 60,
+          "y": 560,
+          "w": 300,
+          "h": 520,
+          "en": 0,
+          "texto": "VIRAL #1",
+          "giro": -4
+        },
+        {
+          "tipo": "telefono",
+          "x": 390,
+          "y": 600,
+          "w": 300,
+          "h": 520,
+          "en": [0, 8],
+          "texto": "VIRAL #2"
+        },
+        {
+          "tipo": "telefono",
+          "x": 720,
+          "y": 560,
+          "w": 300,
+          "h": 520,
+          "en": [0, 16],
+          "texto": "VIRAL #3",
+          "giro": 4
+        },
+        {
+          "tipo": "sello",
+          "x": 150,
+          "y": 1110,
+          "en": [1, 0],
+          "texto": "EL MISMO ESQUELETO",
+          "relleno": true,
+          "size": 58
+        }
+      ]
+    },
+    {
+      "id": "Ruta",
+      "label": "02 · la hoja de ruta",
+      "texto": "Gancho, problema, giro y cierre.",
+      "titulo": { "texto": "LAS 4", "rojo": "PARTES", "en": 0 },
+      "elementos": [
+        { "tipo": "pasos", "x": 60, "y": 560, "en": 0, "ritmo": 12 }
+      ]
+    },
+    {
+      "id": "P1",
+      "label": "parte 1 · el gancho",
+      "texto": "Uno, el *gancho*. Una frase que te obligue a quedarte. Por ejemplo: tenía cero pesos en la cuenta.",
+      "titulo": {
+        "etiqueta": "parte 1",
+        "texto": "EL",
+        "rojo": "GANCHO",
+        "n": 1,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "barra",
+          "x": 60,
+          "y": 560,
+          "en": 2,
+          "hasta": [2, 45],
+          "izquierda": "0:00",
+          "derecha": "0:01",
+          "pie": "el tiempo para atraparlos"
+        },
+        {
+          "tipo": "grande",
+          "x": 60,
+          "y": 830,
+          "w": 800,
+          "en": 4,
+          "texto": "“Tenía $0 en la cuenta”",
+          "size": 56,
+          "pie": "ejemplo de gancho"
+        },
+        {
+          "tipo": "sello",
+          "x": 600,
+          "y": 1060,
+          "en": [4, 30],
+          "texto": "ATRAPADO",
+          "relleno": true
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "parte 2 · el problema",
+      "texto": "Dos, el *problema*. Muestra el dolor que tu público *ya conoce*.",
+      "titulo": {
+        "etiqueta": "parte 2",
+        "texto": "EL",
+        "rojo": "PROBLEMA",
+        "n": 2,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "chips",
+          "x": 60,
+          "y": 580,
+          "w": 520,
+          "items": [
+            { "texto": "SIN DINERO", "en": [2, 0] },
+            { "texto": "SIN TIEMPO", "en": [2, 10] },
+            { "texto": "SIN IDEAS", "en": [2, 20], "rojo": true }
+          ]
+        },
+        {
+          "tipo": "nota",
+          "x": 640,
+          "y": 640,
+          "en": [2, 40],
+          "texto": "¡me pasa! 🙋",
+          "giro": 5
+        },
+        {
+          "tipo": "sello",
+          "x": 280,
+          "y": 1000,
+          "en": [2, 55],
+          "texto": "ME IDENTIFICO",
+          "relleno": true,
+          "size": 64
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "label": "parte 3 · el giro",
+      "texto": "Tres, el *giro*. Lo que nadie espera. Aquí es donde guardan el video.",
+      "titulo": {
+        "etiqueta": "parte 3",
+        "texto": "EL",
+        "rojo": "GIRO",
+        "n": 3,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "comparacion",
+          "x": 60,
+          "y": 560,
+          "en": 2,
+          "izquierda": {
+            "titulo": "LO QUE ESPERAN",
+            "texto": "se rinde",
+            "emoji": "😞"
+          },
+          "derecha": {
+            "titulo": "LO QUE PASA",
+            "texto": "todo cambia",
+            "emoji": "🚀"
+          },
+          "ganador": "derecha",
+          "marcar": [2, 25]
+        },
+        {
+          "tipo": "contador",
+          "x": 60,
+          "y": 950,
+          "w": 600,
+          "en": 3,
+          "hasta": [3, 50],
+          "emoji": "🔖",
+          "desde": 0,
+          "a": 3200,
+          "etiqueta": "guardados"
+        },
+        {
+          "tipo": "sello",
+          "x": 700,
+          "y": 990,
+          "en": [2, 30],
+          "texto": "¡GIRO!",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "parte 4 · el cierre",
+      "texto": "Y cuatro, el *cierre*. Una frase que conecte con el inicio, y un llamado a la acción.",
+      "titulo": {
+        "etiqueta": "parte 4",
+        "texto": "EL",
+        "rojo": "CIERRE",
+        "n": 4,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "lista",
+          "x": 60,
+          "y": 570,
+          "w": 800,
+          "en": 2,
+          "titulo": "EL FINAL PERFECTO",
+          "items": [
+            { "texto": "🔁 conecta con el inicio", "en": 2 },
+            { "texto": "🔖 pide guardar o seguir", "en": 3 }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 520,
+          "y": 900,
+          "en": [3, 40],
+          "texto": "LOOP ∞",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "Resumen",
+      "label": "el resumen",
+      "texto": "Gancho, problema, giro y cierre. Guarda este esqueleto y úsalo en tu próximo *video*.",
+      "titulo": {
+        "texto": "4 PARTES,",
+        "rojo": "1 VIRAL",
+        "en": 0,
+        "top": 400
+      },
+      "elementos": [
+        {
+          "tipo": "pasos",
+          "x": 60,
+          "y": 580,
+          "en": [0, 2],
+          "check": [0, 10],
+          "ritmo": 3
+        },
+        {
+          "tipo": "lista",
+          "x": 60,
+          "y": 890,
+          "w": 380,
+          "en": 3,
+          "items": [
+            { "texto": "🔖 Guárdalo", "en": 3, "marca": "nada" },
+            { "texto": "➕ Sígueme", "en": [3, 6], "marca": "nada" }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 470,
+          "y": 930,
+          "en": [3, 30],
+          "texto": "ÚSALO HOY",
+          "relleno": true,
+          "size": 70
+        }
+      ]
+    }
+  ]
+}

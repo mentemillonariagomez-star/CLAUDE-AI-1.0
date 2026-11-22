@@ -6,6 +6,10 @@ import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Pasos } from "./Pasos/Pasos";
+import { Explicador } from "./Explicador/Explicador";
+import { VIDEO as ERRORES } from "./Explicador/videos/errores";
+import { VIDEO as SEGUIDORES } from "./Explicador/videos/seguidores";
+import { VIDEO as GUION } from "./Explicador/videos/guion";
 import { Sketch } from "./Sketch/Sketch";
 import { DURACION_TOTAL as DURACION_SKETCH } from "./Sketch/datos";
 import { calcularDuracion, Comparacion } from "./Comparacion/Comparacion";
@@ -60,6 +64,20 @@ export const RemotionRoot: React.FC = () => {
             brillo: "#a855f7",
           }}
         />
+      </Folder>
+      <Folder name="Explicadores">
+        {[ERRORES, SEGUIDORES, GUION].map((v) => (
+          <Composition
+            key={v.slug}
+            id={`Explicador-${v.slug}`}
+            component={Explicador}
+            defaultProps={{ video: v }}
+            durationInFrames={v.total}
+            fps={30}
+            width={1080}
+            height={1920}
+          />
+        ))}
       </Folder>
       <Composition
         id="Sketch3D"

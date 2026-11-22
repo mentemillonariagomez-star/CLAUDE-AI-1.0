@@ -1,13 +1,31 @@
 [
- {"id": "Gancho", "text": "Tenía cero pesos en la cuenta. Cero."},
- {"id": "SinNada", "text": "Sin dinero. Sin contactos. Sin nadie que creyera en él."},
- {"id": "Idea", "text": "Pero tenía una idea. Y una sola regla: nunca rendirse."},
- {"id": "Noches", "text": "Trabajó de noche, mientras todos dormían. Mil días seguidos."},
- {"id": "Fracasos", "text": "Falló. Una vez. Diez veces. Cincuenta veces."},
- {"id": "Levantarse", "text": "Y cada vez que caía, se levantaba sabiendo un poco más."},
- {"id": "HastaQue", "text": "Hasta que un día."},
- {"id": "TodoCambio", "text": "Todo cambió. Hoy lo tiene todo."},
- {"id": "Mensaje", "text": "Y quiere que sepas algo: no necesitas tenerlo todo para empezar. Solo necesitas empezar."},
- {"id": "Guardar", "text": "Guarda este video para el día que quieras rendirte."},
- {"id": "Loop", "text": "Porque él también empezó, sin nada."}
+  { "id": "Gancho", "text": "Tenía cero pesos en la cuenta. Cero." },
+  {
+    "id": "SinNada",
+    "text": "Sin dinero. Sin contactos. Sin nadie que creyera en él."
+  },
+  {
+    "id": "Idea",
+    "text": "Pero tenía una idea. Y una sola regla: nunca rendirse."
+  },
+  {
+    "id": "Noches",
+    "text": "Trabajó de noche, mientras todos dormían. Mil días seguidos."
+  },
+  { "id": "Fracasos", "text": "Falló. Una vez. Diez veces. Cincuenta veces." },
+  {
+    "id": "Levantarse",
+    "text": "Y cada vez que caía, se levantaba sabiendo un poco más."
+  },
+  { "id": "HastaQue", "text": "Hasta que un día." },
+  { "id": "TodoCambio", "text": "Todo cambió. Hoy lo tiene todo." },
+  {
+    "id": "Mensaje",
+    "text": "Y quiere que sepas algo: no necesitas tenerlo todo para empezar. Solo necesitas empezar."
+  },
+  {
+    "id": "Guardar",
+    "text": "Guarda este video para el día que quieras rendirte."
+  },
+  { "id": "Loop", "text": "Porque él también empezó, sin nada." }
 ]

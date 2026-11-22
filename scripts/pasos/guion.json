@@ -1,11 +1,47 @@
 [
- {"id": "Intro", "label": "01 · el gancho", "text": "Haces videos todos los días, pero *nadie* los ve. Y no es tu culpa: nadie te enseña el *formato*."},
- {"id": "Ruta", "label": "02 · la hoja de ruta", "text": "Así que te lo enseño *todo*, en seis pasos."},
- {"id": "P1", "label": "paso 1 · el gancho", "text": "Uno, el *gancho*. Tienes un segundo para atrapar al que mira. Empieza con lo más fuerte, no con un *saludo*."},
- {"id": "P2", "label": "paso 2 · subtítulos", "text": "Dos, subtítulos *grandes*. Casi todos ven tus videos sin *sonido*. Si no lo leen, se van."},
- {"id": "P3", "label": "paso 3 · el ritmo", "text": "Tres, corta cada *dos segundos*. Un zoom, un cambio, un golpe. Que el ojo nunca *descanse*."},
- {"id": "P4", "label": "paso 4 · la barra", "text": "Cuatro, la barra de *progreso*. Cuando ven que falta poco, se quedan hasta el *final*."},
- {"id": "P5", "label": "paso 5 · el guardado", "text": "Cinco, pide que lo *guarden*. Para el algoritmo, un guardado pesa más que un *like*."},
- {"id": "P6", "label": "paso 6 · el loop", "text": "Y seis, que el final conecte con el *inicio*. Lo ven dos veces sin darse *cuenta*."},
- {"id": "Resumen", "label": "el proceso entero", "text": "Seis pasos, un video *viral*. Guárdalo y sígueme para la *parte dos*."}
+  {
+    "id": "Intro",
+    "label": "01 · el gancho",
+    "text": "Haces videos todos los días, pero *nadie* los ve. Y no es tu culpa: nadie te enseña el *formato*."
+  },
+  {
+    "id": "Ruta",
+    "label": "02 · la hoja de ruta",
+    "text": "Así que te lo enseño *todo*, en seis pasos."
+  },
+  {
+    "id": "P1",
+    "label": "paso 1 · el gancho",
+    "text": "Uno, el *gancho*. Tienes un segundo para atrapar al que mira. Empieza con lo más fuerte, no con un *saludo*."
+  },
+  {
+    "id": "P2",
+    "label": "paso 2 · subtítulos",
+    "text": "Dos, subtítulos *grandes*. Casi todos ven tus videos sin *sonido*. Si no lo leen, se van."
+  },
+  {
+    "id": "P3",
+    "label": "paso 3 · el ritmo",
+    "text": "Tres, corta cada *dos segundos*. Un zoom, un cambio, un golpe. Que el ojo nunca *descanse*."
+  },
+  {
+    "id": "P4",
+    "label": "paso 4 · la barra",
+    "text": "Cuatro, la barra de *progreso*. Cuando ven que falta poco, se quedan hasta el *final*."
+  },
+  {
+    "id": "P5",
+    "label": "paso 5 · el guardado",
+    "text": "Cinco, pide que lo *guarden*. Para el algoritmo, un guardado pesa más que un *like*."
+  },
+  {
+    "id": "P6",
+    "label": "paso 6 · el loop",
+    "text": "Y seis, que el final conecte con el *inicio*. Lo ven dos veces sin darse *cuenta*."
+  },
+  {
+    "id": "Resumen",
+    "label": "el proceso entero",
+    "text": "Seis pasos, un video *viral*. Guárdalo y sígueme para la *parte dos*."
+  }
 ]

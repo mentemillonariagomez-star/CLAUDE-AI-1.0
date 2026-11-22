@@ -1,0 +1,314 @@
+{
+  "slug": "errores",
+  "musica": 1,
+  "bpm": 96,
+  "pasos": [
+    ["El saludo", "empezar con hola"],
+    ["Muy largo", "estirar la idea"],
+    ["Audio malo", "lo que más molesta"],
+    ["Sin ritmo", "subir cuando sea"],
+    ["Copiar", "sin adaptar"]
+  ],
+  "escenas": [
+    {
+      "id": "Intro",
+      "label": "01 · el gancho",
+      "texto": "Tus videos no crecen, y crees que es el algoritmo. Pero casi siempre es uno de estos *cinco errores*.",
+      "elementos": [
+        {
+          "tipo": "telefono",
+          "x": 370,
+          "y": 540,
+          "en": 0,
+          "texto": "MI VIDEO 🔥",
+          "vistas": 37
+        },
+        {
+          "tipo": "nota",
+          "x": 720,
+          "y": 760,
+          "en": [1, 8],
+          "texto": "¿el algoritmo?",
+          "giro": 6
+        },
+        {
+          "tipo": "sello",
+          "x": 250,
+          "y": 1160,
+          "en": [2, 30],
+          "texto": "5 ERRORES",
+          "relleno": true,
+          "size": 84
+        }
+      ]
+    },
+    {
+      "id": "Ruta",
+      "label": "02 · la lista",
+      "texto": "Revisa si cometes *alguno*.",
+      "titulo": { "texto": "LOS 5", "rojo": "ERRORES", "en": 0 },
+      "elementos": [{ "tipo": "pasos", "x": 60, "y": 560, "en": [0, 8] }]
+    },
+    {
+      "id": "E1",
+      "label": "error 1 · el saludo",
+      "texto": "Uno, empezar *saludando*. Hola a todos, bienvenidos a mi canal. Y ya se fueron.",
+      "titulo": {
+        "etiqueta": "el primer segundo",
+        "texto": "EMPEZAR",
+        "rojo": "SALUDANDO",
+        "n": 1,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "telefono",
+          "x": 70,
+          "y": 560,
+          "w": 300,
+          "h": 560,
+          "en": 2,
+          "texto": "HOLA A TODOS 👋"
+        },
+        {
+          "tipo": "lista",
+          "x": 420,
+          "y": 600,
+          "w": 600,
+          "en": 2,
+          "titulo": "ASÍ EMPIEZAS",
+          "items": [
+            {
+              "texto": "“Hola a todos”",
+              "en": 2,
+              "marca": "x",
+              "tachar": true
+            },
+            { "texto": "“Bienvenidos…”", "en": 3, "marca": "x", "tachar": true }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 470,
+          "y": 930,
+          "en": [4, 6],
+          "texto": "SE FUERON ↑",
+          "relleno": true,
+          "size": 70
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "label": "error 2 · la duración",
+      "texto": "Dos, videos *demasiado largos*. Si la idea cabe en veinte segundos, no la estires a un minuto.",
+      "titulo": {
+        "etiqueta": "la duración",
+        "texto": "DEMASIADO",
+        "rojo": "LARGO",
+        "n": 2,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "barra",
+          "x": 60,
+          "y": 560,
+          "en": 1,
+          "hasta": [1, 45],
+          "izquierda": "0:00",
+          "derecha": "1:00",
+          "pie": "lo que dura tu video"
+        },
+        {
+          "tipo": "comparacion",
+          "x": 60,
+          "y": 810,
+          "en": 2,
+          "izquierda": {
+            "titulo": "LA IDEA",
+            "texto": "20 seg",
+            "emoji": "💡"
+          },
+          "derecha": { "titulo": "TU VIDEO", "texto": "60 seg", "emoji": "😴" },
+          "ganador": "izquierda",
+          "marcar": [3, 10]
+        },
+        {
+          "tipo": "sello",
+          "x": 560,
+          "y": 1170,
+          "en": [3, 35],
+          "texto": "CÓRTALO ✂",
+          "relleno": true
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "label": "error 3 · el audio",
+      "texto": "Tres, el *audio malo*. La gente perdona una imagen fea, pero no un sonido que molesta.",
+      "titulo": {
+        "etiqueta": "lo que más molesta",
+        "texto": "AUDIO",
+        "rojo": "MALO",
+        "n": 3,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "grande",
+          "x": 60,
+          "y": 570,
+          "w": 380,
+          "en": 1,
+          "texto": "🎧",
+          "size": 170,
+          "pie": "con audífonos"
+        },
+        {
+          "tipo": "lista",
+          "x": 480,
+          "y": 600,
+          "w": 540,
+          "en": 2,
+          "titulo": "LA GENTE PERDONA",
+          "items": [
+            { "texto": "imagen fea", "en": 2, "marca": "check" },
+            { "texto": "audio malo", "en": 3, "marca": "x", "tachar": true }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 520,
+          "y": 930,
+          "en": [3, 30],
+          "texto": "NO PERDONA",
+          "relleno": true
+        }
+      ]
+    },
+    {
+      "id": "E4",
+      "label": "error 4 · la constancia",
+      "texto": "Cuatro, subir *cuando te acuerdas*. Un video al mes no le enseña nada al algoritmo. Elige un ritmo y *cúmplelo*.",
+      "titulo": {
+        "etiqueta": "la constancia",
+        "texto": "SIN",
+        "rojo": "RITMO",
+        "n": 4,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "calendario",
+          "x": 60,
+          "y": 560,
+          "w": 600,
+          "en": 1,
+          "poco": 2,
+          "todo": 3
+        },
+        {
+          "tipo": "nota",
+          "x": 700,
+          "y": 640,
+          "en": [2, 10],
+          "texto": "1 al mes 😬",
+          "giro": 6
+        },
+        {
+          "tipo": "sello",
+          "x": 470,
+          "y": 1010,
+          "en": [3, 30],
+          "texto": "Y CÚMPLELO",
+          "relleno": true,
+          "size": 70
+        }
+      ]
+    },
+    {
+      "id": "E5",
+      "label": "error 5 · copiar",
+      "texto": "Y cinco, copiar *sin adaptar*. Toma el formato que funciona, pero ponle *tu historia*.",
+      "titulo": {
+        "etiqueta": "lo que ya funciona",
+        "texto": "COPIAR SIN",
+        "rojo": "ADAPTAR",
+        "n": 5,
+        "en": 1
+      },
+      "elementos": [
+        {
+          "tipo": "comparacion",
+          "x": 60,
+          "y": 570,
+          "en": 2,
+          "izquierda": {
+            "titulo": "COPIAR",
+            "texto": "igual al original",
+            "emoji": "📄"
+          },
+          "derecha": {
+            "titulo": "ADAPTAR",
+            "texto": "con tu historia",
+            "emoji": "✨"
+          },
+          "ganador": "derecha",
+          "marcar": [3, 12]
+        },
+        {
+          "tipo": "sello",
+          "x": 600,
+          "y": 980,
+          "en": [3, 35],
+          "texto": "TU VOZ",
+          "relleno": true,
+          "size": 80
+        }
+      ]
+    },
+    {
+      "id": "Resumen",
+      "label": "el resumen",
+      "texto": "Cinco errores, cero excusas. Guarda este video y revísalo antes de *publicar*.",
+      "titulo": {
+        "texto": "5 ERRORES,",
+        "rojo": "0 EXCUSAS",
+        "en": 0,
+        "top": 400
+      },
+      "elementos": [
+        {
+          "tipo": "pasos",
+          "x": 60,
+          "y": 580,
+          "en": [0, 4],
+          "check": [1, 0],
+          "ritmo": 3
+        },
+        {
+          "tipo": "lista",
+          "x": 60,
+          "y": 1010,
+          "w": 380,
+          "en": 2,
+          "items": [
+            { "texto": "🔖 Guárdalo", "en": 2, "marca": "nada" },
+            { "texto": "➕ Sígueme", "en": [2, 6], "marca": "nada" }
+          ]
+        },
+        {
+          "tipo": "sello",
+          "x": 450,
+          "y": 1060,
+          "en": [2, 30],
+          "texto": "ANTES DE PUBLICAR",
+          "relleno": true,
+          "size": 50
+        }
+      ]
+    }
+  ]
+}
