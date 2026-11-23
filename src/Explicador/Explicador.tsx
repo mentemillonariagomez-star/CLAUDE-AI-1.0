@@ -75,7 +75,13 @@ const EscenaVista = ({
 };
 
 // Formato "explicador por pasos" genérico: todo sale de los datos del video.
-export const Explicador = ({ video }: { readonly video: DatosVideo }) => (
+export const Explicador = ({
+  video,
+  conVoz = true,
+}: {
+  readonly video: DatosVideo;
+  readonly conVoz?: boolean;
+}) => (
   <AbsoluteFill>
     <Fondo />
     {video.escenas.map((e) => (
@@ -87,10 +93,12 @@ export const Explicador = ({ video }: { readonly video: DatosVideo }) => (
     ))}
     <Encabezado escenas={video.escenas} frases={video.frases} />
     <Personaje bocas={video.boca} />
-    <Audio
-      name="Narración"
-      src={staticFile(`explicador/${video.slug}/narracion.wav`)}
-    />
+    {conVoz ? (
+      <Audio
+        name="Narración"
+        src={staticFile(`explicador/${video.slug}/narracion.wav`)}
+      />
+    ) : null}
     <Audio
       name="Música y efectos"
       src={staticFile(`explicador/${video.slug}/musica.wav`)}

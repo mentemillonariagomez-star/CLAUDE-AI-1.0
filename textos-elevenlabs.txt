@@ -1,0 +1,288 @@
+TEXTOS PARA ELEVENLABS
+
+Cada video tiene dos partes:
+- TEXTO: cópialo tal cual en ElevenLabs.
+- TIEMPOS: en qué segundo del video empieza cada parte, para que la voz coincida con las animaciones.
+
+============================================================
+4 errores al usar IA para tus videos  (archivo: Explicador-ia-sin-voz.mp4, dura 0:45)
+============================================================
+
+TEXTO:
+
+Usas inteligencia artificial y tus videos siguen sin funcionar. El problema no es la herramienta, es cómo la usas.
+
+Estos son los cuatro errores.
+
+Uno, copiar y pegar sin revisar. Si tú no lo lees, tu público tampoco.
+
+Dos, el prompt de una línea. «Haz un video viral» no le dice nada. Dile el tema, el tono y la duración.
+
+Tres, no darle contexto. Cuéntale quién te ve y qué le gusta. Si no, escribe para nadie.
+
+Y cuatro, dejar la voz sin editar. Ajusta el ritmo, corta las pausas y que suene a ti.
+
+Cuatro errores, una solución: la IA te ayuda, pero tú decides. Guarda este video.
+
+TIEMPOS:
+  0:00  Usas inteligencia artificial y tus videos siguen sin funcionar…
+  0:08  Estos son los cuatro errores…
+  0:10  Uno…
+  0:16  Dos…
+  0:24  Tres…
+  0:31  Y cuatro…
+  0:37  Cuatro errores…
+
+
+============================================================
+4 errores en tus portadas  (archivo: Explicador-portadas-sin-voz.mp4, dura 0:43)
+============================================================
+
+TEXTO:
+
+Tu portada es lo primero que ven en tu perfil. Y si falla, nadie entra.
+
+Revisa estos cuatro errores.
+
+Uno, letra muy pequeña. En el perfil tu portada es diminuta. Si no se lee en un segundo, no sirve.
+
+Dos, poner todo a la vez. Tres flechas, cinco emojis y diez palabras. Elige una idea.
+
+Tres, prometer otra cosa. Si la portada dice una cosa y el video otra, se van y no vuelven.
+
+Y cuatro, sin emoción. Una cara sorprendida o una pregunta. Algo que dé ganas de saber más.
+
+Letra grande, una idea, que coincida y con emoción. Guarda este video.
+
+TIEMPOS:
+  0:00  Tu portada es lo primero que ven en tu perfil…
+  0:05  Revisa estos cuatro errores…
+  0:08  Uno…
+  0:15  Dos…
+  0:23  Tres…
+  0:30  Y cuatro…
+  0:37  Letra grande…
+
+
+============================================================
+4 errores en tus subtítulos  (archivo: Explicador-subtitulos-sin-voz.mp4, dura 0:42)
+============================================================
+
+TEXTO:
+
+Muchos ven tus videos sin sonido. Si tus subtítulos fallan, tu mensaje también.
+
+Son cuatro errores.
+
+Uno, subtítulos muy pequeños. En un teléfono, si hay que acercarse, ya perdiste.
+
+Dos, ponerlos muy abajo. Ahí los tapan el nombre, la descripción y los botones. Súbelos al centro.
+
+Tres, poner muchas palabras. Nadie lee un párrafo mientras mira. Usa de una a tres por pantalla.
+
+Y cuatro, no resaltar nada. Pinta la palabra clave de otro color, y el ojo va directo.
+
+Grandes, al centro, pocas palabras y con color. Guarda este video.
+
+TIEMPOS:
+  0:00  Muchos ven tus videos sin sonido…
+  0:06  Son cuatro errores…
+  0:08  Uno…
+  0:14  Dos…
+  0:22  Tres…
+  0:29  Y cuatro…
+  0:36  Grandes…
+
+
+============================================================
+4 errores al escribir tu gancho  (archivo: Explicador-ganchos-sin-voz.mp4, dura 0:40)
+============================================================
+
+TEXTO:
+
+Tienes un segundo para que no deslicen. Y casi todos lo desperdician.
+
+Estos son los cuatro errores.
+
+Uno, empezar con contexto. Antes de nada, quiero contarles que... Ya se fueron.
+
+Dos, un gancho muy largo. Si tarda más de una frase en llegar, no es gancho.
+
+Tres, prometer y no cumplir. Si el gancho engaña, la gente lo nota y se va.
+
+Y cuatro, no mostrar nada. El gancho también se ve: un movimiento, un objeto, un texto grande.
+
+Sin contexto, corto, honesto y visual. Guarda este video y sígueme.
+
+TIEMPOS:
+  0:00  Tienes un segundo para que no deslicen…
+  0:05  Estos son los cuatro errores…
+  0:07  Uno…
+  0:14  Dos…
+  0:20  Tres…
+  0:26  Y cuatro…
+  0:34  Sin contexto…
+
+
+============================================================
+4 errores después de publicar  (archivo: Explicador-publicar-sin-voz.mp4, dura 0:41)
+============================================================
+
+TEXTO:
+
+Publicar no es el final del trabajo. Estos errores después de subir frenan tu canal.
+
+Son cuatro. ¿Cuántos cometes?
+
+Uno, publicar y desaparecer. La primera hora responde comentarios. Así saben que hay alguien del otro lado.
+
+Dos, borrar los que no funcionan. Mejor míralos y aprende por qué fallaron.
+
+Tres, cambiar de tema cada semana. Tu público no sabe qué esperar, y deja de verte.
+
+Y cuatro, compararte con otros. Ellos van en su video cien. Tú, en el diez.
+
+Responde, aprende, mantén tu tema y sigue tu ritmo. Guarda este video.
+
+TIEMPOS:
+  0:00  Publicar no es el final del trabajo…
+  0:06  Son cuatro…
+  0:09  Uno…
+  0:17  Dos…
+  0:22  Tres…
+  0:29  Y cuatro…
+  0:35  Responde…
+
+
+============================================================
+5 errores que matan tus videos  (archivo: Explicador-errores-sin-voz.mp4, dura 0:50)
+============================================================
+
+TEXTO:
+
+Tus videos no crecen, y crees que es el algoritmo. Pero casi siempre es uno de estos cinco errores.
+
+Revisa si cometes alguno.
+
+Uno, empezar saludando. Hola a todos, bienvenidos a mi canal. Y ya se fueron.
+
+Dos, videos demasiado largos. Si la idea cabe en veinte segundos, no la estires a un minuto.
+
+Tres, el audio malo. La gente perdona una imagen fea, pero no un sonido que molesta.
+
+Cuatro, subir cuando te acuerdas. Un video al mes no le enseña nada al algoritmo. Elige un ritmo y cúmplelo.
+
+Y cinco, copiar sin adaptar. Toma el formato que funciona, pero ponle tu historia.
+
+Cinco errores, cero excusas. Guarda este video y revísalo antes de publicar.
+
+TIEMPOS:
+  0:00  Tus videos no crecen…
+  0:07  Revisa si cometes alguno…
+  0:09  Uno…
+  0:16  Dos…
+  0:23  Tres…
+  0:29  Cuatro…
+  0:37  Y cinco…
+  0:44  Cinco errores…
+
+
+============================================================
+Tus primeros 1.000 seguidores  (archivo: Explicador-seguidores-sin-voz.mp4, dura 0:45)
+============================================================
+
+TEXTO:
+
+Llegar a tus primeros mil seguidores parece imposible. No lo es, si sigues un plan.
+
+Son cinco pasos. Apúntalos.
+
+Uno, elige un tema. Si hablas de todo, nadie sabe por qué seguirte.
+
+Dos, crea una serie. Parte uno, parte dos, parte tres. La gente sigue para no perderse la siguiente.
+
+Tres, responde cada comentario. Y mejor aún, contesta con un video.
+
+Cuatro, mira tus números. ¿Qué video retuvo más? Haz más de ese.
+
+Y cinco, no pares en el video diez. A veces el que despega es el video cincuenta.
+
+Cinco pasos, mil seguidores. Guárdalo y empieza hoy.
+
+TIEMPOS:
+  0:00  Llegar a tus primeros mil seguidores parece imposible…
+  0:06  Son cinco pasos…
+  0:09  Uno…
+  0:14  Dos…
+  0:23  Tres…
+  0:28  Cuatro…
+  0:34  Y cinco…
+  0:40  Cinco pasos…
+
+
+============================================================
+El esqueleto de un guion viral  (archivo: Explicador-guion-sin-voz.mp4, dura 0:40)
+============================================================
+
+TEXTO:
+
+Todos los videos virales tienen el mismo esqueleto. Te lo enseño en cuatro partes.
+
+Gancho, problema, giro y cierre.
+
+Uno, el gancho. Una frase que te obligue a quedarte. Por ejemplo: tenía cero pesos en la cuenta.
+
+Dos, el problema. Muestra el dolor que tu público ya conoce.
+
+Tres, el giro. Lo que nadie espera. Aquí es donde guardan el video.
+
+Y cuatro, el cierre. Una frase que conecte con el inicio, y un llamado a la acción.
+
+Gancho, problema, giro y cierre. Guarda este esqueleto y úsalo en tu próximo video.
+
+TIEMPOS:
+  0:00  Todos los videos virales tienen el mismo esqueleto…
+  0:06  Gancho…
+  0:09  Uno…
+  0:16  Dos…
+  0:21  Tres…
+  0:27  Y cuatro…
+  0:33  Gancho…
+
+
+============================================================
+6 pasos para un video viral  (archivo: Pasos-sin-voz.mp4, dura 0:57)
+============================================================
+
+TEXTO:
+
+Haces videos todos los días, pero nadie los ve. Y no es tu culpa: nadie te enseña el formato.
+
+Así que te lo enseño todo, en seis pasos.
+
+Uno, el gancho. Tienes un segundo para atrapar al que mira. Empieza con lo más fuerte, no con un saludo.
+
+Dos, subtítulos grandes. Casi todos ven tus videos sin sonido. Si no lo leen, se van.
+
+Tres, corta cada dos segundos. Un zoom, un cambio, un golpe. Que el ojo nunca descanse.
+
+Cuatro, la barra de progreso. Cuando ven que falta poco, se quedan hasta el final.
+
+Cinco, pide que lo guarden. Para el algoritmo, un guardado pesa más que un like.
+
+Y seis, que el final conecte con el inicio. Lo ven dos veces sin darse cuenta.
+
+Seis pasos, un video viral. Guárdalo y sígueme para la parte dos.
+
+TIEMPOS:
+  0:00  Haces videos todos los días…
+  0:07  Así que te lo enseño todo…
+  0:10  Uno…
+  0:18  Dos…
+  0:25  Tres…
+  0:33  Cuatro…
+  0:39  Cinco…
+  0:45  Y seis…
+  0:51  Seis pasos…
+
+

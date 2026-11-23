@@ -37,7 +37,7 @@ const Transicion = ({
 };
 
 // Formato "explicador por pasos": papel, encabezado tipo karaoke, tarjetas y personaje.
-export const Pasos = () => (
+export const Pasos = ({ conVoz = true }: { readonly conVoz?: boolean }) => (
   <AbsoluteFill>
     <Fondo />
     {Object.entries(ESCENAS).map(([id, e]) => {
@@ -52,7 +52,9 @@ export const Pasos = () => (
     })}
     <Encabezado />
     <Personaje />
-    <Audio name="Narración" src={staticFile("pasos/narracion.wav")} />
+    {conVoz ? (
+      <Audio name="Narración" src={staticFile("pasos/narracion.wav")} />
+    ) : null}
     <Audio
       name="Música y efectos"
       src={staticFile("pasos/musica-y-efectos.wav")}
