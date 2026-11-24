@@ -30,6 +30,7 @@ export type ElementoUI =
       tipo: "tel_vistas";
       en: En;
       vistas: number;
+      titulo?: string;
       comentario?: { en: En; autor: string; texto: string };
     })
   | (Pos & { tipo: "calendario"; en: En; vistas: number[]; tachar?: En })
@@ -49,7 +50,7 @@ export type ElementoUI =
       hasta_en: En;
       titulo?: string;
     })
-  | (Pos & { tipo: "exportar"; en: En; falla: En })
+  | (Pos & { tipo: "exportar"; en: En; falla: En; exito?: boolean })
   | (Pos & {
       tipo: "burbuja";
       en: En;

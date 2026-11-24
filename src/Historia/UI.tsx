@@ -130,18 +130,24 @@ export const PiezaUI = ({
                 🎬
               </div>
               <div style={{ padding: "18px 22px 26px" }}>
-                <div style={{ fontWeight: 800, fontSize: 32 }}>
-                  Mi último video
+                <div
+                  style={{
+                    fontWeight: 800,
+                    fontSize: 30,
+                    overflowWrap: "anywhere",
+                  }}
+                >
+                  {e.titulo ?? "Mi último video"}
                 </div>
                 <div
                   style={{
                     fontWeight: 900,
-                    fontSize: 76,
+                    fontSize: e.vistas >= 100000 ? 50 : 76,
                     color: "#ff5d5d",
                     lineHeight: 1.1,
                   }}
                 >
-                  👁 {v}
+                  👁 {miles(v)}
                 </div>
                 <div style={{ fontSize: 26, color: "#aab" }}>vistas</div>
               </div>
@@ -691,7 +697,8 @@ export const PiezaUI = ({
       const en = m(e.en);
       const falla = m(e.falla);
       const p = interpolate(frame, [en + 4, falla], [62, 99], CLAMP);
-      const roto = frame >= falla;
+      const roto = frame >= falla && !e.exito;
+      const listo = frame >= falla && !!e.exito;
       const glitch = roto && frame - falla < 10 ? ((frame * 37) % 11) - 5 : 0;
       return (
         <Pop en={en} x={e.x} y={e.y} w={e.w}>
@@ -702,7 +709,17 @@ export const PiezaUI = ({
                 color: roto ? "#ff4d4d" : "#1d1530",
               }}
             >
-              {roto ? (
+              {listo ? (
+                <div style={{ textAlign: "center", color: "#1f8a78" }}>
+                  <div style={{ fontSize: 70 }}>✅</div>
+                  <div style={{ fontSize: 40, fontWeight: 900 }}>
+                    Exportado al 100%
+                  </div>
+                  <div style={{ fontSize: 26, color: "#888", marginTop: 6 }}>
+                    video_marca_FINAL_v2.mp4 · 48 MB
+                  </div>
+                </div>
+              ) : roto ? (
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 70 }}>⚠️</div>
                   <div style={{ fontSize: 38, fontWeight: 900 }}>

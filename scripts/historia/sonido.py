@@ -75,7 +75,9 @@ def generar_sonido(ep, escenas, habla, TOTAL, salida):
             if tp == "cuenta":
                 for j in range(int((t_de(e, el["hasta_en"]) - t0) / 0.5)): tono(t0 + 0.3 + j * 0.5, [2200], 0.05, 0.15, dec=60)
             if tp == "exportar":
-                tf = t_de(e, el["falla"]); tono(tf, [70, 52], 1.2, 0.9, dec=2.5); n = int(0.5 * SRM); add(sfx, tf, rng.standard_normal(n) * np.exp(-np.arange(n) / SRM * 8) * 0.25)
+                tf = t_de(e, el["falla"])
+                if el.get("exito"): tono(tf, [784, 1047, 1319], 0.8, 0.4, dec=4)
+                else: tono(tf, [70, 52], 1.2, 0.9, dec=2.5); n = int(0.5 * SRM); add(sfx, tf, rng.standard_normal(n) * np.exp(-np.arange(n) / SRM * 8) * 0.25)
             if tp == "tel_vistas" and "comentario" in el: tono(t_de(e, el["comentario"]["en"]), [1318, 1760], 0.4, 0.3, dec=10)
             if tp == "chat":
                 if "escribir" in el:
@@ -89,6 +91,7 @@ def generar_sonido(ep, escenas, habla, TOTAL, salida):
                 for j, tn in enumerate(np.linspace(a, b2, 12)): tono(tn, [1568, 2093], 0.15, 0.12 + 0.01 * j, dec=20)
             if tp == "llamada":
                 for j in range(3): tono(t0 + j * 0.5, [523, 659], 0.35, 0.22, dec=6)
+            if tp == "burbuja": tono(t0, [1046, 1318], 0.3, 0.25, dec=10)
             if tp == "dm":
                 tono(t0, [1318, 1975], 0.5, 0.35, dec=8)
     # Golpe final del cliffhanger
