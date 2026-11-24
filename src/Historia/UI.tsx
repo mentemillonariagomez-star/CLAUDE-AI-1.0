@@ -324,7 +324,7 @@ export const PiezaUI = ({
             fontFamily: FUENTE,
             fontWeight: 900,
             fontSize: 96,
-            color: "#ffd84a",
+            color: e.color ?? "#ffd84a",
             WebkitTextStroke: "14px #1d1530",
             paintOrder: "stroke fill",
             rotate: "-4deg",
@@ -647,6 +647,121 @@ export const PiezaUI = ({
               <div style={{ fontSize: 40, fontWeight: 800, marginTop: 6 }}>
                 {e.texto}
               </div>
+            </div>
+          </Tarjeta>
+        </Pop>
+      );
+    case "cuenta": {
+      const en = m(e.en);
+      const v = Math.round(
+        interpolate(frame, [en, m(e.hasta_en)], [e.desde, e.a], CLAMP),
+      );
+      const hh = Math.floor(v / 3600);
+      const mm = Math.floor((v % 3600) / 60);
+      const ss = v % 60;
+      const urgente = e.desde <= 3 * 3600;
+      return (
+        <Pop en={en} x={e.x} y={e.y} w={e.w} giro={-3}>
+          <Tarjeta
+            style={{
+              textAlign: "center",
+              backgroundColor: urgente ? "#ff3b30" : "#1d1530",
+              color: "white",
+            }}
+          >
+            <div style={{ fontSize: 30, fontWeight: 800, opacity: 0.85 }}>
+              {e.titulo ?? "⏳ entrega en"}
+            </div>
+            <div
+              style={{
+                fontSize: 88,
+                fontWeight: 900,
+                fontVariantNumeric: "tabular-nums",
+                letterSpacing: 2,
+              }}
+            >
+              {String(hh).padStart(2, "0")}:{String(mm).padStart(2, "0")}:
+              {String(ss).padStart(2, "0")}
+            </div>
+          </Tarjeta>
+        </Pop>
+      );
+    }
+    case "exportar": {
+      const en = m(e.en);
+      const falla = m(e.falla);
+      const p = interpolate(frame, [en + 4, falla], [62, 99], CLAMP);
+      const roto = frame >= falla;
+      const glitch = roto && frame - falla < 10 ? ((frame * 37) % 11) - 5 : 0;
+      return (
+        <Pop en={en} x={e.x} y={e.y} w={e.w}>
+          <div style={{ translate: `${glitch * 3}px 0px` }}>
+            <Tarjeta
+              style={{
+                backgroundColor: roto ? "#0b0b10" : "white",
+                color: roto ? "#ff4d4d" : "#1d1530",
+              }}
+            >
+              {roto ? (
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: 70 }}>⚠️</div>
+                  <div style={{ fontSize: 38, fontWeight: 900 }}>
+                    Error: proyecto no encontrado
+                  </div>
+                  <div style={{ fontSize: 26, color: "#999", marginTop: 6 }}>
+                    video_marca_FINAL.mp4 · 0 KB
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div style={{ fontSize: 36, fontWeight: 900 }}>
+                    🎬 Exportando video_marca_FINAL…
+                  </div>
+                  <div
+                    style={{
+                      marginTop: 16,
+                      height: 34,
+                      borderRadius: 17,
+                      backgroundColor: "#eee",
+                      border: "4px solid #1d1530",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: `${p}%`,
+                        height: "100%",
+                        backgroundColor: "#1f8a78",
+                      }}
+                    />
+                  </div>
+                  <div style={{ marginTop: 10, fontSize: 30, fontWeight: 800 }}>
+                    {Math.floor(p)}%
+                  </div>
+                </>
+              )}
+            </Tarjeta>
+          </div>
+        </Pop>
+      );
+    }
+    case "burbuja":
+      return (
+        <Pop en={m(e.en)} x={e.x} y={e.y} w={e.w} giro={-2}>
+          <Tarjeta
+            style={{
+              display: "flex",
+              gap: 18,
+              alignItems: "center",
+              borderRadius: 36,
+            }}
+          >
+            <div style={{ fontSize: 70, flexShrink: 0 }}>{e.emoji}</div>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 800, color: "#888" }}>
+                {e.autor}
+              </div>
+              <div style={{ fontSize: 40, fontWeight: 900 }}>{e.texto}</div>
             </div>
           </Tarjeta>
         </Pop>

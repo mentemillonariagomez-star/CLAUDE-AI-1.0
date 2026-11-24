@@ -67,6 +67,9 @@ const Mundo = ({ e }: { readonly e: EscenaHistoria }) => {
   });
   const empuje = 1 + 0.03 * ((frame - desdeCam) / 90);
   const s = cam.s * punch * empuje;
+  const tiembla = est.temblor
+    ? [Math.sin(frame * 2.7) * 6, Math.cos(frame * 3.1) * 5]
+    : [0, 0];
   const x = Math.min(Math.max(cam.x, 540 / s), 1080 - 540 / s);
   const y = Math.min(Math.max(cam.y, 500 / s), 1000 - 500 / s);
   return (
@@ -76,7 +79,9 @@ const Mundo = ({ e }: { readonly e: EscenaHistoria }) => {
       height={1000}
       style={{ display: "block" }}
     >
-      <g transform={`translate(${540 - s * x} ${500 - s * y}) scale(${s})`}>
+      <g
+        transform={`translate(${540 - s * x + tiembla[0]} ${500 - s * y + tiembla[1]}) scale(${s})`}
+      >
         <Cuarto dia={dia} desorden={!!e.desorden} />
         <Personaje e={est} frame={frame} />
         <Escritorio dia={dia} desorden={!!e.desorden} cafes={est.cafes} />

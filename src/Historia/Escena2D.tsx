@@ -15,6 +15,7 @@ export type EstadoPersonaje = {
   brillo: boolean;
   luz: boolean;
   cafes: number;
+  temblor?: boolean;
 };
 
 const Edificios = ({ dia }: { readonly dia: boolean }) => (

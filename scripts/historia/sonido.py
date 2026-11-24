@@ -47,12 +47,13 @@ def generar_sonido(ep, escenas, habla, TOTAL, salida):
     claro = [[48, 55, 60, 64], [43, 50, 55, 59], [45, 52, 57, 60], [41, 48, 53, 57]]
     b, i = 0.0, 0
     while b < fin:
-        prog = oscuro if b < cambio else claro
+        claro_ahora = (b >= cambio) != (ep.get("musica_inicio") == "claro")
+        prog = claro if claro_ahora else oscuro
         ac = prog[(i // 8) % 4]
-        if i % 8 == 0: pad(b, min(fin, b + beat * 8 + 0.2), ac, 0.07 if b < cambio else 0.09)
-        if i % 2 == 0: kick(b, 0.45 if b < cambio else 0.55)
+        if i % 8 == 0: pad(b, min(fin, b + beat * 8 + 0.2), ac, 0.09 if claro_ahora else 0.07)
+        if i % 2 == 0: kick(b, 0.55 if claro_ahora else 0.45)
         hat(b + beat / 2)
-        if b >= cambio or i % 2 == 0: pluck(b, ac[(i // 2) % 4] + 12, 0.05 if b < cambio else 0.07)
+        if claro_ahora or i % 2 == 0: pluck(b, ac[(i // 2) % 4] + 12, 0.07 if claro_ahora else 0.05)
         b += beat; i += 1
 
     def t_de(e, en):
@@ -70,7 +71,11 @@ def generar_sonido(ep, escenas, habla, TOTAL, salida):
         for el in e.get("elementos", []):
             t0 = t_de(e, el["en"]) if "en" in el else None
             tp = el["tipo"]
-            if tp in ("tel_vistas", "calendario", "subir", "reloj", "texto_grande"): tono(t0, [880, 1320], 0.2, 0.25, dec=18)
+            if tp in ("tel_vistas", "calendario", "subir", "reloj", "texto_grande", "cuenta", "exportar"): tono(t0, [880, 1320], 0.2, 0.25, dec=18)
+            if tp == "cuenta":
+                for j in range(int((t_de(e, el["hasta_en"]) - t0) / 0.5)): tono(t0 + 0.3 + j * 0.5, [2200], 0.05, 0.15, dec=60)
+            if tp == "exportar":
+                tf = t_de(e, el["falla"]); tono(tf, [70, 52], 1.2, 0.9, dec=2.5); n = int(0.5 * SRM); add(sfx, tf, rng.standard_normal(n) * np.exp(-np.arange(n) / SRM * 8) * 0.25)
             if tp == "tel_vistas" and "comentario" in el: tono(t_de(e, el["comentario"]["en"]), [1318, 1760], 0.4, 0.3, dec=10)
             if tp == "chat":
                 if "escribir" in el:

@@ -21,6 +21,7 @@ export type Estado = {
   luz?: boolean;
   cafes?: number;
   cam?: Camara;
+  temblor?: boolean;
 };
 
 type Pos = { x: number; y: number; w: number };
@@ -39,7 +40,23 @@ export type ElementoUI =
       escribir?: En;
       respuestas: { en: En; texto: string }[];
     })
-  | (Pos & { tipo: "texto_grande"; en: En; texto: string })
+  | (Pos & { tipo: "texto_grande"; en: En; texto: string; color?: string })
+  | (Pos & {
+      tipo: "cuenta";
+      en: En;
+      desde: number;
+      a: number;
+      hasta_en: En;
+      titulo?: string;
+    })
+  | (Pos & { tipo: "exportar"; en: En; falla: En })
+  | (Pos & {
+      tipo: "burbuja";
+      en: En;
+      autor: string;
+      emoji: string;
+      texto: string;
+    })
   | (Pos & {
       tipo: "tarjetas";
       items: { en: En; emoji: string; titulo: string; sub: string }[];
