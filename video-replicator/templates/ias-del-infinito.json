@@ -1,0 +1,137 @@
+{
+  "name": "ias-del-infinito",
+  "created_at": "2026-11-24 01:12:10",
+  "source_analysis": "ias-del-infinito",
+  "description": "Ritmo medio, equilibrado, neutro, transición cut",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "target_duration_sec": 82.5,
+  "pacing": {
+    "avg_shot_sec": 2.66,
+    "hook_shot_sec": 5,
+    "shot_pattern": [
+      3.709,
+      0.657,
+      0.794,
+      0.32,
+      1.729,
+      1.335,
+      0.41,
+      0.573,
+      0.942,
+      0.78,
+      0.863,
+      1.08
+    ],
+    "by_section": {
+      "intro": 3.097,
+      "middle": 2.477,
+      "outro": 2.492
+    },
+    "snap_to_beat_bpm": null
+  },
+  "layout": {
+    "type": "blur_fill",
+    "content_y0": 0.2,
+    "content_y1": 0.731
+  },
+  "overlays": [
+    {
+      "y0": 0.087,
+      "y1": 0.175,
+      "x0": 0.089,
+      "x1": 0.911,
+      "box_color": "#e0dfe0",
+      "text_color": "#000000",
+      "role": "title",
+      "text": ""
+    },
+    {
+      "y0": 0.738,
+      "y1": 0.775,
+      "x0": 0.367,
+      "x1": 0.633,
+      "box_color": "#d2d2d2",
+      "text_color": "#000000",
+      "role": "label",
+      "text": ""
+    }
+  ],
+  "transitions": {
+    "type": "cut",
+    "duration_sec": 0.0
+  },
+  "motion": {
+    "level": "bajo",
+    "ken_burns": false,
+    "zoom": 1.07
+  },
+  "color": {
+    "palette": [
+      "#3b3344",
+      "#676c76",
+      "#969da2",
+      "#c4c3bf",
+      "#a0795b",
+      "#f5f4f3"
+    ],
+    "background_colors": [
+      "#3b3344",
+      "#676c76",
+      "#a0795b"
+    ],
+    "accent": "#a0795b",
+    "grade": {
+      "saturation": 0.989,
+      "contrast": 1.02,
+      "brightness": 0.016,
+      "warmth": 0.004
+    }
+  },
+  "captions": {
+    "enabled": true,
+    "position_y": 0.263,
+    "hook_position_y": 0.263,
+    "words_per_caption": 2,
+    "uppercase": false,
+    "font_scale": 0.052,
+    "color": "#ffffff",
+    "highlight_color": "#ffffff",
+    "border": 0.006,
+    "box": false
+  },
+  "narrative": {
+    "structure": [
+      {
+        "role": "hook",
+        "share": 0.042
+      },
+      {
+        "role": "desarrollo",
+        "share": 0.858
+      },
+      {
+        "role": "clímax",
+        "share": 0.024
+      },
+      {
+        "role": "cierre",
+        "share": 0.1
+      }
+    ],
+    "hook_type": "pregunta",
+    "hook_example": null,
+    "has_cta": false,
+    "cta_example": null,
+    "words_per_minute": 150
+  },
+  "audio": {
+    "target_lufs": -14.3,
+    "voiceover": true,
+    "music_volume": 0.35,
+    "tempo_bpm": 130.0
+  }
+}

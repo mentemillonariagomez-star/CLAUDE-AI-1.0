@@ -1,6 +1,6 @@
 {
   "name": "muestra",
-  "created_at": "2026-11-24 00:58:24",
+  "created_at": "2026-11-24 01:11:52",
   "source_analysis": "muestra",
   "description": "Ritmo medio, equilibrado, neutro, saturado, transición fade_black",
   "format": {
@@ -27,6 +27,12 @@
     },
     "snap_to_beat_bpm": 120.0
   },
+  "layout": {
+    "type": "full",
+    "content_y0": 0.0,
+    "content_y1": 1.0
+  },
+  "overlays": [],
   "transitions": {
     "type": "fade_black",
     "duration_sec": 0.25
@@ -61,6 +67,7 @@
   "captions": {
     "enabled": true,
     "position_y": 0.68,
+    "hook_position_y": 0.42,
     "words_per_caption": 7,
     "uppercase": false,
     "font_scale": 0.052,
