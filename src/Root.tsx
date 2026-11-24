@@ -6,6 +6,8 @@ import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Pasos } from "./Pasos/Pasos";
+import { Historia } from "./Historia/Historia";
+import { HISTORIA as POV1 } from "./Historia/videos/pov1";
 import { Explicador } from "./Explicador/Explicador";
 import { VIDEO as ERRORES } from "./Explicador/videos/errores";
 import { VIDEO as SEGUIDORES } from "./Explicador/videos/seguidores";
@@ -69,6 +71,20 @@ export const RemotionRoot: React.FC = () => {
             brillo: "#a855f7",
           }}
         />
+      </Folder>
+      <Folder name="Historias">
+        {[POV1].map((h) => (
+          <Composition
+            key={h.slug}
+            id={`Historia-${h.slug}`}
+            component={Historia}
+            defaultProps={{ datos: h }}
+            durationInFrames={h.total}
+            fps={30}
+            width={1080}
+            height={1920}
+          />
+        ))}
       </Folder>
       <Folder name="Explicadores">
         {[

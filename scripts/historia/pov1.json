@@ -1,0 +1,577 @@
+{
+ "slug": "pov1",
+ "serie": "POV: Creas videos con IA",
+ "parte": 1,
+ "usuario": "@zerx.ai0",
+ "cambio_musica": "Manana",
+ "escenas": [
+  {
+   "id": "Gancho",
+   "fondo": "noche",
+   "texto": "Tu último video tiene doce vistas. Y una es de tu mamá.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "telefono",
+     "ojos": "triste",
+     "boca": "triste",
+     "cam": {
+      "x": 540,
+      "y": 560,
+      "s": 1.15
+     }
+    },
+    {
+     "en": 1,
+     "ojos": "cansado",
+     "boca": "neutra",
+     "sudor": true,
+     "cam": {
+      "x": 520,
+      "y": 470,
+      "s": 1.7
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "tel_vistas",
+     "en": 0,
+     "x": 690,
+     "y": 190,
+     "w": 330,
+     "vistas": 12,
+     "comentario": {
+      "en": 1,
+      "autor": "mamá",
+      "texto": "qué orgullo mijo ❤️"
+     }
+    }
+   ]
+  },
+  {
+   "id": "Meses",
+   "fondo": "noche",
+   "texto": "Llevas meses subiendo videos, y nada funciona.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "cansado",
+     "boca": "triste",
+     "ojeras": true,
+     "cam": {
+      "x": 540,
+      "y": 520,
+      "s": 1.0
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "calendario",
+     "en": [
+      0,
+      3
+     ],
+     "x": 90,
+     "y": 170,
+     "w": 900,
+     "vistas": [
+      12,
+      8,
+      31,
+      5,
+      19,
+      3,
+      22,
+      9
+     ],
+     "tachar": 1
+    }
+   ]
+  },
+  {
+   "id": "Pregunta",
+   "fondo": "noche",
+   "texto": "Esa noche, en vez de rendirte, abres la IA y le preguntas: ¿por qué nadie ve mis videos?",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "cansado",
+     "boca": "neutra",
+     "ojeras": true,
+     "cam": {
+      "x": 540,
+      "y": 500,
+      "s": 1.05
+     }
+    },
+    {
+     "en": 2,
+     "ojos": "normal",
+     "luz": true,
+     "cam": {
+      "x": 470,
+      "y": 380,
+      "s": 1.35
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "chat",
+     "en": 2,
+     "x": 120,
+     "y": 190,
+     "w": 840,
+     "pregunta": "¿Por qué nadie ve mis videos?",
+     "escribir": 3,
+     "respuestas": []
+    }
+   ]
+  },
+  {
+   "id": "Respuesta",
+   "fondo": "noche",
+   "texto": "Te responde en dos segundos: tu gancho es aburrido, y tus videos son demasiado largos.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "normal",
+     "boca": "neutra",
+     "luz": true,
+     "ojeras": true,
+     "cam": {
+      "x": 430,
+      "y": 380,
+      "s": 1.5
+     }
+    },
+    {
+     "en": 1,
+     "ojos": "sorprendido",
+     "boca": "abierta",
+     "cam": {
+      "x": 430,
+      "y": 400,
+      "s": 1.9
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "chat",
+     "en": 0,
+     "x": 120,
+     "y": 170,
+     "w": 840,
+     "pregunta": "¿Por qué nadie ve mis videos?",
+     "respuestas": [
+      {
+       "en": 1,
+       "texto": "Tu gancho es aburrido 😬"
+      },
+      {
+       "en": 2,
+       "texto": "Y tus videos son demasiado largos ⏱️"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Duele",
+   "fondo": "noche",
+   "texto": "Duele. Pero tiene razón. Así que cambias todo.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "triste",
+     "boca": "triste",
+     "ojeras": true,
+     "cam": {
+      "x": 430,
+      "y": 470,
+      "s": 2.0
+     }
+    },
+    {
+     "en": 1,
+     "ojos": "cansado",
+     "boca": "neutra"
+    },
+    {
+     "en": 2,
+     "ojos": "decidido",
+     "boca": "determinada",
+     "brillo": true,
+     "cam": {
+      "x": 430,
+      "y": 460,
+      "s": 2.3
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "texto_grande",
+     "en": [
+      2,
+      12
+     ],
+     "x": 0,
+     "y": 700,
+     "w": 1080,
+     "texto": "CAMBIO TOTAL 🔥"
+    }
+   ]
+  },
+  {
+   "id": "Montaje",
+   "fondo": "noche",
+   "texto": "Escribes guiones con gancho. Cortas cada dos segundos. Pones subtítulos grandes.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "decidido",
+     "boca": "determinada",
+     "brillo": true,
+     "luz": true,
+     "ojeras": true,
+     "cam": {
+      "x": 640,
+      "y": 520,
+      "s": 1.15
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "tarjetas",
+     "x": 560,
+     "y": 210,
+     "w": 480,
+     "items": [
+      {
+       "en": 0,
+       "emoji": "📝",
+       "titulo": "Guion",
+       "sub": "gancho en 1 seg ✓"
+      },
+      {
+       "en": 1,
+       "emoji": "✂️",
+       "titulo": "Cortes",
+       "sub": "cada 2 segundos ✓"
+      },
+      {
+       "en": 2,
+       "emoji": "🔠",
+       "titulo": "Subtítulos",
+       "sub": "GRANDES ✓"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Noche",
+   "fondo": "noche",
+   "texto": "No duermes. Tres cafés. Cuatro.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "cansado",
+     "boca": "neutra",
+     "ojeras": true,
+     "cafes": 2,
+     "cam": {
+      "x": 560,
+      "y": 560,
+      "s": 1.1
+     }
+    },
+    {
+     "en": 1,
+     "cafes": 3
+    },
+    {
+     "en": 2,
+     "ojos": "sorprendido",
+     "boca": "abierta",
+     "cafes": 4,
+     "sudor": true,
+     "cam": {
+      "x": 430,
+      "y": 480,
+      "s": 1.75
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "reloj",
+     "en": 0,
+     "x": 660,
+     "y": 180,
+     "w": 340,
+     "desde": 72,
+     "hasta": 277,
+     "hasta_en": [
+      2,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Desastre",
+   "fondo": "noche",
+   "desorden": true,
+   "texto": "Tu cuarto es un desastre.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "cansado",
+     "boca": "abierta",
+     "ojeras": true,
+     "cafes": 4,
+     "cam": {
+      "x": 540,
+      "y": 520,
+      "s": 1.0
+     }
+    }
+   ],
+   "elementos": []
+  },
+  {
+   "id": "Subir",
+   "fondo": "noche",
+   "desorden": true,
+   "texto": "El viernes subes el primer video nuevo... y apagas el teléfono.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "decidido",
+     "boca": "determinada",
+     "luz": true,
+     "ojeras": true,
+     "cafes": 4,
+     "cam": {
+      "x": 540,
+      "y": 560,
+      "s": 1.15
+     }
+    },
+    {
+     "en": 1,
+     "pose": "telefono",
+     "ojos": "feliz",
+     "boca": "neutra",
+     "luz": false,
+     "cam": {
+      "x": 430,
+      "y": 480,
+      "s": 1.6
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "subir",
+     "en": 0,
+     "x": 150,
+     "y": 190,
+     "w": 780,
+     "apagar": 1
+    }
+   ]
+  },
+  {
+   "id": "Manana",
+   "fondo": "dia",
+   "desorden": true,
+   "texto": "A la mañana siguiente, lo enciendes.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "mesa",
+     "ojos": "cansado",
+     "boca": "neutra",
+     "ojeras": true,
+     "cafes": 4,
+     "cam": {
+      "x": 540,
+      "y": 500,
+      "s": 1.0
+     }
+    },
+    {
+     "en": 1,
+     "pose": "telefono",
+     "ojos": "normal",
+     "cam": {
+      "x": 480,
+      "y": 500,
+      "s": 1.3
+     }
+    }
+   ],
+   "elementos": []
+  },
+  {
+   "id": "Notis",
+   "fondo": "dia",
+   "desorden": true,
+   "texto": "Cien notificaciones. Mil. Diez mil vistas.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "telefono",
+     "ojos": "sorprendido",
+     "boca": "abierta",
+     "cafes": 4,
+     "cam": {
+      "x": 430,
+      "y": 480,
+      "s": 1.6
+     }
+    },
+    {
+     "en": 2,
+     "pose": "celebra",
+     "ojos": "feliz",
+     "boca": "sonrisa",
+     "cam": {
+      "x": 540,
+      "y": 500,
+      "s": 1.05
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "notis",
+     "en": 0,
+     "x": 610,
+     "y": 170,
+     "w": 440,
+     "mil": 1,
+     "fin": 2
+    },
+    {
+     "tipo": "texto_grande",
+     "en": 2,
+     "x": 0,
+     "y": 800,
+     "w": 1080,
+     "texto": "10.000 VISTAS 🚀"
+    }
+   ]
+  },
+  {
+   "id": "Llamada",
+   "fondo": "dia",
+   "desorden": true,
+   "texto": "Tu mamá te llama: hijo, ¿por qué todos me preguntan por ti?",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "telefono",
+     "ojos": "sorprendido",
+     "boca": "sonrisa",
+     "cafes": 4,
+     "cam": {
+      "x": 520,
+      "y": 520,
+      "s": 1.15
+     }
+    },
+    {
+     "en": 2,
+     "ojos": "feliz",
+     "boca": "sonrisa",
+     "cam": {
+      "x": 430,
+      "y": 470,
+      "s": 1.7
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "llamada",
+     "en": 0,
+     "x": 600,
+     "y": 180,
+     "w": 420,
+     "nombre": "Mamá ❤️",
+     "texto_en": 1,
+     "texto": "Hijo, ¿por qué todos me preguntan por ti? 😂"
+    }
+   ]
+  },
+  {
+   "id": "Cliff",
+   "fondo": "dia",
+   "desorden": true,
+   "texto": "Y justo cuando crees que lo lograste, te llega un mensaje... que lo cambia todo.",
+   "estados": [
+    {
+     "en": 0,
+     "pose": "celebra",
+     "ojos": "feliz",
+     "boca": "sonrisa",
+     "cafes": 4,
+     "cam": {
+      "x": 540,
+      "y": 520,
+      "s": 1.05
+     }
+    },
+    {
+     "en": 1,
+     "pose": "telefono",
+     "ojos": "normal",
+     "boca": "neutra",
+     "cam": {
+      "x": 430,
+      "y": 480,
+      "s": 1.6
+     }
+    },
+    {
+     "en": 2,
+     "ojos": "sorprendido",
+     "boca": "abierta",
+     "sudor": true,
+     "cam": {
+      "x": 430,
+      "y": 460,
+      "s": 2.2
+     }
+    }
+   ],
+   "elementos": [
+    {
+     "tipo": "dm",
+     "en": 1,
+     "x": 110,
+     "y": 180,
+     "w": 860,
+     "de": "Marca verificada",
+     "texto": "Hola 👋 ¿Hablamos de una colaboración? 💰"
+    }
+   ]
+  }
+ ]
+}
