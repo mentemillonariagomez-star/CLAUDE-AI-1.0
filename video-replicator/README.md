@@ -56,14 +56,15 @@ python main.py replicate mi_video.mp4 --tema "Tu tema" --exportar ~/storage/movi
 
 Otros comandos: `python main.py templates` (lista), `python main.py templates --show mi_video`.
 
-Opciones de `generate`/`replicate`: `--res 720x1280`, `--duracion 30`,
+Opciones de `generate`/`replicate`: `--titulo "POV: ..."`, `--etiqueta "PARTE 5"`, `--res 720x1280`, `--duracion 30`,
 `--musica archivo.mp3`, `--sin-voz`, `--sin-subtitulos`, `--keep` (conserva
 intermedios), `--remote` (renderiza en un PC).
 
 ### Formato del guion (`input/*.txt`)
 
 ```text
-# Título
+# Título (también va en la caja de título fija, si la plantilla la tiene)
+ETIQUETA: PARTE 5
 HOOK: ¿Sabías que tu móvil puede editar como un estudio?
 
 [asset: playa.jpg]
@@ -87,7 +88,10 @@ Sin assets, el vídeo usa fondos degradados con la paleta del vídeo original.
 | Análisis (`references/<nombre>/analysis.json`) | Cómo se usa al generar |
 |---|---|
 | Escenas, duración de cada plano y patrón rítmico | Los segmentos se dividen en planos con la misma duración media y el mismo patrón |
-| Transiciones: corte, fundido a negro, fundido encadenado | Se aplica el tipo dominante entre segmentos |
+| Transiciones: corte, fundido a negro, fundido encadenado y cambio animado dentro del plano | Se aplica el tipo dominante entre segmentos (los cambios animados cuentan para el ritmo, no como fundidos) |
+| Elementos fijos: cajas de título y etiquetas que no cambian entre escenas | Se dibujan en la misma posición y color con tu texto (`# Título`, `ETIQUETA:`, `--titulo`, `--etiqueta`) |
+| Diseño con relleno desenfocado (imagen nítida en el centro y franjas borrosas) | Tus assets se colocan igual: zona nítida + la misma imagen desenfocada de fondo |
+| Altura y anchura de los subtítulos incrustados | Posición de los subtítulos y palabras por bloque |
 | Tempo de la música (BPM) | Las duraciones de plano se ajustan al pulso |
 | Movimiento de cámara | Paneo suave (efecto Ken Burns) si el original tiene movimiento |
 | Paleta, brillo, contraste, saturación, temperatura | Corrección de color de tus assets y colores de los fondos |
@@ -140,7 +144,7 @@ y añade `--remote` a `analyze` o `generate`. El servidor también transcribe co
 
 - **Probado en Linux (Ubuntu 24.04, FFmpeg 6.1, Python 3.13), no en un Android real.** Se usan las mismas herramientas que en Termux, pero los tiempos en el móvil serán mayores. Ejecuta `python main.py check` primero.
 - Los fundidos encadenados se reproducen como fundidos breves a negro (un crossfade real obligaría a recodificar todo el vídeo).
-- La detección de texto incrustado y de composición es heurística (bordes y contraste). Con OpenCV se añade la detección de caras.
+- La detección de texto incrustado y de composición es heurística (bordes y contraste). Con OpenCV se añade la detección de caras. No hay OCR: el sistema sabe **dónde** está el texto del original y qué tamaño tiene, pero no lo lee. Si el original usa MAYÚSCULAS, activa `"uppercase": true` en la plantilla.
 - El tempo se estima a partir de la energía del audio. Funciona bien con música rítmica y peor con voz sola.
 - Sin assets propios, los fondos son degradados de la paleta: replica el ritmo, el color y la tipografía, no las imágenes del original.
 - La voz de `espeak` es sintética y robótica. `gTTS` (`pip install gTTS`) suena más natural, pero necesita internet.

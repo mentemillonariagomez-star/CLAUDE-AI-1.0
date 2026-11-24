@@ -30,9 +30,13 @@ from .common import log, warn
 ROLE_TAGS = {"hook": "hook", "gancho": "hook", "cta": "cta", "cierre": "cierre", "desarrollo": "desarrollo"}
 
 
+OVERLAY_TAGS = {"titulo": "title", "título": "title", "title": "title", "etiqueta": "label", "label": "label"}
+
+
 def parse_script_text(text: str) -> dict:
     title = None
     segments = []
+    overlays = {}
     for block in re.split(r"\n\s*\n", text.replace("\r", "").strip()):
         lines = []
         role, asset = None, None
@@ -42,6 +46,10 @@ def parse_script_text(text: str) -> dict:
                 continue
             if s.startswith("#"):
                 title = title or s.lstrip("#").strip()
+                continue
+            m = re.match(r"^(TITULO|TÍTULO|TITLE|ETIQUETA|LABEL)\s*:\s*(.+)$", s, re.I)
+            if m:
+                overlays[OVERLAY_TAGS[m.group(1).lower()]] = m.group(2).strip()
                 continue
             m = re.match(r"^\[(?:asset|imagen|video|fondo)\s*:\s*(.+?)\]$", s, re.I)
             if m:
@@ -58,7 +66,10 @@ def parse_script_text(text: str) -> dict:
     for i, seg in enumerate(segments):
         if not seg["role"]:
             seg["role"] = "hook" if i == 0 else "desarrollo"
-    return {"title": title or (segments[0]["text"][:60] if segments else "video"), "segments": segments}
+    if title and "title" not in overlays:
+        overlays["title"] = title
+    return {"title": title or (segments[0]["text"][:60] if segments else "video"), "segments": segments,
+            "overlays": overlays}
 
 
 def load_script(path: Path) -> dict:
@@ -74,6 +85,8 @@ def load_script(path: Path) -> dict:
 
 def script_to_text(script: dict) -> str:
     out = [f"# {script.get('title', '')}".rstrip()]
+    if script.get("overlays", {}).get("label"):
+        out[0] += f"\nETIQUETA: {script['overlays']['label']}"
     for s in script["segments"]:
         prefix = {"hook": "HOOK: ", "cta": "CTA: ", "cierre": "CIERRE: "}.get(s.get("role"), "")
         block = (f"[asset: {s['asset']}]\n" if s.get("asset") else "") + prefix + s["text"]
@@ -112,7 +125,7 @@ def local_draft(topic: str, template: dict, duration: float | None = None) -> di
         segs.append({"role": "cta", "text": "Sígueme para más contenido como este.", "asset": None})
     else:
         segs.append({"role": "cierre", "text": f"Y así es como {topic} puede marcar la diferencia.", "asset": None})
-    return {"title": topic, "segments": segs, "generated_by": "borrador_local"}
+    return {"title": topic, "segments": segs, "overlays": {"title": topic}, "generated_by": "borrador_local"}
 
 
 # --------------------------------------------------------------------------
@@ -158,7 +171,8 @@ Responde SOLO con JSON válido, sin texto adicional, con esta forma:
             for s in data.get("segments", []) if s.get("text")]
     if not segs:
         raise ValueError("Guion vacío")
-    return {"title": data.get("title", topic), "segments": segs, "generated_by": "claude"}
+    title = data.get("title", topic)
+    return {"title": title, "segments": segs, "overlays": {"title": title}, "generated_by": "claude"}
 
 
 def generate_script(topic: str, template: dict, cfg: dict, duration: float | None = None, notes: str = "") -> dict:

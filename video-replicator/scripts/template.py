@@ -45,6 +45,18 @@ def build_template(a: dict, name: str | None = None) -> dict:
         text_y = 0.68  # fuera de la zona de botones de TikTok/Reels
     else:
         text_y = {"top": 0.18, "middle": 0.5, "bottom": 0.72}.get(text_pos, 0.7)
+    band = comp.get("caption_band")
+    hook_y = 0.42
+    hook_color = accent
+    if band:  # altura real de los subtítulos quemados en el original; el gancho usa el mismo estilo
+        text_y = hook_y = band["y"]
+        hook_color = "#ffffff"
+    if t.get("available"):
+        wpc = t.get("avg_words_per_caption", 4)
+    elif band and band.get("avg_span"):
+        wpc = band["avg_span"] * 4  # anchura media del texto → palabras aproximadas
+    else:
+        wpc = 4
 
     bpm = au.get("tempo_bpm") if (au.get("tempo_confidence") or 0) >= 0.15 else None
     wpm = t.get("words_per_minute") if t.get("available") else 150
@@ -62,6 +74,8 @@ def build_template(a: dict, name: str | None = None) -> dict:
             "by_section": p["avg_by_section"],
             "snap_to_beat_bpm": bpm,
         },
+        "layout": comp.get("layout") or {"type": "full", "content_y0": 0.0, "content_y1": 1.0},
+        "overlays": [dict(o, text="") for o in comp.get("overlays", [])],
         "transitions": {"type": ttype, "duration_sec": 0.25 if ttype != "cut" else 0.0},
         "motion": {
             "level": a["motion"]["level"],
@@ -82,11 +96,12 @@ def build_template(a: dict, name: str | None = None) -> dict:
         "captions": {
             "enabled": True,
             "position_y": text_y,
-            "words_per_caption": int(_clamp(round(t.get("avg_words_per_caption", 4) if t.get("available") else 4), 1, 8)),
+            "hook_position_y": hook_y,
+            "words_per_caption": int(_clamp(round(wpc), 1, 8)),
             "uppercase": (t.get("uppercase_ratio", 0) or 0) > 0.6,
             "font_scale": 0.052,
             "color": "#ffffff",
-            "highlight_color": accent,
+            "highlight_color": hook_color,
             "border": 0.006,
             "box": False,
         },

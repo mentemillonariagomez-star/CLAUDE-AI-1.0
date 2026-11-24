@@ -152,7 +152,6 @@ def _background_input(shot: dict, asset: Path | None, tpl: dict, W: int, H: int,
             src = f"color=c={_hex(c0)}:s={W}x{H}:d={dur:.3f}:r={fps}"
         return ["-f", "lavfi", "-i", src], "[0:v]setsar=1", False
     z = m.get("zoom", 1.07) if m.get("ken_burns") else 1.0
-    SW, SH = _even(W * z), _even(H * z)
     if asset.suffix.lower() in IMG_EXT:
         inp = ["-loop", "1", "-framerate", str(fps), "-t", f"{dur:.3f}", "-i", str(asset)]
     else:
@@ -162,12 +161,27 @@ def _background_input(shot: dict, asset: Path | None, tpl: dict, W: int, H: int,
             vdur = 0
         off = (idx * 2.3) % max(vdur - dur, 1) if vdur > dur + 1 else 0
         inp = ["-stream_loop", "-1", "-ss", f"{off:.2f}", "-t", f"{dur:.3f}", "-i", str(asset)]
-    chain = f"[0:v]fps={fps},scale={SW}:{SH}:force_original_aspect_ratio=increase,crop={SW}:{SH},setsar=1"
+    lay = tpl.get("layout") or {}
+    blur = lay.get("type") == "blur_fill"
+    # Zona nítida: toda la pantalla, o la franja central si el original usa relleno desenfocado
+    CY0 = _even(H * lay.get("content_y0", 0.0)) if blur else 0
+    CH = (_even(H * lay.get("content_y1", 1.0)) - CY0) if blur else H
+    SW, SH = _even(W * z), _even(CH * z)
+    fg = f"scale={SW}:{SH}:force_original_aspect_ratio=increase,crop={SW}:{SH},setsar=1"
     if z > 1.0:
         a, b = [(0, 1), (1, 0), (0.5, 0.5), (0.5, 0.5)][idx % 4]
         c, d = [(0.5, 0.5), (0.5, 0.5), (0, 1), (1, 0)][idx % 4]
-        chain += (f",crop={W}:{H}:x='(iw-ow)*({a}+({b}-{a})*t/{dur:.3f})'"
-                  f":y='(ih-oh)*({c}+({d}-{c})*t/{dur:.3f})'")
+        fg += (f",crop={W}:{CH}:x='(iw-ow)*({a}+({b}-{a})*t/{dur:.3f})'"
+               f":y='(ih-oh)*({c}+({d}-{c})*t/{dur:.3f})'")
+    if blur:
+        # fondo: la misma imagen ampliada y desenfocada (a baja resolución para ahorrar CPU)
+        bw_, bh_ = _even(W / 8), _even(H / 8)
+        chain = (f"[0:v]fps={fps},split[bgs][fgs];"
+                 f"[bgs]scale={bw_}:{bh_}:force_original_aspect_ratio=increase,crop={bw_}:{bh_},"
+                 f"boxblur=6:2,scale={W}:{H},eq=brightness=-0.06,setsar=1[bgv];"
+                 f"[fgs]{fg}[fgv];[bgv][fgv]overlay=0:{CY0}")
+    else:
+        chain = f"[0:v]fps={fps},{fg}"
     g = tpl["color"]["grade"]
     chain += f",eq=saturation={g['saturation']}:contrast={g['contrast']}:brightness={g['brightness']}"
     if abs(g.get("warmth", 0)) > 0.02:
@@ -176,13 +190,41 @@ def _background_input(shot: dict, asset: Path | None, tpl: dict, W: int, H: int,
     return inp, chain, True
 
 
+def overlay_filters(tpl: dict, texts: dict, W: int, H: int, font: str, work: Path, shot_i: int) -> str:
+    """Cajas fijas del original (título, etiqueta de serie) con el texto del guion."""
+    out = ""
+    ff = font.replace("\\", "/").replace("'", "")
+    for k, o in enumerate(tpl.get("overlays", [])):
+        text = (texts or {}).get(o.get("role")) or o.get("text")
+        if not text:
+            continue
+        x0, x1 = int(W * o["x0"]), int(W * o["x1"])
+        y0, y1 = int(H * o["y0"]), int(H * o["y1"])
+        bw, bh = x1 - x0, y1 - y0
+        fs = max(18, int(bh * 0.55))
+        lines = _wrap(text, max(6, int(bw * 0.9 / (fs * 0.55))))
+        while len(lines) * fs * 1.2 > bh * 0.9 and fs > 18:
+            fs -= 2
+            lines = _wrap(text, max(6, int(bw * 0.9 / (fs * 0.55))))
+        lh = fs * 1.2
+        top = y0 + (bh - lh * len(lines)) / 2
+        out += f",drawbox=x={x0}:y={y0}:w={bw}:h={bh}:color={_hex(o['box_color'])}:t=fill"
+        for l_i, line in enumerate(lines):
+            tf = f"ov_{shot_i:03d}_{k}_{l_i}.txt"
+            (work / tf).write_text(line, encoding="utf-8")
+            out += (f",drawtext=fontfile='{ff}':textfile={tf}:expansion=none:fontsize={fs}"
+                    f":fontcolor={_hex(o['text_color'])}:x=(w-text_w)/2:y={int(top + l_i * lh + fs * 0.95)}-ascent")
+    return out
+
+
 def render_shot(i: int, shot: dict, seg: dict, events: list[dict], seg_offset: float, asset: Path | None,
                 tpl: dict, cfg: dict, W: int, H: int, fps: int, font: str | None, work: Path,
-                fade_in: float, fade_out: float) -> Path:
+                fade_in: float, fade_out: float, overlay_texts: dict | None = None) -> Path:
     dur = shot["frames"] / fps
     inp, chain, is_asset = _background_input(shot, asset, tpl, W, H, fps, dur, i)
     c = tpl["captions"]
-    if is_asset and c.get("enabled", True):
+    if is_asset and c.get("enabled", True) and c.get("position_y", 0.68) > 0.5 \
+            and (tpl.get("layout") or {}).get("type") != "blur_fill":
         chain += ",drawbox=x=0:y=ih*0.52:w=iw:h=ih*0.48:color=black@0.28:t=fill"
     if fade_in:
         chain += f",fade=t=in:st=0:d={fade_in:.2f}"
@@ -193,7 +235,7 @@ def render_shot(i: int, shot: dict, seg: dict, events: list[dict], seg_offset: f
         hook = seg["role"] == "hook"
         fs = int(H * c.get("font_scale", 0.052) * (1.2 if hook else 1.0))
         max_chars = max(8, int(W * 0.86 / (fs * 0.56)))
-        y_center = 0.42 if hook else c.get("position_y", 0.68)
+        y_center = c.get("hook_position_y", 0.42) if hook else c.get("position_y", 0.68)
         color = _hex(c.get("highlight_color", "#ffd400") if hook else c.get("color", "#ffffff"))
         bw = max(2, int(H * c.get("border", 0.006)))
         ff = font.replace("\\", "/").replace("'", "")
@@ -205,6 +247,11 @@ def render_shot(i: int, shot: dict, seg: dict, events: list[dict], seg_offset: f
             lines = _wrap(ev["text"], max_chars)
             lh = fs * 1.22
             top = H * y_center - lh * len(lines) / 2
+            # no tapar las cajas fijas (título/etiqueta): desplazar el bloque si se solapa
+            for o in tpl.get("overlays", []):
+                oy0, oy1 = H * o["y0"], H * o["y1"]
+                if top < oy1 + fs * 0.3 and top + lh * len(lines) > oy0 and H * y_center > oy0:
+                    top = oy1 + fs * 0.4
             for l_i, line in enumerate(lines):
                 tf = f"cap_{i:03d}_{e_i:02d}_{l_i}.txt"
                 (work / tf).write_text(line, encoding="utf-8")
@@ -212,6 +259,8 @@ def render_shot(i: int, shot: dict, seg: dict, events: list[dict], seg_offset: f
                 chain += (f",drawtext=fontfile='{ff}':textfile={tf}:expansion=none:fontsize={fs}"
                           f":fontcolor={color}:borderw={bw}:bordercolor=black@0.9{box}"
                           f":x=(w-text_w)/2:y={int(top + l_i * lh + fs * 0.95)}-ascent:enable='between(t,{a:.3f},{b:.3f})'")
+    if font is not None:
+        chain += overlay_filters(tpl, overlay_texts, W, H, font, work, i)
     chain += f",fps={fps},format=yuv420p[v]"
     out = work / f"shot_{i:03d}.mp4"
     ffmpeg([*inp, "-filter_complex", chain, "-map", "[v]", "-frames:v", str(shot["frames"]), "-an",
@@ -318,7 +367,7 @@ def render(script: dict, tpl: dict, cfg: dict, out_path: Path | None = None, kee
             f"{asset.name if asset else 'fondo generado'})")
         sh["asset"] = asset.name if asset else None
         shot_files.append(render_shot(i, sh, seg, events[seg["index"]], off / fps, asset, tpl, cfg, W, H, fps,
-                                      font, work, fade_in, fade_out))
+                                      font, work, fade_in, fade_out, script.get("overlays")))
 
     log("Uniendo planos…")
     (work / "list.txt").write_text("".join(f"file '{p.name}'\n" for p in shot_files))

@@ -73,6 +73,9 @@ def summary(a: dict) -> str:
         f"Color: {c.get('mood', '?')} · paleta {', '.join(x['hex'] for x in c.get('palette', [])[:5])}",
         f"Composición: {a.get('composition', {}).get('dominant_layout', '?')}, texto probable: "
         f"{a.get('composition', {}).get('probable_text_position') or 'no detectado'}",
+        f"Diseño: {a.get('composition', {}).get('layout', {}).get('type', 'full')} · elementos fijos: "
+        + (", ".join(f"{o['role']} ({o['y0']:.0%}-{o['y1']:.0%})" for o in a.get("composition", {}).get("overlays", [])) or "ninguno")
+        + (f" · subtítulos a {a['composition']['caption_band']['y']:.0%} de altura" if a.get("composition", {}).get("caption_band") else ""),
         f"Audio: {au.get('integrated_lufs', '—')} LUFS, tempo {au.get('tempo_bpm') or '—'} BPM, silencio {au.get('silence_ratio', '—')}",
         f"Texto ({t.get('source')}): " + (f"{t['word_count']} palabras, {t['words_per_minute']} ppm, gancho tipo «{t['hook_type']}»"
                                            if t.get("available") else "no disponible"),

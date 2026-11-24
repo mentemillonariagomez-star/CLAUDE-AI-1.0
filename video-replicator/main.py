@@ -83,6 +83,16 @@ def cmd_templates(args, cfg):
 
 
 def _get_script(args, cfg, tpl) -> dict:
+    script = _load_or_generate(args, cfg, tpl)
+    ov = script.setdefault("overlays", {})
+    if getattr(args, "titulo", None):
+        ov["title"] = args.titulo
+    if getattr(args, "etiqueta", None):
+        ov["label"] = args.etiqueta
+    return script
+
+
+def _load_or_generate(args, cfg, tpl) -> dict:
     from scripts.script_gen import generate_script, load_script, script_to_text
     if args.script:
         p = Path(args.script).expanduser()
@@ -169,7 +179,7 @@ def cmd_demo(args, cfg):
             "Usa textos grandes y colores que contrasten con el fondo.\n\n"
             "CTA: Sígueme para más trucos de edición.\n", encoding="utf-8")
     ns = argparse.Namespace(script=str(demo), tema=None, duracion=None, notas=None, out=None,
-                            remote=False, keep=False, exportar=None)
+                            remote=False, keep=False, exportar=None, titulo=None, etiqueta=None)
     do_generate(ns, cfg, tpl)
     return 0
 
@@ -200,6 +210,8 @@ def build_parser() -> argparse.ArgumentParser:
         x.add_argument("--out", "-o", help="archivo de salida .mp4")
         x.add_argument("--res", help="resolución, p. ej. 1080x1920 o 720x1280")
         x.add_argument("--musica", help="archivo de música")
+        x.add_argument("--titulo", help="texto de la caja de título fija (si la plantilla la tiene)")
+        x.add_argument("--etiqueta", help="texto de la etiqueta fija, p. ej. \"PARTE 5\"")
         x.add_argument("--sin-voz", action="store_true")
         x.add_argument("--sin-subtitulos", action="store_true")
         x.add_argument("--exportar", help="copia el resultado a esta carpeta (p. ej. ~/storage/movies)")

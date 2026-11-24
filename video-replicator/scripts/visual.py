@@ -23,14 +23,23 @@ except Exception:  # pragma: no cover - depende del dispositivo
 # --------------------------------------------------------------------------
 # 1. Señal por fotograma (una sola pasada de FFmpeg)
 # --------------------------------------------------------------------------
-def frame_signals(video: Path, work: Path, cfg: dict) -> list[dict]:
-    """Devuelve [{t, scene, yavg, sat}] para cada fotograma muestreado."""
+def frame_signals(video: Path, work: Path, cfg: dict, src_w: int = 9, src_h: int = 16) -> list[dict]:
+    """Devuelve [{t, scene, yavg, sat, thumb}] para cada fotograma muestreado.
+
+    thumb: miniatura en gris de 32 px de ancho (para distinguir fundidos de animaciones).
+    """
     perf = cfg["performance"]
-    vf = (
-        f"scale={perf['analysis_width']}:-2,fps={perf['analysis_fps']},"
-        "signalstats,select='gte(scene\\,0)',metadata=print:file=frames.txt"
+    tw = 32
+    th = max(2, int(round(tw * src_h / max(src_w, 1) / 2)) * 2)
+    fc = (
+        f"[0:v]scale={perf['analysis_width']}:-2,fps={perf['analysis_fps']},split[a][b];"
+        "[a]signalstats,select='gte(scene\\,0)',metadata=print:file=frames.txt[o1];"
+        f"[b]scale={tw}:{th},format=gray[o2]"
     )
-    ffmpeg(["-i", str(Path(video).resolve()), "-an", "-sn", "-dn", "-vf", vf, "-f", "null", "-"], cwd=work)
+    raw = ffmpeg(["-i", str(Path(video).resolve()), "-an", "-sn", "-dn", "-filter_complex", fc,
+                  "-map", "[o1]", "-f", "null", "-", "-map", "[o2]", "-f", "rawvideo", "pipe:1"],
+                 cwd=work, binary=True).stdout
+    tsz = tw * th
     frames, cur = [], None
     for line in (work / "frames.txt").read_text(errors="replace").splitlines():
         if line.startswith("frame:"):
@@ -54,9 +63,40 @@ def frame_signals(video: Path, work: Path, cfg: dict) -> list[dict]:
                 pass
     if cur:
         frames.append(cur)
+    for i, f in enumerate(frames):
+        f["thumb"] = raw[i * tsz:(i + 1) * tsz] if (i + 1) * tsz <= len(raw) else None
     if frames:
         frames[0]["scene"] = 0.0
     return frames
+
+
+def _is_dissolve(frames: list[dict], a: int, b: int) -> bool:
+    """Fundido real: algún fotograma intermedio es una mezcla (1-α)·A + α·B con α≈0.5.
+
+    En una animación (elementos que aparecen, zoom, cambio parcial) los
+    fotogramas intermedios se parecen a un extremo o a ninguno, nunca a su mezcla.
+    """
+    A, B = frames[a].get("thumb"), frames[b].get("thumb")
+    if not (A and B) or len(A) != len(B):
+        return True
+    n = len(A)
+    diff = [y - x for x, y in zip(A, B)]
+    den = sum(d * d for d in diff)
+    if den == 0 or sum(abs(d) for d in diff) / n <= 10:
+        return False
+    for j in range(a + 1, b):
+        M = frames[j].get("thumb")
+        if not M or len(M) != n:
+            continue
+        alpha = sum((m - x) * d for m, x, d in zip(M, A, diff)) / den
+        if not 0.25 <= alpha <= 0.75:
+            continue
+        resid = sum(abs(m - x - alpha * d) for m, x, d in zip(M, A, diff)) / n
+        d_ma = sum(abs(m - x) for m, x in zip(M, A)) / n
+        d_mb = sum(abs(m - y) for m, y in zip(M, B)) / n
+        if resid < 0.5 * min(d_ma, d_mb):
+            return True
+    return False
 
 
 # --------------------------------------------------------------------------
@@ -108,7 +148,9 @@ def detect_scenes(frames: list[dict], duration: float, cfg: dict) -> dict:
             local = statistics.median(around) if around else 0.0
             if local * win * 3 < total:
                 tc = sum(frames[i + k]["t"] * w[k] for k in range(win)) / total
-                boundaries.append((tc, "dissolve"))
+                pad = max(2, int(round(0.4 / dt)))
+                a, b = max(0, i - pad), min(len(frames) - 1, i + win + pad)
+                boundaries.append((tc, "dissolve" if _is_dissolve(frames, a, b) else "animation"))
                 i += win
                 continue
         i += 1
@@ -118,7 +160,7 @@ def detect_scenes(frames: list[dict], duration: float, cfg: dict) -> dict:
     merged = []
     for t, kind in boundaries:
         if merged and t - merged[-1][0] < max(min_len, 0.5):
-            prio = {"cut": 0, "dissolve": 1, "fade_black": 2}
+            prio = {"animation": -1, "cut": 0, "dissolve": 1, "fade_black": 2}
             if prio[kind] > prio[merged[-1][1]]:
                 merged[-1] = (t if kind == "fade_black" else merged[-1][0], kind)
             continue
@@ -380,10 +422,121 @@ def composition_analysis(keyframes: list[dict]) -> dict:
     }
 
 
+def layout_analysis(keyframes: list[dict]) -> dict:
+    """Detecta elementos fijos (cajas de título, etiquetas), franjas desenfocadas y la altura de los subtítulos.
+
+    - Overlay fijo: filas cuyos píxeles casi no cambian entre fotogramas clave de escenas distintas.
+    - Relleno desenfocado: franjas superior/inferior con muy poca energía de bordes.
+    - Subtítulos: fila con más transiciones fuertes de contraste fuera de los overlays.
+    """
+    if len(keyframes) < 4:
+        return {}
+    w, h = keyframes[0]["w"], keyframes[0]["h"]
+    grays = [_gray(k) for k in keyframes]
+    n = len(grays)
+    npx = w * h
+    mean = [sum(g[p] for g in grays) / n for p in range(npx)]
+    std = [math.sqrt(sum((g[p] - mean[p]) ** 2 for g in grays) / n) for p in range(npx)]
+
+    # --- overlays fijos ---
+    x0, x1 = int(w * 0.05), int(w * 0.95)
+    static_row = []
+    for y in range(h):
+        row = y * w
+        static_row.append(sum(1 for x in range(x0, x1) if std[row + x] < 10) / (x1 - x0) > 0.2)
+    overlays = []
+    if sum(static_row) < 0.6 * h:  # si casi todo es estático, es un vídeo con cámara fija
+        y = 0
+        while y < h:
+            if not static_row[y]:
+                y += 1
+                continue
+            y2 = y
+            while y2 + 1 < h and (static_row[y2 + 1] or (y2 + 2 < h and static_row[y2 + 2])):
+                y2 += 1
+            # columnas estáticas en la banda → tramo continuo más largo
+            cols = [sum(1 for yy in range(y, y2 + 1) if std[yy * w + x] < 10) > (y2 - y + 1) * 0.6 for x in range(w)]
+            best, cur, start, bstart = 0, 0, 0, 0
+            for x, c in enumerate(cols + [False]):
+                if c:
+                    if cur == 0:
+                        start = x
+                    cur += 1
+                else:
+                    if cur > best:
+                        best, bstart = cur, start
+                    cur = 0
+            if y2 - y + 1 >= 2 and best >= 0.15 * w:
+                px = [(yy * w + x) for yy in range(y, y2 + 1) for x in range(bstart, bstart + best)]
+                rgb = [0.0, 0.0, 0.0]
+                for k in keyframes:
+                    for p in px:
+                        rgb[0] += k["raw"][p * 3]; rgb[1] += k["raw"][p * 3 + 1]; rgb[2] += k["raw"][p * 3 + 2]
+                rgb = [c / (len(px) * n) for c in rgb]
+                lum = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]
+                full_dark = best > 0.9 * w and lum < 30
+                if not full_dark:
+                    overlays.append({
+                        "y0": round(y / h, 3), "y1": round((y2 + 1) / h, 3),
+                        "x0": round(bstart / w, 3), "x1": round((bstart + best) / w, 3),
+                        "box_color": hexcolor(rgb),
+                        "text_color": "#000000" if lum > 140 else "#ffffff",
+                    })
+            y = y2 + 1
+    for i, o in enumerate(overlays):
+        o["role"] = "title" if i == 0 and o["y0"] < 0.35 else "label"
+    ov_rows = {y for o in overlays for y in range(max(0, int(o["y0"] * h) - 1), min(h, int(o["y1"] * h) + 2))}
+
+    # --- relleno desenfocado ---
+    energy = []
+    for y in range(1, h - 1):
+        e = 0.0
+        for g in grays:
+            row = y * w
+            e += sum(abs(g[row + x + 1] - g[row + x - 1]) + abs(g[row + w + x] - g[row - w + x]) for x in range(1, w - 1))
+        energy.append(e / (n * (w - 2)))
+    energy = [energy[0]] + energy + [energy[-1]]
+    mid = sorted(energy[int(h * 0.2):int(h * 0.65)])
+    med = mid[len(mid) // 2] if mid else 0
+    y_bot = h
+    while y_bot > h * 0.5 and (energy[y_bot - 1] < 0.35 * med or (y_bot - 1) in ov_rows):
+        y_bot -= 1
+    y_top = 0
+    while y_top < h * 0.4 and (energy[y_top] < 0.35 * med or y_top in ov_rows):
+        y_top += 1
+    blur_bottom = (h - y_bot) / h >= 0.08
+    blur_top = y_top / h >= 0.05
+    layout = {"type": "blur_fill" if (blur_bottom or blur_top) else "full",
+              "content_y0": round(y_top / h, 3) if blur_top else 0.0,
+              "content_y1": round(y_bot / h, 3) if blur_bottom else 1.0}
+
+    # --- altura y anchura típica de los subtítulos ---
+    prof = [0.0] * h
+    spans = {}
+    for g in grays:
+        for y in range(1, h - 1):
+            if y in ov_rows:
+                continue
+            row = y * w
+            xs = [x for x in range(1, w - 1) if abs(g[row + x + 1] - g[row + x - 1]) > 90]
+            if len(xs) > 0.12 * w:
+                prof[y] += 1
+                spans.setdefault(y, []).append((max(xs) - min(xs)) / w)
+    sm = [sum(prof[max(0, y - 2):y + 3]) / n for y in range(h)]
+    lo, hi = int(layout["content_y0"] * h), int(layout["content_y1"] * h)
+    cy = max(range(lo, hi), key=lambda y: sm[y]) if hi > lo else None
+    caption = None
+    if cy is not None and sm[cy] >= 0.25:
+        sp = [v for y in range(max(0, cy - 2), cy + 3) for v in spans.get(y, [])]
+        caption = {"y": round(cy / h, 3), "presence": round(sm[cy], 3),
+                   "avg_span": round(statistics.mean(sp), 3) if sp else None}
+    return {"overlays": overlays, "layout": layout, "caption_band": caption}
+
+
 def run_visual(video: Path, info: dict, work: Path, ref_dir: Path, cfg: dict) -> dict:
     v = info["video"]
     log("Detectando escenas, transiciones y movimiento…")
-    frames = frame_signals(video, work, cfg)
+    frames = frame_signals(video, work, cfg, v["width"], v["height"])
     sc = detect_scenes(frames, info["duration"], cfg)
     pacing = pacing_stats(sc["scenes"], info["duration"])
     log(f"  {pacing['scene_count']} escenas · plano medio {pacing['avg_shot_sec']} s · {len(sc['transitions'])} transiciones")
@@ -393,6 +546,7 @@ def run_visual(video: Path, info: dict, work: Path, ref_dir: Path, cfg: dict) ->
     log("Analizando color y composición…")
     colors = color_analysis(kfs)
     comp = composition_analysis(kfs)
+    comp.update(layout_analysis(kfs))
     trans_types = [t["type"] for t in sc["transitions"]]
     lum = [f["yavg"] for f in frames]
     return {
