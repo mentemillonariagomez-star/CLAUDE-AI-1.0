@@ -1,0 +1,49 @@
+{
+  "language": "es",
+  "performance": {
+    "threads": 2,
+    "analysis_width": 320,
+    "analysis_fps": 8,
+    "max_keyframes": 24,
+    "max_audio_analysis_sec": 180,
+    "max_transcribe_sec": 600
+  },
+  "analysis": {
+    "scene_threshold": 0.3,
+    "min_scene_sec": 0.4
+  },
+  "output": {
+    "resolution": "auto",
+    "fps": 30,
+    "video_encoder": "auto",
+    "preset": "veryfast",
+    "crf": 23,
+    "audio_bitrate": "128k"
+  },
+  "tts": {
+    "engine": "auto",
+    "voice": "es",
+    "speed": 165
+  },
+  "transcription": {
+    "engine": "auto",
+    "language": "auto",
+    "whisper_cpp_bin": "~/whisper.cpp/build/bin/whisper-cli",
+    "whisper_cpp_model": "~/whisper.cpp/models/ggml-base.bin",
+    "openai_model": "whisper-1"
+  },
+  "script_ai": {
+    "engine": "auto",
+    "model": "claude-opus-5-5"
+  },
+  "music": {
+    "file": "",
+    "volume": 0.18
+  },
+  "remote": {
+    "url": "",
+    "token": "",
+    "timeout": 1800
+  },
+  "font": ""
+}

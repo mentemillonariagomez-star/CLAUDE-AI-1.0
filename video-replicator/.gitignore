@@ -1,0 +1,21 @@
+# Archivos pesados o generados: no se suben al repositorio
+output/*
+!output/.gitkeep
+input/*
+!input/.gitkeep
+!input/guion_demo.txt
+references/*
+!references/.gitkeep
+assets/*.jpg
+assets/*.jpeg
+assets/*.png
+assets/*.webp
+assets/*.mp4
+assets/*.mov
+assets/music/*
+!assets/music/.gitkeep
+assets/fonts/*
+!assets/fonts/.gitkeep
+config/env.json
+__pycache__/
+*.pyc

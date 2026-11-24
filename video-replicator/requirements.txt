@@ -1,0 +1,21 @@
+# VIDEO REPLICATOR AI — dependencias
+#
+# El núcleo (análisis + generación) NO necesita ningún paquete de pip:
+# solo Python 3.9+ y FFmpeg, instalados con pkg:
+#
+#   pkg install python ffmpeg
+#
+# Todo lo de abajo es OPCIONAL. Instala solo lo que necesites.
+
+# Voz en off online (alternativa a espeak; necesita internet). Puro Python.
+gTTS>=2.5
+
+# Guiones generados con IA (Claude). Necesita ANTHROPIC_API_KEY.
+# En Termux puede requerir compilar dependencias en Rust; si falla la
+# instalación, el sistema usa borradores locales y todo lo demás funciona.
+# anthropic
+
+# OpenCV y NumPy: en Termux instálalos con pkg, NO con pip
+# (pip intentaría compilarlos y suele fallar en Android):
+#   pkg install python-numpy opencv-python
+# Si tu repositorio de Termux no tiene opencv-python, el análisis funciona sin él.

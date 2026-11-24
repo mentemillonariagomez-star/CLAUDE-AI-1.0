@@ -1,0 +1,99 @@
+{
+  "name": "muestra",
+  "created_at": "2026-11-24 00:58:24",
+  "source_analysis": "muestra",
+  "description": "Ritmo medio, equilibrado, neutro, saturado, transición fade_black",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "target_duration_sec": 16.0,
+  "pacing": {
+    "avg_shot_sec": 2.67,
+    "hook_shot_sec": 2.5,
+    "shot_pattern": [
+      0.938,
+      1.125,
+      1.312,
+      0.893,
+      0.888,
+      0.844
+    ],
+    "by_section": {
+      "intro": 2.75,
+      "middle": 2.941,
+      "outro": 2.309
+    },
+    "snap_to_beat_bpm": 120.0
+  },
+  "transitions": {
+    "type": "fade_black",
+    "duration_sec": 0.25
+  },
+  "motion": {
+    "level": "bajo",
+    "ken_burns": false,
+    "zoom": 1.07
+  },
+  "color": {
+    "palette": [
+      "#226d7e",
+      "#d6390a",
+      "#d7b6d0",
+      "#12b009",
+      "#dddb16",
+      "#db06e2"
+    ],
+    "background_colors": [
+      "#12b009",
+      "#226d7e",
+      "#d6390a"
+    ],
+    "accent": "#db06e2",
+    "grade": {
+      "saturation": 1.5,
+      "contrast": 1.003,
+      "brightness": -0.001,
+      "warmth": 0.028
+    }
+  },
+  "captions": {
+    "enabled": true,
+    "position_y": 0.68,
+    "words_per_caption": 7,
+    "uppercase": false,
+    "font_scale": 0.052,
+    "color": "#ffffff",
+    "highlight_color": "#db06e2",
+    "border": 0.006,
+    "box": false
+  },
+  "narrative": {
+    "structure": [
+      {
+        "role": "hook",
+        "share": 0.156
+      },
+      {
+        "role": "desarrollo",
+        "share": 0.694
+      },
+      {
+        "role": "cta",
+        "share": 0.15
+      }
+    ],
+    "hook_type": "pregunta",
+    "hook_example": "¿Sabías que tu móvil puede editar como un estudio? Primero graba planos cortos y con buena luz",
+    "has_cta": true,
+    "cta_example": "Sígueme para más trucos de edición",
+    "words_per_minute": 143.0
+  },
+  "audio": {
+    "target_lufs": -21.7,
+    "voiceover": true,
+    "music_volume": 0.18,
+    "tempo_bpm": 120.0
+  }
+}
