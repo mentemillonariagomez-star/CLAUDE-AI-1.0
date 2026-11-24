@@ -1,4 +1,5 @@
 import { Composition, Folder, Still } from "remotion";
+import { TrampaEscasez, TrampaHundido, TrampaPerdida } from "./Serie/Trampas";
 import { TrucoAncla, TrucoPrecio999, TrucoSenuelo } from "./Serie/Trucos";
 import { HelloWorld } from "./HelloWorld";
 import { DeNadaATodo } from "./DeNadaATodo/DeNadaATodo";
@@ -83,6 +84,32 @@ export const RemotionRoot: React.FC = () => {
           id="TrucoAncla"
           component={TrucoAncla}
           durationInFrames={823}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+      </Folder>
+      <Folder name="Trampas-dinero">
+        <Composition
+          id="TrampaPerdida"
+          component={TrampaPerdida}
+          durationInFrames={1026}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="TrampaHundido"
+          component={TrampaHundido}
+          durationInFrames={1061}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="TrampaEscasez"
+          component={TrampaEscasez}
+          durationInFrames={1098}
           fps={30}
           width={1080}
           height={1920}

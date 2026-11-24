@@ -1,0 +1,9 @@
+[
+ {"id": "Gancho", "text": "Pagaste la entrada. La película es mala. ¿Te quedas?"},
+ {"id": "Quedas", "text": "Casi todos se quedan. Porque ya pagaron."},
+ {"id": "Perdido", "text": "Pero ese dinero ya se fue. Te vayas o te quedes, no vuelve."},
+ {"id": "Doble", "text": "Si te quedas, pierdes el dinero, y también dos horas."},
+ {"id": "Nombre", "text": "Se llama la falacia del costo hundido. Y es la razón por la que la gente sigue en negocios, cursos y relaciones que no funcionan."},
+ {"id": "Defensa", "text": "Tu defensa: olvida lo que ya gastaste. Decide solo con lo que viene."},
+ {"id": "Cta", "text": "Guárdalo, y sígueme para la siguiente trampa."}
+]

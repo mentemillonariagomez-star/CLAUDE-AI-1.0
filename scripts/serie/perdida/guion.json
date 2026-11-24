@@ -1,0 +1,9 @@
+[
+ {"id": "Gancho", "text": "Perder cien duele el doble que ganar cien."},
+ {"id": "Moneda", "text": "Te ofrezco una apuesta: cara, ganas ciento cincuenta. Cruz, pierdes cien."},
+ {"id": "Rechazas", "text": "Es buen trato. Pero casi todos dicen que no."},
+ {"id": "Doble", "text": "Porque una pérdida pesa unas dos veces más que una ganancia igual."},
+ {"id": "Nombre", "text": "Se llama aversión a la pérdida. Y te hace guardar acciones malas, y vender las buenas."},
+ {"id": "Defensa", "text": "Tu defensa: antes de decidir, pregúntate si lo elegirías hoy, desde cero."},
+ {"id": "Cta", "text": "Guárdalo, y sígueme para la siguiente trampa."}
+]

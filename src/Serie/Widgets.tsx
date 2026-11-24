@@ -839,7 +839,15 @@ export const WDoble = ({
               style={{
                 fontFamily: GROTESK,
                 fontWeight: 700,
-                fontSize: 76,
+                fontSize:
+                  b.v.length > 6
+                    ? 36
+                    : b.v.length > 5
+                      ? 44
+                      : b.v.length > 4
+                        ? 56
+                        : 76,
+                whiteSpace: "nowrap",
                 color: b.c,
                 scale: golpeEscala(frame, b.e),
               }}
@@ -1083,6 +1091,249 @@ export const WAncla = ({
         >
           {precio}
         </div>
+      </div>
+    </Tarjeta>
+  );
+};
+
+// Balanza: la pérdida pesa más que una ganancia igual; se inclina en `en`.
+export const WBalanza = ({
+  perdida,
+  ganancia,
+  en,
+}: {
+  readonly perdida: string;
+  readonly ganancia: string;
+  readonly en: number;
+}) => {
+  const frame = useCurrentFrame();
+  const ang = interpolate(frame, [en, en + 18], [0, -14], {
+    ...CLAMP,
+    easing: Easing.out(Easing.back(2)),
+  });
+  const plato = (t: string, v: string, c: string, lado: -1 | 1) => (
+    <div
+      style={{
+        position: "absolute",
+        left: lado < 0 ? 0 : undefined,
+        right: lado > 0 ? 0 : undefined,
+        top: 40,
+        width: 140,
+        textAlign: "center",
+        rotate: `${-ang}deg`,
+      }}
+    >
+      <div style={{ fontFamily: MONO, fontSize: 16, color: "#aaa" }}>{t}</div>
+      <div
+        style={{
+          fontFamily: GROTESK,
+          fontWeight: 700,
+          fontSize: 42,
+          color: c,
+          textShadow: `0 0 30px ${c}55`,
+        }}
+      >
+        {v}
+      </div>
+      <div
+        style={{ height: 8, borderRadius: 4, backgroundColor: c, marginTop: 4 }}
+      />
+    </div>
+  );
+  return (
+    <Tarjeta
+      titulo="LO QUE SIENTES"
+      extra={
+        <span
+          style={{
+            color: ROJO,
+            opacity: interpolate(frame, [en + 10, en + 14], [0, 1], CLAMP),
+          }}
+        >
+          pesa ×2
+        </span>
+      }
+    >
+      <div style={{ position: "relative", height: 250 }}>
+        <div
+          style={{
+            position: "absolute",
+            left: 20,
+            right: 20,
+            top: 60,
+            height: 150,
+            rotate: `${ang}deg`,
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 126,
+              height: 8,
+              borderRadius: 4,
+              backgroundColor: "#666",
+            }}
+          />
+          {plato("PIERDES", perdida, ROJO, -1)}
+          {plato("GANAS", ganancia, VERDE, 1)}
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: 190,
+            width: 0,
+            height: 0,
+            translate: "-50% 0",
+            borderLeft: "28px solid transparent",
+            borderRight: "28px solid transparent",
+            borderBottom: "50px solid #888",
+          }}
+        />
+      </div>
+    </Tarjeta>
+  );
+};
+
+// Cuenta atrás con stock: "quedan N" y un reloj que baja en rojo.
+export const WCuentaAtras = ({
+  quedan,
+  minutos,
+}: {
+  readonly quedan: number;
+  readonly minutos: number;
+}) => {
+  const frame = useCurrentFrame();
+  const s = Math.max(0, minutos * 60 - Math.floor(frame / 3));
+  const pulso = 1 + 0.05 * Math.max(0, Math.sin(frame / 3));
+  return (
+    <Tarjeta
+      titulo="OFERTA FLASH"
+      extra={<span style={{ color: ROJO }}>● en vivo</span>}
+    >
+      <div
+        style={{
+          fontFamily: GROTESK,
+          fontWeight: 700,
+          fontSize: 40,
+          color: ROJO,
+          scale: String(pulso),
+        }}
+      >
+        ¡Solo quedan {quedan}!
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          margin: "14px 0",
+        }}
+      >
+        {Array.from({ length: 10 }, (_, i) => (
+          <div
+            key={i}
+            style={{
+              flex: 1,
+              height: 18,
+              borderRadius: 4,
+              backgroundColor: i < quedan ? ROJO : "#26262b",
+            }}
+          />
+        ))}
+      </div>
+      <div
+        style={{
+          fontFamily: MONO,
+          fontWeight: 700,
+          fontSize: 110,
+          color: "white",
+          textShadow: `0 0 40px ${ROJO}88`,
+        }}
+      >
+        {String(Math.floor(s / 60)).padStart(2, "0")}:
+        {String(s % 60).padStart(2, "0")}
+      </div>
+    </Tarjeta>
+  );
+};
+
+// Dos frascos de galletas iguales: uno lleno y otro casi vacío.
+export const WFrascos = ({
+  lleno,
+  vacio,
+  en,
+  marca = 9999,
+}: {
+  readonly lleno: number;
+  readonly vacio: number;
+  readonly en: number;
+  readonly marca?: number;
+}) => {
+  const frame = useCurrentFrame();
+  const frasco = (n: number, e: number, gana: boolean, k: string) => {
+    const on = gana && frame >= marca;
+    return (
+      <div
+        key={k}
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 10,
+          opacity: interpolate(frame, [e, e + 6], [0.1, 1], CLAMP),
+        }}
+      >
+        <div
+          style={{
+            width: 170,
+            height: 210,
+            borderRadius: "18px 18px 30px 30px",
+            border: `4px solid ${on ? AMARILLO : "#777"}`,
+            boxShadow: on ? `0 0 40px ${AMARILLO}66` : undefined,
+            position: "relative",
+            scale: on ? golpeEscala(frame, marca) : "1",
+          }}
+        >
+          {Array.from({ length: n }, (_, i) => (
+            <div
+              key={i}
+              style={{
+                position: "absolute",
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                backgroundColor: "#c08a4a",
+                border: "3px solid #8a5a2a",
+                left: 12 + (i % 3) * 50 + (Math.floor(i / 3) % 2) * 20,
+                bottom: 10 + Math.floor(i / 3) * 40,
+                scale: String(
+                  interpolate(frame, [e + i, e + i + 5], [0, 1], CLAMP),
+                ),
+              }}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            fontFamily: GROTESK,
+            fontWeight: 700,
+            fontSize: 30,
+            color: on ? AMARILLO : "#ddd",
+          }}
+        >
+          {on ? "★ más deseables" : `${n} galletas`}
+        </div>
+      </div>
+    );
+  };
+  return (
+    <Tarjeta titulo="EL EXPERIMENTO">
+      <div style={{ display: "flex", gap: 20 }}>
+        {frasco(lleno, 4, false, "a")}
+        {frasco(vacio, en, true, "b")}
       </div>
     </Tarjeta>
   );
