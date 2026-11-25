@@ -27,7 +27,7 @@ const MONT = montserrat("normal", {
   weights: ["800", "900"],
   subsets: ["latin"],
 }).fontFamily;
-const MANO = caveat("normal", {
+export const MANO = caveat("normal", {
   weights: ["700"],
   subsets: ["latin"],
 }).fontFamily;
@@ -156,7 +156,11 @@ const Escena = ({
 };
 
 // Subtítulo de una sola palabra, como en el formato de referencia.
-const Palabra = ({ lineas }: { readonly lineas: DatosCapitulo["lineas"] }) => {
+export const Palabra = ({
+  lineas,
+}: {
+  readonly lineas: DatosCapitulo["lineas"];
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
@@ -189,7 +193,7 @@ const Palabra = ({ lineas }: { readonly lineas: DatosCapitulo["lineas"] }) => {
   );
 };
 
-const Continuara = ({
+export const Continuara = ({
   desde,
   serie,
   cap,
