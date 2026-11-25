@@ -79,7 +79,13 @@ export type ElementoUI =
       texto_en: En;
       texto: string;
     })
-  | (Pos & { tipo: "dm"; en: En; de: string; texto: string });
+  | (Pos & {
+      tipo: "dm";
+      en: En;
+      de: string;
+      texto: string;
+      verificado?: boolean;
+    });
 
 export type EscenaHistoria = {
   id: string;

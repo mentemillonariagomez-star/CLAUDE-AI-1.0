@@ -645,7 +645,10 @@ export const PiezaUI = ({
             </div>
             <div>
               <div style={{ fontSize: 34, fontWeight: 900 }}>
-                {e.de} <span style={{ color: "#2a8cff" }}>✔</span>{" "}
+                {e.de}{" "}
+                {e.verificado === false ? null : (
+                  <span style={{ color: "#2a8cff" }}>✔</span>
+                )}{" "}
                 <span style={{ fontSize: 24, color: "#888", fontWeight: 600 }}>
                   · ahora
                 </span>
