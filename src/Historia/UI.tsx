@@ -400,7 +400,7 @@ export const PiezaUI = ({
             }}
           >
             <div style={{ fontSize: 30, color: "#bbb", fontWeight: 700 }}>
-              ⏰ sin dormir
+              {e.titulo ?? "⏰ sin dormir"}
             </div>
             <div
               style={{

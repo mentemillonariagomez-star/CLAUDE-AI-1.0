@@ -65,6 +65,7 @@ export type ElementoUI =
   | (Pos & {
       tipo: "reloj";
       en: En;
+      titulo?: string;
       desde: number;
       hasta: number;
       hasta_en: En;
