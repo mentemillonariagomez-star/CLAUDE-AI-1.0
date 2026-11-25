@@ -1,0 +1,78 @@
+{
+ "slug": "cap1",
+ "serie": "Jugo Amargo",
+ "capitulo": 1,
+ "usuario": "@zerx.ai0",
+ "voces": {"coco": "em_alex", "fresa": "ef_dora", "pina": "em_santa"},
+ "escenas": [
+  {"id": "Batido", "fondo": "cocina", "luz": "noche",
+   "lineas": [{"quien": "fresa", "texto": "Coco… ¿esto lo hiciste tú?"}, {"quien": "coco", "texto": "El mejor batido de la ciudad. Y es nuestro."}],
+   "personajes": {"coco": {"x": 330, "mira": "der"}, "fresa": {"x": 760, "mira": "izq"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "feliz", "pose": "sostiene", "prop": "vaso"}, "fresa": {"expr": "sorprendido"}, "cam": {"x": 540, "y": 1150, "s": 1.0}},
+    {"en": 1, "coco": {"expr": "orgullo"}, "cam": {"x": 330, "y": 880, "s": 1.7}}]},
+  {"id": "Ricos", "fondo": "cocina", "luz": "noche",
+   "lineas": [{"quien": "fresa", "texto": "Con esto… vamos a ser ricos."}, {"quien": "coco", "texto": "No quiero ser rico. Quiero que la gente sea feliz."}],
+   "personajes": {"coco": {"x": 330, "mira": "der"}, "fresa": {"x": 760, "mira": "izq"}},
+   "estados": [
+    {"en": 0, "fresa": {"expr": "ambicion", "pose": "sostiene", "prop": "vaso"}, "coco": {"expr": "feliz"}, "cam": {"x": 760, "y": 880, "s": 1.7}},
+    {"en": 1, "coco": {"expr": "tierno"}, "fresa": {"expr": "normal"}, "cam": {"x": 540, "y": 1050, "s": 1.25}}]},
+  {"id": "Puesto", "fondo": "calle", "luz": "dia", "letrero": "BATIDOS COCO", "fila": true,
+   "lineas": [{"quien": "fresa", "texto": "¡Cien vasos en una hora!"}, {"quien": "coco", "texto": "Y la receta solo la sabemos tú y yo."}],
+   "personajes": {"coco": {"x": 360, "mira": "der"}, "fresa": {"x": 740, "mira": "izq"}},
+   "estados": [
+    {"en": 0, "fresa": {"expr": "feliz", "pose": "celebra"}, "coco": {"expr": "feliz", "pose": "sostiene", "prop": "vaso"}, "cam": {"x": 540, "y": 1100, "s": 1.0}},
+    {"en": 1, "fresa": {"pose": "normal", "expr": "normal"}, "coco": {"expr": "tierno", "prop": "cuaderno"}, "cam": {"x": 380, "y": 950, "s": 1.5}}]},
+  {"id": "Pina", "fondo": "calle", "luz": "dia", "letrero": "BATIDOS COCO", "fila": true,
+   "lineas": [{"quien": "pina", "texto": "Te doy cien mil dólares por esa receta."}, {"quien": "coco", "texto": "No está en venta."}, {"quien": "pina", "texto": "Todo está en venta… muñeca."}],
+   "personajes": {"coco": {"x": 260, "mira": "der"}, "fresa": {"x": 560, "mira": "der"}, "pina": {"x": 860, "mira": "izq"}},
+   "estados": [
+    {"en": 0, "pina": {"expr": "malvado", "pose": "sostiene", "prop": "maletin"}, "coco": {"expr": "sorprendido"}, "fresa": {"expr": "sorprendido"}, "cam": {"x": 560, "y": 1100, "s": 1.0}},
+    {"en": 1, "coco": {"expr": "enojado", "pose": "cruzados"}, "cam": {"x": 260, "y": 880, "s": 1.75}},
+    {"en": 2, "pina": {"expr": "malvado", "pose": "normal"}, "fresa": {"expr": "ambicion"}, "cam": {"x": 720, "y": 900, "s": 1.5}}]},
+  {"id": "Llamada", "fondo": "cocina", "luz": "oscuro",
+   "lineas": [{"quien": "pina", "texto": "¿La tienes?"}, {"quien": "fresa", "texto": "La tengo."}],
+   "personajes": {"fresa": {"x": 540, "mira": "der"}},
+   "estados": [
+    {"en": 0, "fresa": {"expr": "normal", "pose": "llamada", "prop": "cuaderno"}, "cam": {"x": 540, "y": 1050, "s": 1.2}},
+    {"en": 1, "fresa": {"expr": "malvado"}, "cam": {"x": 540, "y": 860, "s": 1.9}}]},
+  {"id": "Nota", "fondo": "cocina", "luz": "dia",
+   "lineas": [{"quien": "coco", "texto": "¿Fresa?"}, {"quien": "fresa", "texto": "Lo siento. Me merezco más."}],
+   "personajes": {"coco": {"x": 540, "mira": "der"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "sorprendido", "pose": "normal"}, "cam": {"x": 540, "y": 1100, "s": 1.05}},
+    {"en": 1, "coco": {"expr": "triste", "pose": "sostiene", "prop": "nota"}, "cam": {"x": 540, "y": 880, "s": 1.7}}],
+   "notas": [{"en": [1, 6], "texto": "Lo siento. Me merezco más. — F"}]},
+  {"id": "Fiesta", "fondo": "lujo", "luz": "noche", "letrero": "BATIDOS PIÑA", "fila": true,
+   "lineas": [{"quien": "pina", "texto": "¡El batido más famoso de la ciudad… ahora es mío!"}, {"quien": "fresa", "texto": "¡Salud, mi rey!"}],
+   "personajes": {"pina": {"x": 380, "mira": "der", "ropa": "traje"}, "fresa": {"x": 730, "mira": "izq", "ropa": "dorado"}},
+   "estados": [
+    {"en": 0, "pina": {"expr": "malvado", "pose": "celebra"}, "fresa": {"expr": "feliz", "pose": "sostiene", "prop": "vaso"}, "cam": {"x": 540, "y": 1100, "s": 1.0}},
+    {"en": 1, "pina": {"pose": "normal", "expr": "feliz"}, "fresa": {"expr": "malvado"}, "cam": {"x": 730, "y": 880, "s": 1.6}}]},
+  {"id": "Lluvia", "fondo": "lluvia", "luz": "noche",
+   "lineas": [{"quien": "coco", "texto": "Me lo quitaste todo…"}],
+   "personajes": {"coco": {"x": 540, "mira": "der"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "llorando", "pose": "normal"}, "cam": {"x": 540, "y": 1150, "s": 1.0}},
+    {"en": [0, 30], "cam": {"x": 540, "y": 860, "s": 1.9}}]},
+  {"id": "Cerrado", "fondo": "calle", "luz": "noche", "letrero": "CERRADO",
+   "lineas": [{"quien": "coco", "texto": "Bueno… casi todo."}],
+   "personajes": {"coco": {"x": 540, "mira": "der"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "triste", "pose": "normal"}, "cam": {"x": 540, "y": 1100, "s": 1.05}},
+    {"en": [0, 28], "coco": {"expr": "astuto"}, "cam": {"x": 540, "y": 880, "s": 1.7}}]},
+  {"id": "Giro", "fondo": "calle", "luz": "noche", "letrero": "CERRADO",
+   "lineas": [{"quien": "coco", "texto": "Porque la receta nunca estuvo en ese cuaderno."}, {"quien": "coco", "texto": "Siempre estuvo… aquí."}],
+   "personajes": {"coco": {"x": 540, "mira": "der"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "astuto", "pose": "normal"}, "cam": {"x": 540, "y": 860, "s": 1.9}},
+    {"en": 1, "coco": {"expr": "decidido", "pose": "cabeza", "brillo": true}, "cam": {"x": 540, "y": 840, "s": 2.2}}]},
+  {"id": "Final", "fondo": "final", "luz": "noche",
+   "lineas": [{"quien": "coco", "texto": "Ahora sí, Piña… vamos a ver quién es el rey de los batidos."}],
+   "personajes": {"coco": {"x": 540, "mira": "der", "ropa": "traje"}},
+   "estados": [
+    {"en": 0, "coco": {"expr": "decidido", "pose": "cruzados", "brillo": true}, "cam": {"x": 540, "y": 860, "s": 1.8}},
+    {"en": [0, 45], "cam": {"x": 540, "y": 1150, "s": 1.0}}],
+   "continuara": true}
+ ]
+}
