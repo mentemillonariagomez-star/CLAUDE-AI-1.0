@@ -1,0 +1,95 @@
+# Renderiza todos los videos del proyecto en GitHub.
+# - Automático: en cada push que toque src/, public/ o la configuración.
+# - Manual: pestaña "Actions" → "Renderizar videos" → "Run workflow"
+#   (puedes escribir un solo ID, p. ej. TrucoAncla, o dejar "todos").
+# Los MP4/PNG quedan para descargar en la sección "Artifacts" de cada ejecución.
+name: Renderizar videos
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "remotion.config.ts"
+      - ".github/workflows/render-videos.yml"
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "ID del video a renderizar (o 'todos')"
+        required: false
+        default: "todos"
+
+concurrency:
+  group: render-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lista:
+    runs-on: ubuntu-latest
+    outputs:
+      videos: ${{ steps.lista.outputs.videos }}
+      fotos: ${{ steps.lista.outputs.fotos }}
+    steps:
+      - id: lista
+        run: |
+          TODOS='["TrucoPrecio999","TrucoSenuelo","TrucoAncla","Regla1Porciento","IAAhorraTiempo","InteresCompuesto","ZerxDeNadaATodo","ClaudeCanal","ViralDeNadaATodo","DeNadaATodo","MiPrimerVideo"]'
+          FOTOS='["PerfilNegroOro","PerfilAmarillo","PerfilNeon"]'
+          ELEGIDO="${{ github.event.inputs.video }}"
+          if [ -z "$ELEGIDO" ] || [ "$ELEGIDO" = "todos" ]; then
+            echo "videos=$TODOS" >> "$GITHUB_OUTPUT"
+            echo "fotos=$FOTOS" >> "$GITHUB_OUTPUT"
+          elif echo "$FOTOS" | grep -q "\"$ELEGIDO\""; then
+            echo "videos=[]" >> "$GITHUB_OUTPUT"
+            echo "fotos=[\"$ELEGIDO\"]" >> "$GITHUB_OUTPUT"
+          else
+            echo "videos=[\"$ELEGIDO\"]" >> "$GITHUB_OUTPUT"
+            echo "fotos=[]" >> "$GITHUB_OUTPUT"
+          fi
+
+  video:
+    needs: lista
+    if: needs.lista.outputs.videos != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJson(needs.lista.outputs.videos) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --loglevel=error
+      - run: npx remotion browser ensure
+      - run: npx remotion render ${{ matrix.id }} out/${{ matrix.id }}.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.id }}
+          path: out/${{ matrix.id }}.mp4
+          retention-days: 30
+
+  foto:
+    needs: lista
+    if: needs.lista.outputs.fotos != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJson(needs.lista.outputs.fotos) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --loglevel=error
+      - run: npx remotion browser ensure
+      - run: npx remotion still ${{ matrix.id }} out/${{ matrix.id }}.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.id }}
+          path: out/${{ matrix.id }}.png
+          retention-days: 30
