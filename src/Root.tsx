@@ -6,9 +6,6 @@ import { Perfil } from "./Perfil/Perfil";
 import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Pasos } from "./Pasos/Pasos";
-import { Telenovela } from "./Telenovela/Telenovela";
-import { Telenovela3D } from "./Telenovela3D/Telenovela3D";
-import { CAPITULO as JUGO1 } from "./Telenovela/videos/cap1";
 import { Historia } from "./Historia/Historia";
 import { HISTORIA as POV1 } from "./Historia/videos/pov1";
 import { HISTORIA as POV2 } from "./Historia/videos/pov2";
@@ -79,32 +76,6 @@ export const RemotionRoot: React.FC = () => {
             brillo: "#a855f7",
           }}
         />
-      </Folder>
-      <Folder name="Telenovela">
-        {[JUGO1].map((c) => (
-          <Composition
-            key={c.slug}
-            id={`JugoAmargo-${c.slug}`}
-            component={Telenovela}
-            defaultProps={{ datos: c }}
-            durationInFrames={c.total}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-        ))}
-        {[JUGO1].map((c) => (
-          <Composition
-            key={`3d-${c.slug}`}
-            id={`JugoAmargo3D-${c.slug}`}
-            component={Telenovela3D}
-            defaultProps={{ datos: c }}
-            durationInFrames={c.total}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-        ))}
       </Folder>
       <Folder name="Historias">
         {[POV1, POV2, POV3, POV4, POV5, POV6].map((h) => (
