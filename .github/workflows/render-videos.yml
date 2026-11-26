@@ -34,7 +34,7 @@ jobs:
     steps:
       - id: lista
         run: |
-          TODOS='["TrucoPrecio999","TrucoSenuelo","TrucoAncla","Regla1Porciento","IAAhorraTiempo","InteresCompuesto","ZerxDeNadaATodo","ClaudeCanal","ViralDeNadaATodo","DeNadaATodo","MiPrimerVideo"]'
+          TODOS='["TrucoPrecio999","TrucoSenuelo","TrucoAncla","Regla1Porciento","IAAhorraTiempo","InteresCompuesto","ZerxDeNadaATodo","ClaudeCanal","ViralDeNadaATodo","DeNadaATodo","MiPrimerVideo","Replica-ahorro1000"]'
           FOTOS='["PerfilNegroOro","PerfilAmarillo","PerfilNeon"]'
           ELEGIDO="${{ github.event.inputs.video }}"
           if [ -z "$ELEGIDO" ] || [ "$ELEGIDO" = "todos" ]; then

@@ -30,11 +30,14 @@ El flujo [`.github/workflows/render-videos.yml`](.github/workflows/render-videos
 | **Horizontales** | | | |
 | `DeNadaATodo` | 16:9 · 46 s | [src/DeNadaATodo](src/DeNadaATodo) | — |
 | `MiPrimerVideo` | 16:9 · 8 s | [src/MiPrimerVideo](src/MiPrimerVideo) | — |
+| **Replicador (estilo de referencia)** | | | |
+| `Replica-ahorro1000` | 9:16 · 48 s | [src/Replica](src/Replica) | [scripts/replica/ahorro1000](scripts/replica/ahorro1000) · [public/replica/ahorro1000](public/replica/ahorro1000) |
 | **Fotos de perfil (PNG)** | | | |
 | `PerfilNegroOro` · `PerfilAmarillo` · `PerfilNeon` | 1080×1080 | [src/Perfil/Perfil.tsx](src/Perfil/Perfil.tsx) | — |
 
 Todos se registran en [src/Root.tsx](src/Root.tsx). Para crear un video nuevo de la serie mira
 [scripts/serie/README.md](scripts/serie/README.md); para la narración, [scripts/viral/README.md](scripts/viral/README.md).
+Para crear videos con el replicador mira [scripts/replica/README.md](scripts/replica/README.md).
 Si añades un video, agrega también su ID a la lista `TODOS` del flujo de GitHub.
 
 ## En tu computadora

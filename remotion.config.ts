@@ -8,3 +8,5 @@ import { Config } from "@remotion/cli/config";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+// Render por CPU: evita fotogramas con capas o teselas sin pintar en Chromium.
+Config.setChromiumOpenGlRenderer("swiftshader");

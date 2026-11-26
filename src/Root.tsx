@@ -15,12 +15,28 @@ import { ViralDeNadaATodo } from "./Viral/Viral";
 import { MiPrimerVideo } from "./MiPrimerVideo/MiPrimerVideo";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
+import { VideoReplica } from "./Replica/VideoReplica";
+import { VIDEOS } from "./Replica/datos";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="Replica">
+        {VIDEOS.map((d) => (
+          <Composition
+            key={d.slug}
+            id={`Replica-${d.slug}`}
+            component={VideoReplica}
+            durationInFrames={d.total}
+            fps={30}
+            width={1080}
+            height={1920}
+            defaultProps={{ datos: d }}
+          />
+        ))}
+      </Folder>
       <Folder name="Perfil-TikTok">
         <Still
           id="PerfilNegroOro"

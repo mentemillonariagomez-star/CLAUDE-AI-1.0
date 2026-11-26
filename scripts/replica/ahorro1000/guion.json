@@ -1,0 +1,165 @@
+{
+  "slug": "ahorro1000",
+  "voz": { "id": "TX3LPaxmHKxFdv7VOQHJ", "modelo": "eleven_multilingual_v2", "velocidad": 1.08 },
+  "cola": 1.8,
+  "escenas": [
+    {
+      "id": "gancho",
+      "etiqueta": "01 · el gancho",
+      "texto": "Todo el mundo quiere *ahorrar,* pero nadie te enseña *cómo.* Ni cómo juntar tus primeros *mil dólares.*",
+      "pose": "apunta",
+      "widget": {
+        "tipo": "gancho",
+        "app": "Tu cuenta",
+        "saldo": "0,00 $",
+        "izq": { "pie": "mes 1", "valor": "12 $" },
+        "der": { "pie": "mes 12", "valor": "1.000 $" },
+        "chip": "hecho con *zerx.ai*"
+      },
+      "marcas": { "izq": "mundo", "der": "ahorrar", "chip": "nadie" },
+      "eventos": [
+        { "accion": "sello", "en": "cómo", "texto": "¿CÓMO?", "x": 540, "y": 820, "rot": -8, "tam": 140 },
+        { "accion": "nota", "en": "mil", "texto": "¿1.000 $?", "x": 70, "y": 1040, "rot": -6 }
+      ]
+    },
+    {
+      "id": "mapa",
+      "etiqueta": "02 · la hoja de ruta",
+      "texto": "Así que te lo enseño *paso a paso.*",
+      "pose": "arriba",
+      "widget": {
+        "tipo": "pasos",
+        "titulo": "5 *PASOS*",
+        "items": [
+          { "t": "Gastos", "s": "busca fugas" },
+          { "t": "Cuenta", "s": "solo ahorro" },
+          { "t": "Automatiza", "s": "día de cobro" },
+          { "t": "Regla 48 h", "s": "antes de comprar" },
+          { "t": "Tus 1.000 $", "s": "mira cómo crece" }
+        ]
+      },
+      "marcas": { "i0": "así+4", "i1": "así+9", "i2": "así+14", "i3": "así+19", "i4": "paso" }
+    },
+    {
+      "id": "paso1",
+      "etiqueta": "paso 1 · los gastos",
+      "texto": "Uno, mira a dónde va tu *dinero.* Abre tu banco y busca las *fugas:* cafés, suscripciones y envíos.",
+      "pose": "apunta",
+      "titulo": { "texto": "MIRA TUS *GASTOS*", "num": 1, "sobre": "en tu banco" },
+      "widget": {
+        "tipo": "lista",
+        "app": "Tu banco · Movimientos",
+        "filas": [
+          { "icono": "N", "color": "#16a34a", "t": "Nómina", "s": "día 1", "v": "+1.240 $" },
+          { "icono": "C", "color": "#a16207", "t": "Café diario", "s": "todos los días", "v": "−4,50 $", "fuga": true },
+          { "icono": "S", "color": "#7c3aed", "t": "3 suscripciones", "s": "streaming", "v": "−38,97 $", "fuga": true },
+          { "icono": "E", "color": "#ea580c", "t": "Envíos de comida", "s": "fin de semana", "v": "−62,00 $", "fuga": true }
+        ]
+      },
+      "marcas": { "f0": "mira", "f1": "dónde", "f2": "va", "f3": "dinero", "resaltar": "cafés" },
+      "eventos": [
+        { "accion": "titulo", "en": "fugas", "texto": "BUSCA LAS *FUGAS*" },
+        { "accion": "chip", "en": "banco", "texto": "abre tu banco", "sub": "movimientos del mes" },
+        { "accion": "sello", "en": "envíos+4", "texto": "FUGAS", "x": 560, "y": 1000, "rot": -7, "tam": 120 }
+      ]
+    },
+    {
+      "id": "paso2",
+      "etiqueta": "paso 2 · la cuenta",
+      "texto": "Dos, abre una cuenta *aparte* y llámala *Mis mil.* Ahí vivirá todo lo que ahorres.",
+      "pose": "apunta",
+      "titulo": { "texto": "CUENTA *APARTE*", "num": 2, "sobre": "en tu app" },
+      "widget": { "tipo": "formulario", "app": "Tu banco · Cuentas", "texto": "Mis 1.000 $" },
+      "marcas": { "clic": "abre", "escribe": "llámala", "crear": "ahí" },
+      "eventos": [
+        { "accion": "titulo", "en": "ahí", "texto": "TUS AHORROS, *AQUÍ*" },
+        { "accion": "chip", "en": "aparte", "texto": "+ Nueva cuenta", "sub": "solo para ahorrar" }
+      ]
+    },
+    {
+      "id": "paso3",
+      "etiqueta": "paso 3 · automático",
+      "texto": "Tres, *automatiza.* El día que cobras, un diez por ciento se mueve *solo.*",
+      "pose": "arriba",
+      "titulo": { "texto": "SE AHORRA *SOLO*", "num": 3, "sobre": "el día de cobro" },
+      "widget": {
+        "tipo": "progreso",
+        "cabecera": "Transferencia programada…",
+        "filas": [
+          { "t": "Cobras", "icono": "1", "dur": 22 },
+          { "t": "10 % a tu meta", "icono": "%", "dur": 28 },
+          { "t": "Cada mes", "icono": "↻", "dur": 26 }
+        ]
+      },
+      "marcas": { "f0": "día", "f1": "diez", "f2": "mueve" },
+      "eventos": [
+        { "accion": "sello", "en": "solo", "texto": "AUTOMÁTICO", "x": 330, "y": 1160, "rot": -6, "tam": 84 }
+      ]
+    },
+    {
+      "id": "paso4",
+      "etiqueta": "paso 4 · la regla",
+      "texto": "Cuatro, antes de comprar algo, espera *cuarenta y ocho horas.* Muchas veces, ya no lo quieres.",
+      "pose": "explica",
+      "titulo": { "texto": "REGLA DE *48 H*", "num": 4, "sobre": "antes de comprar" },
+      "widget": {
+        "tipo": "escribir",
+        "placeholder": "Quiero comprar…",
+        "texto": "¿Lo necesito de verdad?",
+        "contador": { "desde": 48, "hasta": 0, "etiqueta": "HORAS" }
+      },
+      "marcas": { "escribe": "antes", "reloj": "espera" },
+      "eventos": [
+        { "accion": "titulo", "en": "muchas", "texto": "¿COMPRAR? *NO*" },
+        { "accion": "sello", "en": "quieres", "texto": "NO COMPRADO", "x": 680, "y": 1060, "rot": -7, "tam": 78 }
+      ]
+    },
+    {
+      "id": "paso5",
+      "etiqueta": "paso 5 · la meta",
+      "texto": "Cinco, la parte *divertida.* Mira cómo crece, mes a mes, hasta tus primeros *mil.*",
+      "pose": "apunta",
+      "titulo": { "texto": "MIRA CÓMO *CRECE*", "num": 5, "sobre": "tu meta" },
+      "widget": { "tipo": "contador", "valor": 1000, "cuenta": "Mis 1.000 $", "meta": "meta cumplida" },
+      "marcas": { "inicio": "mira", "fin": "mil" },
+      "eventos": [
+        { "accion": "confeti", "en": "divertida" },
+        { "accion": "sello", "en": "mil+8", "texto": "LISTO", "x": 760, "y": 1150, "rot": -8, "tam": 120 }
+      ]
+    },
+    {
+      "id": "repaso",
+      "etiqueta": "el proceso entero",
+      "texto": "Cinco pasos, *una meta.*",
+      "pose": "arriba",
+      "widget": {
+        "tipo": "pasos",
+        "repaso": true,
+        "titulo": "5 PASOS, *1 META*",
+        "items": [
+          { "t": "Gastos", "s": "busca fugas" },
+          { "t": "Cuenta", "s": "solo ahorro" },
+          { "t": "Automatiza", "s": "día de cobro" },
+          { "t": "Regla 48 h", "s": "antes de comprar" },
+          { "t": "Tus 1.000 $", "s": "mira cómo crece" }
+        ]
+      },
+      "marcas": { "c0": "pasos", "c1": "pasos+5", "c2": "pasos+10", "c3": "pasos+15", "c4": "meta" }
+    },
+    {
+      "id": "cta",
+      "etiqueta": "parte 2 · sígueme",
+      "texto": "*Guárdalo,* y sígueme para la parte dos.",
+      "pose": "arriba",
+      "titulo": { "texto": "*GUÁRDALO* Y SÍGUEME", "sobre": "en mi perfil" },
+      "widget": {
+        "tipo": "perfil",
+        "nombre": "zerx.ai",
+        "usuario": "@zerx.ai0",
+        "bio": "Dinero, hábitos e IA · parte 2 →",
+        "miniaturas": ["REGLA DEL 1 %", "INTERÉS COMPUESTO", "EFECTO SEÑUELO"]
+      },
+      "marcas": { "bio": "guárdalo", "seguir": "sígueme" }
+    }
+  ]
+}
