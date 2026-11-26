@@ -13,6 +13,7 @@ import { HISTORIA as POV3 } from "./Historia/videos/pov3";
 import { HISTORIA as POV4 } from "./Historia/videos/pov4";
 import { HISTORIA as POV5 } from "./Historia/videos/pov5";
 import { HISTORIA as POV6 } from "./Historia/videos/pov6";
+import { HISTORIA as POV7 } from "./Historia/videos/pov7";
 import { Explicador } from "./Explicador/Explicador";
 import { VIDEO as ERRORES } from "./Explicador/videos/errores";
 import { VIDEO as SEGUIDORES } from "./Explicador/videos/seguidores";
@@ -78,7 +79,7 @@ export const RemotionRoot: React.FC = () => {
         />
       </Folder>
       <Folder name="Historias">
-        {[POV1, POV2, POV3, POV4, POV5, POV6].map((h) => (
+        {[POV1, POV2, POV3, POV4, POV5, POV6, POV7].map((h) => (
           <Composition
             key={h.slug}
             id={`Historia-${h.slug}`}
