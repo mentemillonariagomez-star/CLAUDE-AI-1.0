@@ -1,0 +1,3 @@
+elevenlabs>=2.80
+numpy
+soundfile
